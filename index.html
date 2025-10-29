@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eurofert - Sustainable Agricultural Solutions</title>
+    <!-- Custom Styles (NO Bootstrap - Pure Custom CSS) -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header" id="header">
+      <div class="container">
+        <nav class="site-nav">
+          <a class="brand-logo" href="index.html">
+            <img
+              src="public/eurofert-logo.png"
+              alt="Eurofert Logo"
+              class="logo"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav-menu">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html"
+                  ><span>Home</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="services.html"
+                  ><span>Services</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html"><span>About Us</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="product-categories.html"
+                  ><span>Product Categories</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="row align-items-center min-vh-75">
+          <div class="col-lg-6 hero-content fade-in">
+            <h1 class="display-4 fw-bold mb-4">
+              Nurturing Growth,<br />Harvesting Success
+            </h1>
+            <p class="lead mb-4">
+              Advanced agricultural solutions that respect both soil and nature
+              while maximizing crop yield and quality.
+            </p>
+            <div class="d-flex gap-3">
+              <a
+                href="product-categories.html"
+                class="btn btn-primary btn-lg btn-attention"
+                >Explore Products</a
+              >
+              <a href="#contact" class="btn btn-outline-light btn-lg"
+                >Contact Us</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wave-divider">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          style="display: block"
+        >
+          <path
+            fill="#ffffff"
+            d="M0,80L48,100C96,120,192,180,288,180C384,180,480,120,576,100C672,80,768,80,864,100C960,120,1056,180,1152,180C1248,180,1344,120,1392,100L1440,80L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+            preserveAspectRatio="none"
+          ></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro-section" id="intro">
+      <div class="container text-center">
+        <h2 class="display-5 fw-bold mb-3 text-primary section-title">
+          Welcome to Eurofert
+        </h2>
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <p class="lead text-muted mb-4">
+              At Eurofert, we believe sustainable agriculture starts with the
+              soil. Our fertilizers are designed to enrich crops while
+              preserving the planet.
+            </p>
+            <p class="text-muted">
+              With decades of experience in soil nutrition, Eurofert delivers
+              science-backed solutions that improve yield quality, reduce
+              environmental impact, and support farming communities worldwide.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+      <div class="container">
+        <h2
+          class="text-center display-5 fw-bold mb-5 text-primary section-title"
+        >
+          Why Choose Eurofert
+        </h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="feature-card card h-100 border-0 shadow-sm fade-in">
+              <div class="card-body text-center p-4">
+                <div class="feature-icon mb-3">
+                  <i class="fas fa-seedling fa-3x text-primary"></i>
+                </div>
+                <h3 class="card-title h4 mb-3">Sustainable Farming</h3>
+                <p class="card-text">
+                  Our products are developed with sustainability at their core,
+                  helping you reduce environmental impact while improving soil
+                  health.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div
+              class="feature-card card h-100 border-0 shadow-sm fade-in"
+              data-delay="100"
+            >
+              <div class="card-body text-center p-4">
+                <div class="feature-icon mb-3">
+                  <i class="fas fa-flask fa-3x text-primary"></i>
+                </div>
+                <h3 class="card-title h4 mb-4">Science-Backed</h3>
+                <p class="card-text">
+                  Every product is the result of extensive research and testing
+                  to ensure optimal performance in various soil conditions.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div
+              class="feature-card card h-100 border-0 shadow-sm fade-in"
+              data-delay="200"
+            >
+              <div class="card-body text-center p-4">
+                <div class="feature-icon mb-3">
+                  <i class="fas fa-leaf fa-3x text-primary"></i>
+                </div>
+                <h3 class="card-title h4 mb-3">Yield Optimization</h3>
+                <p class="card-text">
+                  Achieve better yields and higher quality crops with nutrient
+                  solutions precisely formulated for different crop needs.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Products Preview -->
+    <section class="products-preview" id="products-preview">
+      <div class="container">
+        <h2
+          class="text-center display-5 fw-bold mb-5 text-primary section-title"
+        >
+          Our Product Categories
+        </h2>
+        <div class="row g-4">
+          <div class="col-md-3">
+            <div
+              class="product-category-card card h-100 border-0 shadow-sm slide-up"
+            >
+              <img
+                src="public/product1-placeholder.png"
+                class="card-img-top"
+                alt="MaxiGrow Power Paste"
+              />
+              <div class="card-body text-center">
+                <h3 class="card-title h5 mb-3">MaxiGrow Power Paste</h3>
+                <p class="card-text small">
+                  High-concentration paste fertilizers for maximum nutrient
+                  delivery.
+                </p>
+                <a
+                  href="products.html?category=maxigrow"
+                  class="btn btn-outline-primary btn-sm"
+                  >View Products</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div
+              class="product-category-card card h-100 border-0 shadow-sm slide-up"
+              data-delay="200"
+            >
+              <img
+                src="public/product2-placeholder.png"
+                class="card-img-top"
+                alt="Colfert Liquid"
+              />
+              <div class="card-body text-center">
+                <h3 class="card-title h5 mb-3">Colfert Liquid</h3>
+                <p class="card-text small">
+                  Fast-acting liquid fertilizers for immediate plant nutrition.
+                </p>
+                <a
+                  href="products.html?category=colfert"
+                  class="btn btn-outline-primary btn-sm"
+                  >View Products</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div
+              class="product-category-card card h-100 border-0 shadow-sm slide-up"
+              data-delay="400"
+            >
+              <img
+                src="public/product3-placeholder.png"
+                class="card-img-top"
+                alt="Seagull Liquid"
+              />
+              <div class="card-body text-center">
+                <h3 class="card-title h5 mb-3">Seagull Liquid</h3>
+                <p class="card-text small">
+                  Premium liquid solutions for specialized crop requirements.
+                </p>
+                <a
+                  href="products.html?category=seagull"
+                  class="btn btn-outline-primary btn-sm"
+                  >View Products</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div
+              class="product-category-card card h-100 border-0 shadow-sm slide-up"
+              data-delay="600"
+            >
+              <img
+                src="public/product4-placeholder.png"
+                class="card-img-top"
+                alt="Agrivell"
+              />
+              <div class="card-body text-center">
+                <h3 class="card-title h5 mb-3">Agrivell</h3>
+                <p class="card-text small">
+                  Advanced granular fertilizers for sustained plant growth.
+                </p>
+                <a
+                  href="products.html?category=agrivell"
+                  class="btn btn-outline-primary btn-sm"
+                  >View Products</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-5">
+          <a href="product-categories.html" class="btn btn-primary btn-lg"
+            >View All Products</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+      <div class="container">
+        <h2
+          class="text-center display-5 fw-bold mb-5 text-primary section-title"
+        >
+          What Our Customers Say
+        </h2>
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div
+              id="testimonialCarousel"
+              class="carousel slide"
+              data-bs-ride="carousel"
+              data-bs-interval="5000"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="testimonial-card text-center p-4">
+                    <div class="testimonial-img mx-auto mb-4">
+                      <img
+                        src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&dpr=2"
+                        class="rounded-circle"
+                        alt="John Anderson - Wheat Farmer"
+                      />
+                    </div>
+                    <p class="testimonial-text mb-3">
+                      "Since switching to Eurofert's organic fertilizers, we've
+                      seen a 30% increase in yield and significantly better crop
+                      quality. Their technical support has been invaluable for
+                      our farm operations."
+                    </p>
+                    <h5 class="testimonial-name mb-1">John Anderson</h5>
+                    <p class="testimonial-position text-muted small">
+                      Wheat Farmer, Iowa
+                    </p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="testimonial-card text-center p-4">
+                    <div class="testimonial-img mx-auto mb-4">
+                      <img
+                        src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&dpr=2"
+                        class="rounded-circle"
+                        alt="Maria Rodriguez - Vineyard Owner"
+                      />
+                    </div>
+                    <p class="testimonial-text mb-3">
+                      "Eurofert's specialty nutrients have transformed our
+                      vineyard. The grape quality has improved dramatically, and
+                      we're seeing better resistance to diseases with their
+                      sustainable solutions."
+                    </p>
+                    <h5 class="testimonial-name mb-1">Maria Rodriguez</h5>
+                    <p class="testimonial-position text-muted small">
+                      Vineyard Owner, California
+                    </p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="testimonial-card text-center p-4">
+                    <div class="testimonial-img mx-auto mb-4">
+                      <img
+                        src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&dpr=2"
+                        class="rounded-circle"
+                        alt="Robert Johnson - Organic Farm Manager"
+                      />
+                    </div>
+                    <p class="testimonial-text mb-3">
+                      "As an organic farmer, finding truly sustainable inputs is
+                      crucial. Eurofert's products not only meet our strict
+                      standards but have helped us regenerate soil that was
+                      previously depleted."
+                    </p>
+                    <h5 class="testimonial-name mb-1">Robert Johnson</h5>
+                    <p class="testimonial-position text-muted small">
+                      Organic Farm Manager, Oregon
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#testimonialCarousel"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#testimonialCarousel"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer pt-5 pb-4 bg-dark text-white">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-brand mb-4">
+              <img
+                src="public/eurofert-logo.png"
+                alt="Eurofert Logo"
+                class="logo-footer mb-3"
+              />
+              <p class="mb-3">
+                Sustainable agricultural solutions for modern farming needs.
+                Trusted by farmers worldwide since 1985.
+              </p>
+              <div class="social-links">
+                <a href="#" class="social-link me-2"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="#" class="social-link me-2"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a href="#" class="social-link me-2"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+                <a href="#" class="social-link"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-heading mb-3">Quick Links</h5>
+            <ul class="footer-links list-unstyled">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="product-categories.html">Product Categories</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h5 class="footer-heading mb-3">Products</h5>
+            <ul class="footer-links list-unstyled">
+              <li>
+                <a href="products.html?category=maxigrow"
+                  >MaxiGrow Power Paste</a
+                >
+              </li>
+              <li>
+                <a href="products.html?category=colfert">Colfert Liquid</a>
+              </li>
+              <li>
+                <a href="products.html?category=seagull">Seagull Liquid</a>
+              </li>
+              <li><a href="products.html?category=agrivell">Agrivell</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h5 class="footer-heading mb-3">Newsletter</h5>
+            <p class="mb-3">
+              Subscribe to our newsletter for the latest product updates and
+              farming tips.
+            </p>
+            <form class="mb-3">
+              <div class="input-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Add your email"
+                  aria-label="Email"
+                  aria-describedby="button-subscribe"
+                />
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  id="button-subscribe"
+                >
+                  Subscribe
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <hr class="mt-4 mb-3 border-secondary" />
+        <div class="row">
+          <div class="col-md-6 mb-3 mb-md-0">
+            <p class="mb-0 text-muted">
+              &copy; 2025 Eurofert. All rights reserved.
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item">
+                <a href="#" class="text-muted">Privacy Policy</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="text-muted">Terms of Service</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="text-muted">Cookie Policy</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" aria-label="Back to Top">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
