@@ -7,245 +7,132 @@
     <!-- Custom Styles (NO Bootstrap - Pure Custom CSS) -->
 
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/product-details.css" />
     <link rel="stylesheet" href="css/animations.css" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
   </head>
-  <body>
+  <body class="has-fixed-header">
     <!-- Header -->
     <header class="header" id="header">
       <div class="container">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-              <img
-                src="public/eurofert-logo.png"
-                alt="Eurofert Logo"
-                class="logo"
-              />
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
+        <nav class="site-nav">
+          <a class="brand-logo" href="index.html">
+            <img
+              src="public/eurofert-logo.png"
+              alt="Eurofert Logo"
+              class="logo"
+              loading="eager"
+              width="185"
+              height="auto"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="index.html"><span>Home</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="services.html"
-                    ><span>Services</span></a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about.html"
-                    ><span>About Us</span></a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="product-categories.html"
-                    ><span>Product Categories</span></a
-                  >
-                </li>
-              </ul>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="menu-header">
+              <h5 class="menu-title">Menu Navigation</h5>
             </div>
+            <ul class="nav-menu">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html"
+                  ><span>Home</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="services.html"
+                  ><span>Services</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html"><span>About Us</span></a>
+              </li>
+
+              <!-- Dropdown list Product Categories-->
+              <li class="nav-item has-dropdown" data-toggle="dropdown">
+                <a class="nav-link parent-link" href="product-categories.html">
+                  <span class="link-title">Product Categories</span>
+                </a>
+                <!-- drowpdown list Opener-->
+                <span class="nav-opener" aria-label="Open submenu">
+                  <i class="fas fa-chevron-right arrow-icon"></i
+                ></span>
+                <!-- arrow icon-->
+
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      href="products.html?category=maxigrow"
+                      class="sub-menu___link"
+                      ><span>MaxiGrow Power Paste</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="products.html?category=colfert"
+                      class="sub-menu___link"
+                      ><span>Colfert Liquid</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="products.html?category=seagull"
+                      class="sub-menu___link"
+                      ><span>Seagull Liquid</span></a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </div>
         </nav>
       </div>
     </header>
 
-    <!-- Mobile Navigation Drawer -->
-    <div class="mobile-product-drawer" id="mobileProductDrawer">
-      <div class="drawer-content">
-        <button class="drawer-close" id="closeDrawer" aria-label="Close drawer">
-          <i class="fas fa-times"></i>
-        </button>
-        <h3 class="drawer-title">Quick Navigation</h3>
-        <nav class="drawer-nav">
-          <a href="#productFormula" class="drawer-link" data-section="formula">
-            <i class="fas fa-flask me-2"></i>Fertilizer Formula (N-P-K)
-          </a>
-          <a
-            href="#productDescription"
-            class="drawer-link"
-            data-section="description"
-          >
-            <i class="fas fa-info-circle me-2"></i>Description
-          </a>
-          <a href="#productBrands" class="drawer-link" data-section="brands">
-            <i class="fas fa-copyright me-2"></i>Available Brands
-          </a>
-          <a
-            href="#productPackaging"
-            class="drawer-link"
-            data-section="packaging"
-          >
-            <i class="fas fa-box me-2"></i>Available Packaging
-          </a>
-        </nav>
-        <button
-          class="btn btn-primary w-100 mt-4"
-          onclick="showCategoryProducts(getCurrentCategory())"
-        >
-          <i class="fas fa-arrow-left me-2"></i>Back to Category
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Drawer Toggle Button -->
-    <button
-      class="mobile-drawer-toggle"
-      id="mobileDrawerToggle"
-      aria-label="Open navigation"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Product Detail -->
-    <section class="product-detail py-5">
-      <div class="container">
-        <div class="product-detail-flex">
-          <!-- Product Image -->
-          <div class="product-image-section">
-            <div class="product-image-container">
-              <div class="product-image-main mb-3">
-                <img
-                  id="productImage"
-                  src=""
-                  alt="Product Image"
-                  class="img-fluid rounded shadow"
-                />
-              </div>
+    <section id="overview" class="product-detail">
+      <div class="product-detail__inner">
+        <div class="container">
+          <!-- Grid-->
+          <div class="product-detail-flex">
+            <!-- first section of the parent flexbox-->
+            <div class="product-info-section">
+              <h2 class="field-title" id="productCategory___title">Category</h2>
+              <h3 class="product-title" id="productTitle">Product Name</h3>
+              <p class="product-formula" id="productFormula">
+                N 20% – P₂O₅ 20% – K₂O 20%
+              </p>
             </div>
           </div>
+        </div>
 
-          <!-- Product Information -->
-          <div class="product-info-section">
-            <div class="product-info">
-              <h1
-                class="product-title display-6 fw-bold mb-3"
-                id="productTitle"
-              >
-                Product Name
-              </h1>
-
-              <div class="product-formula mb-4" id="productFormula">
-                <h3 class="h5 mb-2">Fertilizer Formula (N-P-K)</h3>
-                <span class="badge bg-primary fs-6" id="productFormula"
-                  >20-20-20</span
-                >
-              </div>
-
-              <div class="product-description mb-4" id="productDescription">
-                <h3 class="h5 mb-2">Description</h3>
-                <p id="productDescription">
-                  Product description will be loaded here...
-                </p>
-              </div>
-
-              <div class="product-brands mb-4" id="productBrands">
-                <h3 class="h5 mb-2">Available Brands</h3>
-                <div id="productBrandsContent" class="d-flex flex-wrap gap-2">
-                  <!-- Brands will be loaded here -->
-                </div>
-              </div>
-
-              <div class="product-packaging mb-4" id="productPackaging">
-                <h3 class="h5 mb-2">Available Packaging</h3>
-                <div
-                  id="productPackagingContent"
-                  class="d-flex flex-wrap gap-2"
-                >
-                  <!-- Packaging options will be loaded here -->
-                </div>
-              </div>
-
-              <div class="product-actions mt-4">
-                <button class="btn btn-primary btn-lg me-3">
-                  <i class="fas fa-phone me-2"></i>Contact for Quote
-                </button>
-                <button class="btn btn-outline-primary btn-lg">
-                  <i class="fas fa-download me-2"></i>Download Datasheet
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Product Navigation -->
-          <div class="product-navigation-section">
-            <div class="product-navigation">
-              <button
-                class="btn-back-category"
-                onclick="showCategoryProducts(getCurrentCategory())"
-              >
-                <i class="fas fa-arrow-left me-2"></i>Back to Category
-              </button>
-            </div>
+        <div class="product-image-band">
+          <div class="product-image-main">
+            <img id="productImage" src="" alt="Product image" />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Product Features -->
-    <section class="product-features py-5 bg-light">
-      <div class="container">
-        <h2 class="text-center display-6 fw-bold mb-5 text-primary">
-          Key Features & Benefits
-        </h2>
-        <div class="row g-4">
-          <div class="col-md-3">
-            <div class="feature-item text-center">
-              <div class="feature-icon mb-3">
-                <i class="fas fa-seedling fa-3x text-primary"></i>
-              </div>
-              <h4 class="h5 mb-2">Enhanced Growth</h4>
-              <p class="small text-muted">
-                Promotes vigorous plant growth and development
-              </p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="feature-item text-center">
-              <div class="feature-icon mb-3">
-                <i class="fas fa-leaf fa-3x text-primary"></i>
-              </div>
-              <h4 class="h5 mb-2">Nutrient Rich</h4>
-              <p class="small text-muted">
-                Balanced nutrition for optimal plant health
-              </p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="feature-item text-center">
-              <div class="feature-icon mb-3">
-                <i class="fas fa-recycle fa-3x text-primary"></i>
-              </div>
-              <h4 class="h5 mb-2">Eco-Friendly</h4>
-              <p class="small text-muted">
-                Sustainable and environmentally responsible
-              </p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="feature-item text-center">
-              <div class="feature-icon mb-3">
-                <i class="fas fa-chart-line fa-3x text-primary"></i>
-              </div>
-              <h4 class="h5 mb-2">High Yield</h4>
-              <p class="small text-muted">Maximizes crop yield and quality</p>
-            </div>
-          </div>
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <section id="description-section">
+      <div class="product-detail__inner">
+        <div class="container">
+          <div class="section-title" id="descriptionTitle"></div>
         </div>
       </div>
     </section>
