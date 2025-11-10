@@ -1,0 +1,556 @@
+/* Header Style */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  background-color: #ffffff;
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04);
+
+  /* mobile-first values */
+  padding: 0.1rem 0;
+  min-height: 64px;
+
+  /* NEW auto-hide */
+  transform: translateY(0);
+  transition: transform 0.28s ease, box-shadow 0.25s ease;
+}
+
+/* when HEADER SCROLLED , make it a bit slimmer 
+/* shrink + stronger shadow when scrolled */
+.header.header--scrolled {
+  padding: 0.35rem 0;
+  background-color: rgba(255, 255, 255, 0.99);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* When scrolling down, slide header up out of view */
+.header.header--hidden {
+  transform: translateY(-100%);
+}
+
+/* shrink logo inside scrolled header */
+.header.header--scrolled .logo {
+  max-height: 46px;
+}
+
+/* inner container */
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center logo on mobile */
+  gap: 0.5rem;
+  position: relative; /* so toggler can be absolute */
+  width: 100%;
+  min-height: 56px;
+}
+
+.header .container {
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+}
+/* Custom Menu Header Title and Separator */
+.menu-header {
+  padding: 0 1rem;
+  margin-bottom: 0;
+  border-bottom: 0.01rem solid var(--primary-dark);
+  padding-bottom: 1rem;
+}
+
+.menu-title {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--gray-600); /* Muted gray text color */
+  text-transform: uppercase;
+  margin: 0;
+  padding-top: 1rem;
+  line-height: 1.5;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+}
+
+.logo {
+  display: block;
+  height: auto; /* keep original aspect ratio */
+  width: auto;
+  max-height: 54px; /* fits inside your 56–64px header */
+  max-width: min(70vw, 185px); /* just a safety cap */
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast; /* sharper in WebKit */
+  transition: all 0.3s ease;
+}
+
+.scrolled .logo {
+  height: 40px;
+}
+.nav-link span {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  color: var(--gray-700);
+  transition: all 0.2s ease;
+  font-family: var(--font-secondary);
+  background-clip: padding-box;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: rgba(46, 125, 50, 0.1);
+  color: var(--primary);
+}
+
+/* desktop layout: spread nav */
+@media (min-width: 768px) {
+  .site-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+    flex-grow: 1;
+    align-items: center;
+  }
+
+  .navbar-toggler {
+    display: none;
+  }
+
+  .menu-header {
+    display: none;
+  }
+}
+
+/* ================================
+   Mobile QUERY navbar  adjustments
+\================================== */
+/* Menu Items */
+/* 1) drawer (top-level) items */
+.collapse.navbar-collapse .nav-menu > .nav-item {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch; /* Ensures children fill vertical height */
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  border-top: solid 1px var(--border-green-light);
+}
+
+.collapse.navbar-collapse .nav-menu > .nav-item:last-child {
+  border-bottom: 1px solid var(--border-green-light);
+}
+
+/* Individual Link Styling (Matches Screenshot Look) */
+/* 2) drawer (top-level) links: Home, Services, About us, Product Categories */
+.collapse.navbar-collapse .nav-menu > .nav-item > .nav-link {
+  display: flex; /* important */
+  align-items: center; /* NOW vertical center works */
+  flex: 1 1 0%;
+  min-height: 50px;
+  padding: 5px 20px;
+  line-height: 1;
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--primary-dark) !important;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  text-align: left;
+  font-family: var(--font-primary);
+  background: transparent;
+  border-radius: 0;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Style for the active link (e.g., HOME PAGE in screenshot) */
+.nav-link.active {
+  color: var(--primary) !important; /* Brand green text */
+  border-left: 5px solid var(--primary);
+  padding-left: calc(1.125rem - 5px); /* Compensate for the new 5px border */
+  background-color: var(
+    --gray-100
+  ); /* Subtle light background for active link */
+}
+
+/* Hover effect: ensure borders don't disappear */
+.nav-link:hover {
+  border-bottom: 1px solid var(--primary-dark);
+}
+
+/* Hover effect */
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--primary-light) !important;
+  background-color: var(--gray-100);
+}
+
+/* Arrow Icon Styling for Dropdown Parents (Mobile) */
+.arrow-icon {
+  position: relative;
+  font-size: 1.1rem;
+  color: var(--primary-dark);
+  vertical-align: middle;
+  transition: transform 0.25s ease;
+  transform-origin: center; /* Ensures smooth rotation around its middle */
+}
+/*Arrow Flip Animation (When Sub-menu is active) */
+.nav-item.open .arrow-icon {
+  transform: rotate(90deg);
+  color: var(--primary); /* Makes the arrow green when active */
+}
+
+/* Arrow Opener Container Styling (50px Fixed Width) */
+.nav-opener {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0; /* ← this + margin auto will center it */
+  margin: auto 0; /* ← vertical auto margin = center between top/bottom */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px;
+  width: 50px;
+  min-width: 50px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  /* The vertical pipe separator */
+  border-left: 1px solid var(--border-green-light);
+  /* Ensure height matches parent LI height */
+  min-height: 100%;
+  flex: 0 0 50px;
+}
+
+/* Mobile Category DROPDOWN LIST
+
+*/
+
+@media (max-width: 767.98px) {
+  .header {
+    min-height: 64px;
+  }
+
+  .header .container {
+    display: flex;
+    align-items: center;
+    min-height: 64px;
+  }
+
+  .header,
+  .header.header--scrolled {
+    min-height: 64px;
+  }
+
+  .site-nav {
+    min-height: 64px; /* <— NEW: so top:50% is always same baseline */
+  }
+
+  .container,
+  .container-fluid {
+    padding-right: 1.125rem;
+    padding-left: 1.125rem;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .navbar-toggler {
+    /* CRITICAL FIX: Use fixed position relative to viewport (like old working code) */
+    position: fixed;
+    /* Set a STABLE vertical position (approx 20px from top) */
+    top: 1.25rem;
+    /* Set the horizontal position for the closed state */
+    right: 0.75rem;
+    z-index: 1055;
+    padding: 0.5rem;
+    border: 1px solid var(--gray-400);
+    border-radius: 0.25rem;
+    background: white;
+    /* Explicitly transition only 'right' (horizontal slide) and 'background' (color) */
+    transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease,
+      transform 0.3s ease; /* 👈 allow rotation */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .collapse:not(.show) {
+    /* CRITICAL: This is what hides the menu initially */
+    display: none !important;
+  }
+
+  .collapse.show {
+    /* Ensures the menu is shown when expanded */
+    display: block !important;
+  }
+
+  .collapsing {
+    /* Required for smooth, animating height change */
+    height: 0;
+    overflow: hidden;
+    transition: height 0.35s ease;
+  }
+
+  /* TOGGLER ICON , Toggler animation */
+  /* base icon = MIDDLE bar */
+  .navbar-toggler-icon {
+    display: block;
+    width: 20px;
+    height: 2px; /* this makes the middle line visible */
+    background: #000; /*  this IS the middle bar */
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 0.4s ease 0.05s, /* tiny delay */ opacity 0.4s ease;
+  }
+
+  /* top + bottom bars (same width, same color) */
+  .navbar-toggler-icon::before,
+  .navbar-toggler-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 2px;
+    border-radius: 1px;
+    background: #000;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      top 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease;
+  }
+
+  /* top bar sits 6px above middle */
+  .navbar-toggler-icon::before {
+    top: -8px;
+  }
+
+  /* bottom bar sits 6px below middle */
+  .navbar-toggler-icon::after {
+    top: 8px;
+  }
+
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background: transparent;
+  }
+
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before,
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+    transform-origin: center;
+  }
+
+  body.menu-open .navbar-toggler-icon {
+    background: #fff; /* stays white during transition back */
+  }
+
+  body.menu-open .navbar-toggler-icon::before,
+  body.menu-open .navbar-toggler-icon::after {
+    background-color: #fff !important;
+  }
+
+  /* keep it straight when CLOSED */
+  .navbar-toggler:not([aria-expanded="true"]),
+  .navbar-toggler:not([aria-expanded="true"]):hover,
+  .navbar-toggler:not([aria-expanded="true"]):focus {
+    transform: none !important;
+  }
+
+  /* closed state = no rotation */
+  .navbar-toggler:not([aria-expanded="true"]) {
+    transform: none;
+  }
+  /* allow / force flip when menu is OPEN */
+  .navbar-toggler[aria-expanded="true"],
+  body.menu-open .navbar-toggler {
+    transform: rotate(90deg);
+    transform-origin: center;
+  }
+
+  /* OPEN state = do the flip */
+  .navbar-toggler[aria-expanded="true"] {
+    transform: rotate(90deg);
+    transform-origin: center;
+  }
+  /* END OF TOGGLER ICON , TOGGLER ANIMATION*/
+
+  /* Prevent body scroll when menu is open */
+  body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+  .navbar-toggler:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.25);
+  }
+
+  /* Smooth animation during collapsing */
+  .navbar-collapse.collapsing {
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /** SCROLLED STATE **/
+  .header.header--scrolled {
+    padding: 0.35rem 0;
+    /* FIX: Ensure pure white base, and set the transparency for content focus (0.90) */
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05); /* Softer shadow */
+  }
+
+  /*************************************************************************************** 
+     Mobile Submenu 
+  *****************************************************************************************/
+  .collapse.navbar-collapse .nav-menu > .nav-item.has-dropdown {
+    position: relative; /* overrides the flex from product-details.css */
+    display: flex; /* override the block from header.css */
+    align-items: stretch;
+  }
+  /* mobile dropdown inside the slide-out menu */
+  .dropdown-menu {
+    display: none; /* hidden by default */
+    position: absolute; /* float, don’t stretch parent */
+    top: calc(100% + 1px); /* right under the parent row */
+
+    left: 0;
+    width: 100%;
+    background: #fff; /* so links are visible */
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.03);
+    padding-left: 0;
+    margin-top: 0 !important;
+    min-width: 10rem;
+  }
+
+  /* when JS adds .open on the <li>, show it */
+  .nav-menu .nav-item.has-dropdown.open .dropdown-menu {
+    display: block;
+  }
+
+  /*  submenu items */
+  .nav-menu .nav-item.has-dropdown .dropdown-menu li {
+    list-style: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* or 0.1 for slightly more visible */
+  }
+
+  /* submenu links */
+  .sub-menu___link {
+    display: block;
+    padding: 0.7rem 20px 0.7rem 25px;
+    color: #2c3e50;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.5rem 20px 0.5rem 30px;
+  }
+}
+
+/* Media query OVERRIDE: For devices where the menu hits its 340px maximum width cap */
+/* This prevents the toggler from being pushed too far left on tablets. */
+@media (min-width: 454px) and (max-width: 767.98px) {
+  body.menu-open .navbar-toggler {
+    /* FIX 2: Set fixed position based on the 340px cap */
+    right: calc(340px + 1rem);
+  }
+}
+
+@media (min-width: 768px) {
+  .nav-menu {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    width: auto;
+    list-style: none;
+    padding-left: 0;
+  }
+
+  navbar-toggler {
+    display: none; /* <--- THIS HIDES THE TOGGLER ON DESKTOP */
+  }
+
+  .navbar-collapse {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    overflow: visible !important;
+    margin-top: 0 !important;
+  }
+
+  .navbar-collapse::before {
+    display: none !important;
+  }
+  .nav-link {
+    color: var(--gray-800);
+    font-weight: 500;
+    position: relative;
+    font-family: var(--font-primary);
+    padding-right: calc(20px + 50px); /* 20 normal + 50 arrow */
+  }
+
+  .nav-link span::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover span::after,
+  .nav-link.active span::after {
+    width: 100%;
+  }
+}
+
+img[loading="lazy"] {
+  content-visibility: auto;
+}

@@ -1,0 +1,163 @@
+.product-detail *,
+.product-detail *::before,
+.product-detail *::after {
+  box-sizing: border-box;
+}
+
+.product-detail {
+  margin: 0;
+  padding: 1rem 0;
+  margin-bottom: 12%;
+  margin-top: 5%;
+}
+
+.product-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* <— control all vertical spacing here */
+  text-align: left;
+}
+.product-info-section h2,
+.product-info-section h3 {
+  margin: 0;
+}
+
+.field-title {
+  font-size: 1.1em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-muted, #6c757d);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* 2) mobile-first: stack the two columns */
+.product-detail-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  row-gap: 0;
+}
+
+.product-title {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  color: var(--primary);
+  text-wrap: nowrap;
+}
+
+.product-formula,
+.product-detail p {
+  display: inline-block;
+  background: rgba(253, 255, 253, 0.692);
+  border-left: 5px solid var(--primary, #2b7a2b);
+  padding: 0.1em 0.7em;
+  /* border-radius: 1px; */
+  font-weight: 900;
+  font-size: 1em;
+  /* color: #000000; */
+  color: var(--primary-dark); /* emphasize with brand color */
+  margin-bottom: 0.35rem;
+  margin-top: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.product-image-band {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  background: var(--product-background); /* ← soft agro green, not shouting */
+  padding: 1.2rem 0; /* vertical space around img */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  margin-top: 0.5rem; /* space from text above */
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.03),
+    /* top edge */ 0 4px 18px rgba(0, 0, 0, 0.04); /* bottom edge */
+}
+
+/* actual image holder */
+.product-image-main {
+  max-width: 200px; /* ← THIS is what keeps it from being too wide on mobile */
+  width: 70vw; /* still responsive */
+  margin: 0 auto;
+}
+
+/* actual transparent PNG */
+.product-image-main img {
+  display: block;
+  height: auto;
+  object-fit: contain;
+  width: min(200px, 50vw); /* responsive max */
+  margin: 0 auto;
+  object-fit: cover;
+  border-radius: 8px;
+
+  background-color: var(
+    --product-background
+  ); /* ← soft agro green, not shouting */
+}
+
+/*
+==========================================================================================
+Mobile Drawer :  Menu Drawer Mobile code
+==============================================================================================
+*/
+@media (max-width: 767.98px) {
+  .navbar-collapse {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(80vw, 360px); /* <-- controlled responsive */
+    height: 100vh;
+    background: white;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    padding: 1.25rem 0 2rem 0;
+    overflow-y: auto;
+    margin-top: 0;
+    border-left: 1px solid var(--gray-300);
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-basis: auto;
+    flex-grow: 0;
+    align-items: stretch;
+    border-radius: 0;
+    z-index: 9999;
+  }
+  /* Slide in when active */
+  .navbar-collapse.show {
+    transform: translateX(0);
+  }
+  /* Overlay Background - Fixed to not block clicks */
+  .navbar-collapse::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% - min(80vw, 360px));
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1040;
+    pointer-events: none;
+  }
+
+  .navbar-collapse.show::before,
+  .navbar-collapse.collapsing::before {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  body.menu-open .navbar-toggler {
+    /* Push the button clearly off-screen to the left of the 280px drawer + margin */
+    right: calc(min(80vw, 360px) + 0.4rem);
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+}
