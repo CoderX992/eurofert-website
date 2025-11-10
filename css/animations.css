@@ -232,24 +232,50 @@
   }
 }
 
-/* Dropdown menu animation */
-.dropdown-menu {
-  display: block;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
+@media (max-width: 991.98px) {
+  /* Initial closed state for dropdown menus on mobile */
+  .nav-item.has-dropdown .dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height 0.3s ease, opacity 0.2s ease 0.1s,
+      visibility 0s linear 0.3s;
+  }
+  /* Open state: dropdown menu slides down */
+  .nav-item.has-dropdown.open .dropdown-menu,
+  .nav-item.dropdown.show .dropdown-menu {
+    max-height: 300px; /* allow enough height for menu items (adjust if needed) */
+    opacity: 1;
+    visibility: visible;
+    transition: max-height 0.3s ease, opacity 0.2s ease, visibility 0s linear 0s;
+  }
+}
+/* 2) OPTIONAL: also show on hover for desktop navs */
+@media (min-width: 768px) {
+  .site-nav .nav-item.has-dropdown:hover > .dropdown-menu,
+  .site-nav .nav-item.dropdown:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Dropdown menu animation */
+  /* IMPORTANT: we do NOT touch display here */
+  .nav-item.has-dropdown > .dropdown-menu,
+  .nav-item.dropdown > .dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
 }
 
-.dropdown:hover > .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-/* Hamburger menu animation */
-.navbar-toggler {
-  transition: all 0.3s ease;
+/* Hamburger menu animation — desktop only */
+@media (hover: hover) and (pointer: fine) {
+  .navbar-toggler {
+    transition: all 0.3s ease;
+  }
 }
 
 .navbar-toggler:hover {

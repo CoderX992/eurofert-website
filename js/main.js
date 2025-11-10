@@ -51,14 +51,36 @@ function initAnimations() {
 function handleScrolling() {
   const header = document.getElementById("header");
   const backToTopButton = document.querySelector(".back-to-top");
+  const isMenuOpen = document.body.classList.contains("menu-open");
+  let lastScrollY = window.scrollY;
 
-  // Header scrolling effect
+  // NEW header scroll logic (shrink + auto-hide)
   const handleHeaderScroll = () => {
-    if (window.scrollY > 50) {
-      header.classList.add("scrolled");
+    const currentY = window.scrollY;
+
+    // 1) shrink when past 50px
+    if (currentY > 50) {
+      header.classList.add("header--scrolled");
     } else {
-      header.classList.remove("scrolled");
+      header.classList.remove("header--scrolled");
     }
+
+    // If mobile menu is open, don't hide the header
+    if (isMenuOpen) {
+      lastScrollY = currentY; // reset scroll baseline
+      return;
+    }
+
+    // 2) auto-hide on scroll DOWN, show on scroll UP
+    if (currentY > lastScrollY && currentY > 120) {
+      // scrolling down
+      header.classList.add("header--hidden");
+    } else {
+      // scrolling up
+      header.classList.remove("header--hidden");
+    }
+
+    lastScrollY = currentY;
   };
 
   // Back to top button visibility
@@ -150,6 +172,11 @@ function initMobileMenu() {
 
   navbarCollapse.addEventListener("hidden.bs.collapse", function () {
     body.classList.remove("menu-open");
+    // FIX: Find any open sub-menus and remove the 'open' class
+    const openSubmenus = document.querySelectorAll(".nav-item.open");
+    openSubmenus.forEach((item) => {
+      item.classList.remove("open");
+    });
   });
 
   // Close menu when clicking overlay (the navbar-collapse background)
@@ -168,13 +195,14 @@ function initMobileMenu() {
 
   // Close mobile menu when a nav link is clicked
   navLinks.forEach((link) => {
+    const parentLi = link.closest(".nav-item");
     link.addEventListener("click", () => {
+      // Check if this link belongs to an expandable item. If yes, stop here.
+      if (parentLi && parentLi.classList.contains("has-dropdown")) return;
+
       if (navbarCollapse.classList.contains("show")) {
-        if (bsCollapse) {
-          bsCollapse.hide();
-        } else if (navbarToggler) {
-          navbarToggler.click();
-        }
+        if (bsCollapse) bsCollapse.hide();
+        else if (navbarToggler) navbarToggler.click();
       }
     });
   });
@@ -190,6 +218,45 @@ function initMobileMenu() {
       link.classList.add("active");
     } else {
       link.classList.remove("active");
+    }
+  });
+
+  // ----------------------------------------------------
+  // Mobile Sub-Menu Accordion Logic (Vertical Expansion)
+  // ----------------------------------------------------
+  const dropdownParents = document.querySelectorAll(".nav-item.has-dropdown");
+
+  dropdownParents.forEach((parentItem) => {
+    const toggleLink = parentItem.querySelector(".nav-link");
+    const opener = parentItem.querySelector(".nav-opener");
+
+    // helper: are we in mobile drawer right now?
+    const isMobileContext = () => {
+      return (
+        window.innerWidth <= 767.98 ||
+        document.body.classList.contains("menu-open")
+      );
+    };
+
+    const toggleSubmenu = (event) => {
+      // run this ONLY on mobile, so desktop links still work
+      if (window.innerWidth > 767.98) {
+        return;
+      }
+      if (!isMobileContext()) {
+        // desktop: let the link work normally
+        return;
+      }
+      event.preventDefault(); // don’t navigate to product-categories.html
+      parentItem.classList.toggle("open");
+    };
+
+    if (toggleLink) {
+      toggleLink.addEventListener("click", toggleSubmenu);
+    }
+
+    if (opener) {
+      opener.addEventListener("click", toggleSubmenu);
     }
   });
 }
