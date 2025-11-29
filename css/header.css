@@ -1,4 +1,11 @@
-/* Header Style */
+/* Header Style Updated */
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -51,6 +58,7 @@
   padding-right: 0.75rem;
   padding-left: 0.75rem;
 }
+
 /* Custom Menu Header Title and Separator */
 .menu-header {
   padding: 0 1rem;
@@ -69,7 +77,10 @@
   padding-top: 1rem;
   line-height: 1.5;
 }
-
+/****************
+  Mobile logo 
+ *****************
+  */
 .brand-logo {
   display: flex;
   align-items: center;
@@ -117,33 +128,8 @@
   color: var(--primary);
 }
 
-/* desktop layout: spread nav */
-@media (min-width: 768px) {
-  .site-nav {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .navbar-collapse {
-    display: flex !important;
-    flex-basis: auto;
-    flex-grow: 1;
-    align-items: center;
-  }
-
-  .navbar-toggler {
-    display: none;
-  }
-
-  .menu-header {
-    display: none;
-  }
-}
-
 /* ================================
-   Mobile QUERY navbar  adjustments
+   Mobile navbar  adjustments
 \================================== */
 /* Menu Items */
 /* 1) drawer (top-level) items */
@@ -159,10 +145,6 @@
   border-top: solid 1px var(--border-green-light);
 }
 
-.collapse.navbar-collapse .nav-menu > .nav-item:last-child {
-  border-bottom: 1px solid var(--border-green-light);
-}
-
 /* Individual Link Styling (Matches Screenshot Look) */
 /* 2) drawer (top-level) links: Home, Services, About us, Product Categories */
 .collapse.navbar-collapse .nav-menu > .nav-item > .nav-link {
@@ -174,7 +156,7 @@
   line-height: 1;
   font-size: 1em;
   font-weight: 600;
-  color: var(--primary-dark) !important;
+  color: var(--primary-dark);
   text-decoration: none;
   transition: all 0.2s ease;
   text-align: left;
@@ -198,12 +180,13 @@
 
 /* Hover effect: ensure borders don't disappear */
 .nav-link:hover {
+  color: var(--primary-light) !important;
+  background-color: var(--gray-100);
   border-bottom: 1px solid var(--primary-dark);
 }
 
 /* Hover effect */
-.nav-link:hover,
-.nav-link:focus {
+.nav-link:hover {
   color: var(--primary-light) !important;
   background-color: var(--gray-100);
 }
@@ -217,35 +200,29 @@
   transition: transform 0.25s ease;
   transform-origin: center; /* Ensures smooth rotation around its middle */
 }
+
 /*Arrow Flip Animation (When Sub-menu is active) */
 .nav-item.open .arrow-icon {
   transform: rotate(90deg);
   color: var(--primary); /* Makes the arrow green when active */
 }
 
-/* Arrow Opener Container Styling (50px Fixed Width) */
-.nav-opener {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0; /* ← this + margin auto will center it */
-  margin: auto 0; /* ← vertical auto margin = center between top/bottom */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1px;
-  width: 50px;
-  min-width: 50px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  /* The vertical pipe separator */
-  border-left: 1px solid var(--border-green-light);
-  /* Ensure height matches parent LI height */
-  min-height: 100%;
-  flex: 0 0 50px;
+/* Mobile touch effect - visual feedback when tapping */
+.collapse.navbar-collapse .nav-menu > .nav-item > .nav-link:active {
+  color: var(--primary-light) !important;
+  background-color: var(--gray-100);
+  border-bottom: 1px solid var(--primary-dark);
+  transform: scale(0.98); /* Subtle press effect */
 }
 
-/* Mobile Category DROPDOWN LIST
+/* Touch device optimization - use active state instead of hover */
+@media (hover: none) and (pointer: coarse) {
+  .collapse.navbar-collapse .nav-menu > .nav-item > .nav-link:active {
+    color: var(--primary-light) !important;
+    background-color: var(--gray-100);
+    border-bottom: 1px solid var(--primary-dark);
+  }
+} /* Mobile Category DROPDOWN LIST
 
 */
 
@@ -267,12 +244,6 @@
 
   .site-nav {
     min-height: 64px; /* <— NEW: so top:50% is always same baseline */
-  }
-
-  .container,
-  .container-fluid {
-    padding-right: 1.125rem;
-    padding-left: 1.125rem;
   }
 
   .nav-menu {
@@ -465,12 +436,40 @@
     margin-top: 0 !important;
     min-width: 10rem;
   }
+  /*Mobile square Arrow Dropdown Opener*/
+  .nav-opener {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  /* when JS adds .open on the <li>, show it */
-  .nav-menu .nav-item.has-dropdown.open .dropdown-menu {
-    display: block;
+    /* Force 50×50 square */
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    flex: 0 0 50px;
+
+    /* RESET default <button> look */
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    /* Now add ONLY the vertical separator we actually want */
+    border-left: 1px solid var(--border-green-light);
+
+    cursor: pointer;
+    transition: all 0.25s ease;
   }
-
   /*  submenu items */
   .nav-menu .nav-item.has-dropdown .dropdown-menu li {
     list-style: none;
@@ -486,6 +485,9 @@
     text-decoration: none;
     padding: 0.5rem 20px 0.5rem 30px;
   }
+  .collapse.navbar-collapse .nav-menu > .nav-item:last-child {
+    border-bottom: 1px solid var(--border-green-light);
+  }
 }
 
 /* Media query OVERRIDE: For devices where the menu hits its 340px maximum width cap */
@@ -497,57 +499,583 @@
   }
 }
 
-@media (min-width: 768px) {
-  .nav-menu {
-    display: flex;
-    flex-direction: row;
-    margin-left: auto;
-    width: auto;
-    list-style: none;
-    padding-left: 0;
+/* ==================================================================================
+   MOBILE HEADER SHRINKING: Below 375px
+   ==================================================================================
+   TARGET: Small mobile devices (below 375px - iPhone SE and similar)
+   PURPOSE: Reduce header height and elements to save vertical screen space
+   WHAT CHANGES:
+   - Header min-height: 64px → 56px
+   - Logo max-height: 54px → 48px
+   - Toggler button: 40px → 36px
+   - Top positioning adjusted for smaller header
+   ================================================================================== */
+@media (max-width: 374.98px) {
+  /* Reduce header height */
+  .header {
+    min-height: 56px !important;
   }
 
-  navbar-toggler {
-    display: none; /* <--- THIS HIDES THE TOGGLER ON DESKTOP */
+  .header .container,
+  .site-nav {
+    min-height: 56px !important;
   }
 
-  .navbar-collapse {
-    position: static !important;
-    transform: none !important;
-    width: auto !important;
-    height: auto !important;
-    padding: 0 !important;
-    box-shadow: none !important;
-    background: transparent !important;
-    overflow: visible !important;
-    margin-top: 0 !important;
+  .header,
+  .header.header--scrolled {
+    min-height: 56px !important;
   }
 
-  .navbar-collapse::before {
+  /* Reduce logo size */
+  .logo {
+    max-height: 48px;
+  }
+
+  /* Reduce toggler button size */
+  .navbar-toggler {
+    width: 36px;
+    height: 36px;
+    padding: 0.4rem;
+    top: 1rem; /* Adjust vertical position for smaller header */
+  }
+
+  /* Adjust toggler icon size */
+  .navbar-toggler-icon {
+    width: 18px;
+  }
+
+  .navbar-toggler-icon::before,
+  .navbar-toggler-icon::after {
+    width: 18px;
+  }
+
+  /* Adjust body padding for smaller fixed header */
+  body.has-fixed-header {
+    padding-top: 56px;
+  }
+  .collapse.navbar-collapse .nav-menu > .nav-item:last-child {
+    border-bottom: 1px solid var(--border-green-light);
+  }
+}
+
+/* ==================================================================================
+   MOBILE HEADER SHRINKING: Below 320px (Progressive)
+   ==================================================================================
+   TARGET: Very small mobile devices (below 320px)
+   PURPOSE: Further reduce header height to maximize content space
+   WHAT CHANGES:
+   - Header min-height: 56px → 52px
+   - Logo max-height: 48px → 44px
+   - Toggler button: 36px → 34px
+   ================================================================================== */
+@media (max-width: 319.98px) {
+  /* Further reduce header height */
+  .header {
+    min-height: 52px !important;
+  }
+
+  .header .container,
+  .site-nav {
+    min-height: 52px !important;
+  }
+
+  .header,
+  .header.header--scrolled {
+    min-height: 52px !important;
+  }
+
+  /* Further reduce logo size */
+  .logo {
+    max-height: 44px;
+  }
+
+  /* Further reduce toggler button */
+  .navbar-toggler {
+    width: 34px;
+    height: 34px;
+    padding: 0.35rem;
+    top: 0.9rem;
+  }
+
+  /* Adjust toggler icon */
+  .navbar-toggler-icon {
+    width: 17px;
+  }
+
+  .navbar-toggler-icon::before,
+  .navbar-toggler-icon::after {
+    width: 17px;
+  }
+
+  /* Adjust body padding */
+  body.has-fixed-header {
+    padding-top: 52px;
+  }
+}
+
+/* ==================================================================================
+   VERY SMALL SCREENS: Extreme Mobile Optimization (260px - 296px)
+   ==================================================================================
+   TARGET: Smallest realistic mobile devices (e.g., iPhone SE in portrait, old Android)
+   PURPOSE: Prevent nav-opener arrow from overlapping with menu item text
+   WHAT CHANGES:
+   - nav-opener width: 50px → 35px (saves 15px horizontal space)
+   - arrow-icon size: 1.1rem → 0.9rem (smaller, but still tappable)
+   - nav-link font-size: 1em → 0.85em (better fit for tiny screens)
+   - nav-link letter-spacing: 0.05em → 0.03em (tighter text)
+   - nav-link padding: 5px 20px → 5px 12px (more compact)
+   - sub-menu link padding reduced for consistency
+
+   RESULT: Menu items like "Product Categories" won't be cut off by the arrow
+   NOTE: This ONLY affects screens below 297px. Larger screens remain unchanged.
+   ================================================================================== */
+@media (max-width: 296.98px) {
+  /* STEP 1: Shrink the arrow opener container from 50px to 35px */
+  .nav-opener {
+    width: 35px; /* Reduced from 50px */
+    min-width: 35px; /* Keep consistent with width */
+    flex: 0 0 35px; /* Prevent flex stretching */
+  }
+
+  /* STEP 2: Make the arrow icon itself smaller */
+  .arrow-icon {
+    font-size: 0.9rem; /* Reduced from 1.1rem */
+  }
+
+  /* STEP 3: Reduce menu item text size and spacing to fit better */
+  .collapse.navbar-collapse .nav-menu > .nav-item > .nav-link {
+    font-size: 0.85em; /* Reduced from 1em */
+    letter-spacing: 0.03em; /* Tighter than 0.05em */
+    padding: 5px 12px; /* Reduced from 5px 20px */
+  }
+
+  /* STEP 4: Make sub-menu links more compact too */
+  .sub-menu___link {
+    padding: 0.4rem 12px 0.4rem 20px; /* Reduced from 0.5rem 20px 0.5rem 30px */
+    font-size: 0.85em; /* Match parent menu font size */
+  }
+}
+
+/* ==================================================================================
+   ULTRA-SMALL SCREENS: Header Optimization (Below 300px)
+   ==================================================================================
+   TARGET: Devices 280px - 299px width (smallest realistic smartphones)
+   PURPOSE: Prevent logo from overlapping with mobile menu toggler in fixed header
+   WHAT CHANGES:
+   - Logo max-width: Reduce from 70vw to 58vw to save horizontal space
+   - Logo max-height: Reduce from 54px to 42px for smaller vertical footprint
+   - Toggler button: Reduce from 40px to 36px for more compact size
+   - Header min-height: Reduce slightly to accommodate smaller logo
+
+   RESULT: Logo and toggler button have adequate spacing, no overlap
+   NOTE: Only affects screens below 300px. Larger screens maintain original styling.
+   ================================================================================== */
+@media (max-width: 299.98px) {
+  /* Reduce logo dimensions to prevent overlap with toggler */
+  .logo {
+    max-height: 42px; /* Reduced from 54px */
+    max-width: min(58vw, 160px); /* Reduced from 70vw to provide more space */
+  }
+
+  /* Slightly reduce header height to match smaller logo */
+  .header {
+    min-height: 50px; /* Further reduced for ultra-small screens */
+  }
+
+  .header .container,
+  .site-nav {
+    min-height: 50px; /* Match header height */
+  }
+
+  /* Make toggler button slightly smaller to save space */
+  .navbar-toggler {
+    width: 34px; /* Reduced for ultra-small screens */
+    height: 34px; /* Reduced for ultra-small screens */
+    padding: 0.35rem; /* More compact */
+    right: 0.625rem; /* Slightly closer to edge */
+    top: 0.8rem; /* Adjust for smaller header */
+  }
+
+  /* Adjust toggler icon size to match smaller button */
+  .navbar-toggler-icon {
+    width: 17px; /* Reduced from 20px */
+    height: 2px; /* Keep same thickness */
+  }
+
+  .navbar-toggler-icon::before,
+  .navbar-toggler-icon::after {
+    width: 17px; /* Match icon width */
+  }
+
+  /* Adjust body padding to match smaller header */
+  body.has-fixed-header {
+    padding-top: 50px; /* Match header height */
+  }
+
+  /* ====================================================================
+     MOBILE MENU ADJUSTMENTS: Hide title and reposition X icon
+     ==================================================================== */
+
+  /* Hide the "Menu Navigation" title to save vertical space */
+  .menu-header {
     display: none !important;
   }
-  .nav-link {
-    color: var(--gray-800);
-    font-weight: 500;
-    position: relative;
-    font-family: var(--font-primary);
-    padding-right: calc(20px + 50px); /* 20 normal + 50 arrow */
+
+  /* Remove top padding from menu since title is gone */
+  .navbar-collapse {
+    padding-top: 0 !important;
   }
 
-  .nav-link span::after {
+  /* Add small padding to first menu item for breathing room */
+  .nav-menu {
+    padding-top: 0.5rem;
+  }
+
+  /* Position X icon at top-right corner when menu is open */
+  body.menu-open .navbar-toggler {
+    top: 0.75rem; /* Fixed distance from top of menu */
+    /* Right position calculated by menu width + gap (handled by parent media query) */
+  }
+}
+
+/* ==================================================================================
+   SMALL SCREENS: Menu Width Strategy (Below 360px)
+   ==================================================================================
+   TARGET: Small mobile devices (260px - 359px width)
+   PURPOSE: Allow menu to shrink naturally (fluid width) instead of fixed 340px
+
+   WHY THIS MATTERS:
+   - Above 360px: Menu is FIXED at 340px (looks clean, consistent)
+   - Below 360px: Menu is FLUID at 85vw (adapts to screen width)
+
+   EXAMPLE:
+   - On 320px screen: Menu = 85% of 320px = 272px (fits perfectly)
+   - On 280px screen: Menu = 85% of 280px = 238px (no overflow)
+   - On 400px screen: Menu = 340px (fixed, ignores this media query)
+
+   RESULT: No horizontal scrolling, no cut-off content on tiny screens
+   ================================================================================== */
+@media (max-width: 359.98px) {
+  /* STEP 1: Remove the 340px cap, let menu be fluid (85% of screen width) */
+  .navbar-collapse {
+    width: 85vw; /* NO max-width cap = truly responsive */
+  }
+
+  /* STEP 2: Position the X button correctly when menu is open */
+  body.menu-open .navbar-toggler {
+    /* Position = menu width (85vw) + consistent gap (0.75rem) */
+    /* Simple calculation maintains fixed gap from menu border */
+    right: calc(85vw + 0.75rem);
+  }
+}
+
+/* ==================================================================================
+   MEDIUM-LARGE MOBILE: Fixed Menu Width (360px - 767px)
+   ==================================================================================
+   TARGET: Standard mobile phones and small tablets
+   PURPOSE: Keep menu at a consistent 340px width for clean, predictable layout
+
+   WHY THIS MATTERS:
+   - At 454px and above, the menu reaches its 340px cap
+   - We need to position the X button relative to the FIXED 340px, not fluid 85vw
+   - Without this, the button would slide too far left on tablets
+
+   EXAMPLE:
+   - On 600px screen: Menu = 340px (capped), Button = 340px + 12px = 352px from right
+   - Without this fix: Button would be at 85% of 600px = 510px from left (WRONG!)
+
+   RESULT: Clean, consistent button positioning on all standard mobile devices
+   ================================================================================== */
+@media (min-width: 360px) and (max-width: 767.98px) {
+  /* STEP 1: Ensure menu stays at 340px (this is already set in main mobile query) */
+  .navbar-collapse {
+    width: min(85vw, 340px); /* This caps at 340px once screen is wide enough */
+  }
+
+  /* STEP 2: Position button relative to FIXED 340px width when menu is open */
+  body.menu-open .navbar-toggler {
+    /* Simple, fixed positioning: 340px menu + 0.75rem gap */
+    /* At 454px and above, menu hits 340px cap, so this gives perfect alignment */
+    right: calc(340px + 0.75rem);
+  }
+  .collapse.navbar-collapse .nav-menu > .nav-item:last-child {
+    border-bottom: 1px solid var(--border-green-light);
+  }
+}
+
+/**DESKTOP Navbar - 768px and above**/
+@media (min-width: 768px) {
+  .header .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: auto;
+    max-width: 100%;
+  }
+  .site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* logo left, menu right */
+    gap: 1rem;
+    padding: clamp(0.4rem, 5vw, 0.8rem) 0;
+  }
+
+  /* 2. Hide hamburger, always show the menu on desktop */
+  .navbar-toggler {
+    display: none;
+  }
+  .navbar-collapse {
+    /* Kill the mobile drawer behavior on desktop */
+    display: flex !important;
+    position: static !important;
+    margin-left: auto;
+  }
+  /* 3. Turn vertical drawer into horizontal menu */
+  .nav-menu {
+    display: flex;
+    flex-direction: row; /* row instead of column */
+    align-items: center;
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 1rem;
+  }
+
+  /*4. Remove mobile full-width & borders from top-level items */
+  .collapse.navbar-collapse .nav-menu > .nav-item {
+    width: auto;
+    max-width: none;
+    border-top: none;
+    border-bottom: none;
+    flex-wrap: nowrap;
+  }
+
+  /* Desktop Menu link styling */
+  .collapse.navbar-collapse .nav-menu > .nav-item > .nav-link {
+    min-height: auto;
+    padding: 6px 0.75rem;
+    font-size: 0.9rem; /* ~14.4px on a 16px base */
+    background: transparent;
+  }
+
+  .collapse.navbar-collapse .nav-menu > .nav-item > .nav-link span {
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* Dropdown for Desktop Submenu , Desktop Sub-menu*/
+
+  .nav-item.has-dropdown.open .dropdown-menu.submenu-items {
+    display: flex;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    color: #606066;
+    margin-top: 1.3rem;
+  }
+
+  .nav-item.has-dropdown .dropdown-menu {
+    position: absolute;
+    flex-flow: row wrap;
+    width: min(600px, calc(100vw - 32px));
+    top: 100%; /* directly under the parent item */
+    right: 0;
+    left: auto;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+    transition: margin-top 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+    display: none; /* JS will "open" it via .open on the <li> , hidden by default */
+    list-style: none;
+  }
+  .nav-menu > .nav-item.has-dropdown::after {
     content: "";
     position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--primary);
-    transition: width 0.3s ease;
+    z-index: 100000;
+    top: 39px;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.04);
+    transform: rotate(45deg);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.04);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
   }
 
-  .nav-link:hover span::after,
-  .nav-link.active span::after {
+  /* Show the notch only when dropdown is open */
+  .nav-menu > .nav-item.has-dropdown.open::after {
+    opacity: 1;
+  }
+
+  .dropdown-menu.submenu-items .submenu__link {
+    text-decoration: none;
+  }
+
+  .dropdown-menu .submenu-item {
+    display: flex;
+    max-width: 50%;
+    width: 50%;
+    flex-basis: 50%;
+    padding-left: 40px;
+  }
+
+  .dropdown-menu.submenu-items > .submenu-item:first-child {
+    max-width: 100%;
     width: 100%;
+    flex-basis: 100%;
+    border-bottom: 1px solid var(--border-green-light);
+  }
+  /*sub menu hover application*/
+  .dropdown-menu > div .submenu-item .submenu__link {
+    display: flex;
+    align-items: baseline;
+    padding-block: 20px;
+    padding-right: 40px;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .dropdown-menu > div .submenu-item .submenu__link::before {
+    content: "";
+    width: 0;
+    height: 2px;
+    flex-shrink: 0;
+    background: var(--primary);
+    margin-right: 0;
+    align-self: center;
+    transition: 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition-property: margin-inline, width;
+  }
+
+  .dropdown-menu > div .submenu-item:hover .submenu__link::before {
+    width: 14px; /* length of the dash */
+    margin-right: 12px; /* pushes the text a bit to the right */
+  }
+
+  .dropdown-menu > div .submenu-item:hover .submenu__link {
+    color: #17171a;
+    transform: translateX(4px);
+  }
+
+  .dropdown-menu.submenu-items > .submenu-item:first-child .submenu__link {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: #17171a;
+  }
+
+  .dropdown-menu > div {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    padding-block: 20px;
+  }
+
+  /* Optional: hide the mobile-only menu header title */
+  .menu-header {
+    display: none !important;
+  }
+
+  /* Hover effect: remove borders on desktop */
+  .nav-link:hover {
+    color: var(--primary-light) !important;
+    background-color: var(--gray-100);
+    border-bottom: 0;
+  }
+
+  .collapse.navbar-collapse .nav-menu > .nav-item.has-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .nav-item.has-dropdown > .nav-link {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .collapse.navbar-collapse .nav-menu > .nav-item > .nav-link:active {
+    border: 0;
+  }
+
+  .nav-menu > .nav-item.has-dropdown > .nav-link.parent-link {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Hide the real nav-opener on desktop (keep it for mobile only) */
+  .nav-menu > .nav-item.has-dropdown > .nav-link.parent-link .nav-opener {
+    display: none;
+  }
+  .fa-chevron-right:before {
+    display: none;
+  }
+  /* Pseudo arrow on the link itself (Font Awesome chevron-right) */
+  .nav-menu > .nav-item.has-dropdown > .nav-link.parent-link::after {
+    content: "\f054"; /* Font Awesome chevron-right */
+    font-family: "Font Awesome 6 Free"; /* FA6 solid font */
+    font-weight: 900;
+    display: inline-block;
+    font-size: 0.75em; /* smaller than text */
+    margin-left: 0.25rem;
+    transform: translateY(1px); /* tiny vertical nudge */
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  /* Rotate + color on open (when JS adds .open to the <li>) */
+  .nav-menu > .nav-item.has-dropdown.open > .nav-link.parent-link::after {
+    transform: rotate(90deg) translateY(1px);
+    color: var(--primary);
+  }
+
+  /* OPTIONAL: remove old desktop arrow-icon behaviour if it exists */
+  .nav-item.open .arrow-icon {
+    /* desktop will no longer use this <i>, so neutralize it */
+    transform: none;
+    color: inherit;
+    font-size: inherit;
+  }
+
+  /* ============================================
+     3. BIGGER LOGO FOR DESKTOP
+     ============================================ */
+
+  .brand-logo {
+    display: inline-flex;
+    align-items: center;
+    width: clamp(220px, 18vw, 350px);
+    margin-right: 0;
+  }
+  .brand-logo .logo {
+    display: block;
+    width: 100%;
+    max-width: 100%; /* <-- don’t let earlier max-widths cap it */
+    max-height: 64px; /* control vertical size */
+    object-fit: contain;
+  }
+}
+
+/* ===================================================================
+   LARGE DESKTOP - 992px and above
+   Enhanced spacing for larger screens
+   =================================================================== */
+@media (min-width: 992px) {
+  .brand-logo {
+    width: clamp(260px, 22vw, 340px);
+  }
+  .brand-logo .logo /*image element*/ {
+    max-height: clamp(60px, 6vh, 72px); /* control vertical size */
+    width: clamp(260px, 22vw, 400px);
+  }
+  .nav-menu > .nav-item > .nav-link {
+    padding: 0.75rem 1.25rem;
+    font-size: 1.05rem;
+  }
+  .header.header--scrolled .logo {
+    max-height: 65px;
   }
 }
 
