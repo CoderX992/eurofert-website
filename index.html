@@ -6,16 +6,18 @@
     <title>Eurofert - Sustainable Agricultural Solutions</title>
     <!-- Custom Styles (NO Bootstrap - Pure Custom CSS) -->
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/animations.css" />
     <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/product-details.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
   </head>
-  <body>
+  <body class="has-fixed-header header--scrolled">
     <!-- Header -->
-    <header class="header" id="header">
+   <header class="header" id="header">
       <div class="container">
         <nav class="site-nav">
           <a class="brand-logo" href="index.html">
@@ -23,6 +25,9 @@
               src="public/eurofert-logo.png"
               alt="Eurofert Logo"
               class="logo"
+              loading="eager"
+              width="185"
+              height="auto"
             />
           </a>
           <button
@@ -38,6 +43,9 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="menu-header">
+              <h5 class="menu-title">Menu Navigation</h5>
+            </div>
             <ul class="nav-menu">
               <li class="nav-item">
                 <a class="nav-link active" href="index.html"
@@ -52,27 +60,81 @@
               <li class="nav-item">
                 <a class="nav-link" href="about.html"><span>About Us</span></a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="product-categories.html"
-                  ><span>Product Categories</span></a
-                >
-              </li>
-            </ul>
+
+              <!-- Dropdown list Product Categories-->
+              <li class="nav-item has-dropdown" data-toggle="dropdown">
+                <a class="nav-link parent-link" href="">
+                  <span class="link-title">Product Categories</span>
+                     <!-- dropdown list Opener-->
+                
+                </a>
+                <span class="nav-opener" aria-label="Open submenu">
+                  <i class="fas fa-chevron-right arrow-icon"></i
+                ></span>
+                <!-- arrow icon-->
+                   
+                <ul class="dropdown-menu submenu-items">
+                  <!-- Column content: order controls the 2-column layout on desktop -->
+                    <li class="submenu-item submenu-title">
+                    <a class="submenu__link" href="product-categories.html">Product Categories Overview</a>
+                     </li>
+
+                <div>
+                    <li class="submenu-item">
+                     <a href="#" class="submenu__link" > MaxiGrow Essentials</a>
+                     </li>
+                   
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Micronutrient
+                    </a>
+                  </li>
+
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow NPK
+                    </a>
+                  </li>
+
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Power
+                    </a>
+                  </li>
+
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Speciality
+                    </a>
+                  </li>
+
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Terra
+                    </a>
+                  </li>
+                  
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Foliar
+                    </a>
+                  </li>
+                  </div>
+                </ul>
           </div>
         </nav>
       </div>
     </header>
-
     <!-- Hero Section -->
     <section class="hero-section" id="home">
       <div class="hero-overlay"></div>
       <div class="container">
         <div class="row align-items-center min-vh-75">
-          <div class="col-lg-6 hero-content fade-in">
-            <h1 class="display-4 fw-bold mb-4">
+          <div class="hero-content col-lg-6 fade-in">
+            <h1 class="main-title display-4 fw-bold mb-4">
               Nurturing Growth,<br />Harvesting Success
             </h1>
-            <p class="lead mb-4">
+            <p class="subtitle lead mb-4">
               Advanced agricultural solutions that respect both soil and nature
               while maximizing crop yield and quality.
             </p>
@@ -107,21 +169,28 @@
 
     <!-- Intro Section -->
     <section class="intro-section" id="intro">
-      <div class="container text-center">
-        <h2 class="display-5 fw-bold mb-3 text-primary section-title">
-          Welcome to Eurofert
-        </h2>
+      <div class="container">
         <div class="row justify-content-center">
-          <div class="col-md-8">
-            <p class="lead text-muted mb-4">
+          <div class="col-lg-9 col-xl-8 text-md-start">
+            <h2 class="section-title display-5 fw-bold mb-3 text-primary">
+              Welcome to Eurofert
+            </h2>
+            <p class="intro-lead text-muted mb-3">
               At Eurofert, we believe sustainable agriculture starts with the
               soil. Our fertilizers are designed to enrich crops while
-              preserving the planet.
+              preserving the planet. With decades of experience in soil
+              nutrition, Eurofert delivers science-backed solutions that improve
+              yield quality, reduce environmental impact, and support farming
+              communities worldwide.
             </p>
-            <p class="text-muted">
-              With decades of experience in soil nutrition, Eurofert delivers
-              science-backed solutions that improve yield quality, reduce
-              environmental impact, and support farming communities worldwide.
+            <p class="text-muted mb-3">
+              From high-concentration pastes to precision liquid and granular
+              fertilizers, every Eurofert product is designed to deliver
+              consistent nutrient availability, excellent solubility, and
+              predictable results in real-world farming conditions. Our ranges
+              are tested across different crops, climates, and irrigation
+              systems to make sure they perform where it matters most: in your
+              fields.
             </p>
           </div>
         </div>
