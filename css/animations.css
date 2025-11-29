@@ -90,7 +90,7 @@
   animation: bounce 2s infinite;
 }
 
-/* Header animations */
+/* Header animations
 .nav-link span {
   display: inline-block;
   transition: transform 0.3s ease;
@@ -98,7 +98,7 @@
 
 .nav-link:hover span {
   transform: translateY(-2px);
-}
+} */
 
 /* Button hover animations */
 .btn {
@@ -253,13 +253,6 @@
 }
 /* 2) OPTIONAL: also show on hover for desktop navs */
 @media (min-width: 768px) {
-  .site-nav .nav-item.has-dropdown:hover > .dropdown-menu,
-  .site-nav .nav-item.dropdown:hover > .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
   /* Dropdown menu animation */
   /* IMPORTANT: we do NOT touch display here */
   .nav-item.has-dropdown > .dropdown-menu,
@@ -269,12 +262,37 @@
     transform: translateY(10px);
     transition: opacity 0.25s ease, transform 0.25s ease;
   }
+
+  /* Open state on desktop: when JS adds .open (or Bootstrap .show) */
+  .site-nav .nav-item.has-dropdown.open > .dropdown-menu,
+  .site-nav .nav-item.dropdown.open > .dropdown-menu,
+  .site-nav .nav-item.dropdown.show > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .site-nav .nav-link {
+    transition: transform 0.3s ease;
+  }
+
+  .site-nav .nav-link:hover {
+    transform: translateY(-2px);
+  }
 }
 
 /* Hamburger menu animation — desktop only */
 @media (hover: hover) and (pointer: fine) {
   .navbar-toggler {
     transition: all 0.3s ease;
+  }
+
+  .site-nav .nav-item.has-dropdown.open > .dropdown-menu,
+  .site-nav .nav-item.dropdown.open > .dropdown-menu,
+  .site-nav .nav-item.dropdown.show > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
 }
 
