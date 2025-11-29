@@ -222,7 +222,10 @@ function initMobileMenu() {
   });
 
   // ----------------------------------------------------
-  // Mobile Sub-Menu Accordion Logic (Vertical Expansion)
+  // Desktop & Mobile Sub-Menu Logic
+  // ----------------------------------------------------
+  // ----------------------------------------------------
+  // Desktop & Mobile Sub-Menu Logic
   // ----------------------------------------------------
   const dropdownParents = document.querySelectorAll(".nav-item.has-dropdown");
 
@@ -230,35 +233,46 @@ function initMobileMenu() {
     const toggleLink = parentItem.querySelector(".nav-link");
     const opener = parentItem.querySelector(".nav-opener");
 
-    // helper: are we in mobile drawer right now?
-    const isMobileContext = () => {
-      return (
-        window.innerWidth <= 767.98 ||
-        document.body.classList.contains("menu-open")
-      );
-    };
-
+    // Unified toggle behavior: same on mobile & desktop
     const toggleSubmenu = (event) => {
-      // run this ONLY on mobile, so desktop links still work
-      if (window.innerWidth > 767.98) {
-        return;
-      }
-      if (!isMobileContext()) {
-        // desktop: let the link work normally
-        return;
-      }
-      event.preventDefault(); // don’t navigate to product-categories.html
+      event.preventDefault(); // stop navigation (we only want toggle)
+      event.stopPropagation(); // don't bubble up
+
+      // Close all other dropdowns
+      dropdownParents.forEach((item) => {
+        if (item !== parentItem) {
+          item.classList.remove("open");
+        }
+      });
+
+      // Toggle this dropdown
       parentItem.classList.toggle("open");
     };
 
-    if (toggleLink) {
-      toggleLink.addEventListener("click", toggleSubmenu);
-    }
-
+    // Clicking the arrow toggles submenu (mobile + desktop)
     if (opener) {
       opener.addEventListener("click", toggleSubmenu);
     }
+
+    // Clicking "Product Categories" text also toggles submenu
+    if (toggleLink) {
+      toggleLink.addEventListener("click", toggleSubmenu);
+    }
   });
+
+  // Desktop: Close dropdown when clicking outside
+  if (window.innerWidth > 767.98) {
+    document.addEventListener("click", (event) => {
+      if (window.innerWidth > 767.98) {
+        const isDropdownClick = event.target.closest(".nav-item.has-dropdown");
+        if (!isDropdownClick) {
+          dropdownParents.forEach((item) => {
+            item.classList.remove("open");
+          });
+        }
+      }
+    });
+  }
 }
 
 // Form validation
