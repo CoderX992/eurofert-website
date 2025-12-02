@@ -3168,12 +3168,13 @@ body.drawer-open {
 
 /* Override all previous category card styles for compact design */
 .category-card {
-  overflow: hidden;
+  overflow: visible;
   transition: all 0.3s ease;
   cursor: pointer;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  height: auto;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   background: white;
@@ -3185,7 +3186,7 @@ body.drawer-open {
   max-width: 180px;
   height: 140px;
   object-fit: contain;
-  margin: 1rem auto 0.5rem;
+  margin: 1.25rem auto 0.75rem;
   display: block;
   transition: transform 0.3s ease;
   border-radius: 0;
@@ -3194,18 +3195,19 @@ body.drawer-open {
 
 /* Compact card body */
 .category-card .card-body {
-  padding: 0.75rem 1rem 1rem !important;
+  padding: 0.5rem 1.25rem 1.25rem !important;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  min-height: auto;
 }
 
 /* Compact title */
 .category-card .card-title {
   font-size: 1.125rem !important;
   font-weight: 600;
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 0.75rem !important;
   line-height: 1.3;
   color: var(--primary);
 }
@@ -3214,9 +3216,9 @@ body.drawer-open {
 .category-card .card-text {
   font-size: 0.875rem !important;
   line-height: 1.6;
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 0.75rem !important;
   color: var(--gray-700);
-  flex: 0;
+  flex: 1;
   max-width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -3224,28 +3226,30 @@ body.drawer-open {
 
 /* Category stats */
 .category-card .category-stats {
-  margin-bottom: 0.75rem !important;
+  margin-bottom: 0.875rem !important;
   margin-top: 0 !important;
 }
 
 .category-card .category-stats small {
   font-size: 0.8125rem;
+  display: block;
 }
 
 /* Compact button */
 .category-card .btn {
-  padding: 0.5rem 1rem !important;
+  padding: 0.625rem 1.25rem !important;
   font-size: 0.875rem !important;
   font-weight: 500;
   align-self: center;
   flex-shrink: 0;
   margin-top: auto;
+  margin-bottom: 0.25rem;
 }
 
 /* Hover effect */
 .category-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .category-card:hover .category-thumbnail {
@@ -3281,21 +3285,21 @@ body.drawer-open {
     grid-column: 1;
   }
 
-  /* Compact card dimensions */
+  /* Compact card dimensions - remove max-height to allow content to fit */
   .category-card {
-    max-height: 400px;
-    max-width: 320px;
+    max-width: 310px;
     margin: 0 auto;
+    min-height: 440px;
   }
 
   .category-card .category-thumbnail {
-    max-width: 140px;
-    height: 120px;
+    max-width: 130px;
+    height: 110px;
   }
 
-  /* Reduce horizontal padding in card body */
+  /* Balanced padding in card body */
   .category-card .card-body {
-    padding: 0.75rem 0.875rem 1rem !important;
+    padding: 0.5rem 1.125rem 1.125rem !important;
   }
 }
 
