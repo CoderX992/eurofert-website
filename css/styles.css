@@ -446,7 +446,7 @@ section:first-of-type {
   height: 3px;
   background-color: var(--primary);
   transform: translateX(-50%);
-  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Desktop hover effect for section title */
@@ -456,9 +456,7 @@ section:first-of-type {
   }
 
   .section-title:hover::after {
-    width: 100%;
-    left: 0;
-    transform: translateX(0);
+    width: 140px;
   }
 }
 
