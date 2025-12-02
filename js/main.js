@@ -373,7 +373,7 @@ function renderHomeProductCategories() {
     const delay = index * 200;
 
     const col = document.createElement("div");
-    col.className = "col-md-3";
+    col.className = "col-12 col-md-6 col-lg-3";
 
     const card = document.createElement("div");
     card.className = "product-category-card card h-100 border-0 shadow-sm slide-up";

@@ -59,12 +59,18 @@ function renderProducts(products) {
   }, 100);
 }
 
-// Initialize products grid when DOM is loaded
-document.addEventListener("DOMContentLoaded", function () {
+// Initialize products grid
+function initializeProductsGrid() {
   const category = getCurrentCategoryFromUrl();
   const categoryTitleElement = document.getElementById("categoryTitle");
   const pageHeaderTitleElement = document.getElementById("pageHeaderTitle");
   const pageHeaderLeadElement = document.getElementById("pageHeaderLead");
+
+  if (!window.productData) {
+    console.warn("productData not available yet, retrying...");
+    setTimeout(initializeProductsGrid, 100);
+    return;
+  }
 
   if (category && window.productData[category]) {
     const categoryInfo = window.productData[category];
@@ -82,10 +88,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const loadingSpinner = document.getElementById("loadingSpinner");
     if (loadMoreBtn) loadMoreBtn.style.display = "none";
     if (loadingSpinner) loadingSpinner.style.display = "none";
+
+    console.log(`Rendered ${categoryInfo.products.length} products for ${categoryInfo.name}`);
   } else {
+    console.warn(`Invalid category: ${category}, redirecting...`);
     window.location.href = "product-categories.html";
   }
-});
+}
+
+// Initialize products grid when DOM is loaded
+document.addEventListener("DOMContentLoaded", initializeProductsGrid);
 
 // Export functions for global access
 window.showCategories = showCategories;

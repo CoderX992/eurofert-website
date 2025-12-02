@@ -47,7 +47,7 @@ function renderCategoriesGrid() {
     const delay = index * 100;
 
     const col = document.createElement("div");
-    col.className = "col-lg-4 col-md-6";
+    col.className = "col-12 col-md-6 col-lg-4";
 
     const card = document.createElement("div");
     card.className = "category-card card h-100 border-0 shadow-sm fade-in";
