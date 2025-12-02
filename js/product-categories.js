@@ -58,17 +58,17 @@ function renderCategoriesGrid() {
     card.innerHTML = `
       <img
         src="${productImages[imageIndex]}"
-        class="card-img-top"
+        class="card-img-top category-thumbnail"
         alt="${category.name}"
         loading="lazy"
       />
       <div class="card-body text-center">
-        <h3 class="card-title h4 mb-3">${category.name}</h3>
-        <p class="card-text">${category.description}</p>
-        <div class="category-stats mt-3">
+        <h3 class="card-title mb-2">${category.name}</h3>
+        <p class="card-text mb-2">${category.description}</p>
+        <div class="category-stats mb-2">
           <small class="text-muted">${category.products.length} Products Available</small>
         </div>
-        <button class="btn btn-primary">View Products</button>
+        <button class="btn btn-primary btn-sm">View Products</button>
       </div>
     `;
 

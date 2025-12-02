@@ -3161,3 +3161,122 @@ a.btn-outline-light:hover {
 body.drawer-open {
   overflow: hidden;
 }
+
+/* ===================================================================
+   CATEGORY CARDS - COMPACT LAYOUT (Product Categories Page)
+   =================================================================== */
+
+/* Override all previous category card styles for compact design */
+.category-card {
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+/* Compact category thumbnail - small and centered */
+.category-card .category-thumbnail {
+  width: 100%;
+  max-width: 180px;
+  height: 140px;
+  object-fit: contain;
+  margin: 1rem auto 0.5rem;
+  display: block;
+  transition: transform 0.3s ease;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+/* Compact card body */
+.category-card .card-body {
+  padding: 0.75rem 1rem 1rem !important;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Compact title */
+.category-card .card-title {
+  font-size: 1.125rem !important;
+  font-weight: 600;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.3;
+  color: var(--primary);
+}
+
+/* Compact description */
+.category-card .card-text {
+  font-size: 0.875rem !important;
+  line-height: 1.5;
+  margin-bottom: 0.5rem !important;
+  color: var(--gray-700);
+  flex: 0;
+}
+
+/* Category stats */
+.category-card .category-stats {
+  margin-bottom: 0.75rem !important;
+  margin-top: 0 !important;
+}
+
+.category-card .category-stats small {
+  font-size: 0.8125rem;
+}
+
+/* Compact button */
+.category-card .btn {
+  padding: 0.5rem 1rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 500;
+  align-self: center;
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+/* Hover effect */
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.category-card:hover .category-thumbnail {
+  transform: scale(1.05);
+}
+
+/* Desktop: ensure 3 columns fit nicely */
+@media (min-width: 992px) {
+  .category-card {
+    max-height: 420px;
+  }
+
+  .category-card .category-thumbnail {
+    max-width: 160px;
+    height: 130px;
+  }
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 991px) and (min-width: 768px) {
+  .category-card .category-thumbnail {
+    max-width: 180px;
+    height: 140px;
+  }
+}
+
+/* Mobile: single column, slightly larger */
+@media (max-width: 767px) {
+  .category-card .category-thumbnail {
+    max-width: 200px;
+    height: 150px;
+  }
+
+  .category-card .card-body {
+    padding: 1rem !important;
+  }
+}
