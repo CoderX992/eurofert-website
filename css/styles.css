@@ -3252,15 +3252,50 @@ body.drawer-open {
   transform: scale(1.05);
 }
 
-/* Desktop: ensure 3 columns fit nicely */
+/* Desktop: Centered 3×3 grid with compact cards */
 @media (min-width: 992px) {
+  /* Center the grid container */
+  .product-categories .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* True 3-column grid */
+  .product-categories .row {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1.5rem !important;
+    margin: 0 !important;
+    justify-content: center;
+  }
+
+  /* Each column takes full width of grid cell */
+  .product-categories .col-lg-4 {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  /* 7th card stays in first column of third row (left-aligned) */
+  .product-categories .col-lg-4:nth-child(7) {
+    grid-column: 1;
+  }
+
+  /* Compact card dimensions */
   .category-card {
-    max-height: 420px;
+    max-height: 400px;
+    max-width: 320px;
+    margin: 0 auto;
   }
 
   .category-card .category-thumbnail {
-    max-width: 160px;
-    height: 130px;
+    max-width: 140px;
+    height: 120px;
+  }
+
+  /* Reduce horizontal padding in card body */
+  .category-card .card-body {
+    padding: 0.75rem 0.875rem 1rem !important;
   }
 }
 
