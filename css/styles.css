@@ -717,21 +717,27 @@ Main Container max-width for professional zoom behavior */
 
 /* Premium Product Grid Spacing */
 .product-categories {
-  padding: var(--space-xl) 0; /* Reduced section spacing */
+  padding: var(--space-xl) 0;
 }
 
 .product-categories .row {
-  gap: var(--space-md) 0; /* Further reduced row spacing */
-  align-items: stretch; /* Ensure all columns have equal height */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  align-items: stretch;
 }
 
-.product-categories .col-lg-3 {
-  margin-bottom: var(--space-md); /* Further reduced column spacing */
-  display: flex; /* Make column a flex container */
+.product-categories .col-lg-4 {
+  display: flex;
+  grid-column: span 1;
 }
 
-.product-categories .col-lg-3 .card {
-  width: 100%; /* Ensure card takes full column width */
+.product-categories .col-lg-4:nth-child(7) {
+  grid-column: 1;
+}
+
+.product-categories .col-lg-4 .card {
+  width: 100%;
 }
 
 /* Adjust padding in card body for all product-related cards */
@@ -1170,7 +1176,14 @@ Main Container max-width for professional zoom behavior */
   }
 
   /* Product Grid - 1 Column on very small screens */
-  .products-preview .row,
+  .products-preview .row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
   .product-categories .row {
     display: grid;
     grid-template-columns: 1fr;
@@ -2752,11 +2765,19 @@ a.btn-outline-light:hover {
 /* Tablets (768px+) - 2 Column Grid for better visual integrity */
 @media (min-width: 768px) and (max-width: 991.98px) {
   .product-navigation-section {
-    display: block; /* ensure visible on tablets */
-    flex: 0 0 280px; /* Fixed width for navigation */
+    display: block;
+    flex: 0 0 280px;
     max-width: 280px;
   }
-  .products-preview .row,
+
+  .products-preview .row {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
   .product-categories .row {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr);

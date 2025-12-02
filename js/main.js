@@ -341,6 +341,52 @@ function initFormValidation() {
   }
 }
 
+// Render homepage product categories
+function renderHomeProductCategories() {
+  const gridContainer = document.getElementById("homeProductsGrid");
+  if (!gridContainer || !window.productData) return;
+
+  const categoryKeys = Object.keys(window.productData).slice(0, 4);
+  const productImages = [
+    "public/product1-placeholder.png",
+    "public/product2-placeholder.png",
+    "public/product3-placeholder.png",
+    "public/product4-placeholder.png",
+  ];
+
+  categoryKeys.forEach((categoryKey, index) => {
+    const category = window.productData[categoryKey];
+    const delay = index * 200;
+
+    const col = document.createElement("div");
+    col.className = "col-md-3";
+
+    const card = document.createElement("div");
+    card.className = "product-category-card card h-100 border-0 shadow-sm slide-up";
+    card.setAttribute("data-delay", delay);
+
+    card.innerHTML = `
+      <img
+        src="${productImages[index]}"
+        class="card-img-top"
+        alt="${category.name}"
+        loading="lazy"
+      />
+      <div class="card-body text-center">
+        <h3 class="card-title h5 mb-3">${category.name}</h3>
+        <p class="card-text small">${category.description}</p>
+        <a
+          href="products.html?category=${categoryKey}"
+          class="btn btn-outline-primary btn-sm"
+        >View Products</a>
+      </div>
+    `;
+
+    col.appendChild(card);
+    gridContainer.appendChild(col);
+  });
+}
+
 // Testimonial carousel custom navigation
 document.addEventListener("DOMContentLoaded", function () {
   const testimonialCarousel = document.getElementById("testimonialCarousel");
@@ -350,4 +396,7 @@ document.addEventListener("DOMContentLoaded", function () {
       wrap: true,
     });
   }
+
+  // Render homepage categories
+  renderHomeProductCategories();
 });

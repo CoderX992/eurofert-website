@@ -1,27 +1,52 @@
-// Product data structure
+// Product data structure - MAXIGROW Product Lines
 const productData = {
-  maxigrow: {
-    name: "MaxiGrow Power Paste",
+  maxigrowNPK: {
+    name: "MAXIGROW NPK",
+    fullName: "MAXIGROW NPK – Water-Soluble Fertilizer Line",
     description:
-      "High-concentration paste fertilizers designed for maximum nutrient delivery and enhanced plant growth.",
+      "Complete water-soluble NPK fertilizers designed for precise nutrient delivery through irrigation systems and foliar application.",
     products: [],
   },
-  colfert: {
-    name: "Colfert Liquid",
+  maxigrowFoliar: {
+    name: "MAXIGROW Foliar",
+    fullName: "MAXIGROW Foliar – Foliar Water Soluble Fertilizers",
     description:
-      "Fast-acting liquid fertilizers for immediate plant nutrition and rapid growth response.",
+      "Specialized foliar fertilizers formulated for rapid nutrient absorption through plant leaves for immediate growth response.",
     products: [],
   },
-  seagull: {
-    name: "Seagull Liquid",
+  maxigrowPower: {
+    name: "MAXIGROW Power",
+    fullName: "MAXIGROW Power – Paste Line",
     description:
-      "Premium liquid solutions formulated for specialized crop requirements and optimal yields.",
+      "High-concentration paste fertilizers offering maximum nutrient density for efficient application and storage.",
     products: [],
   },
-  agrivell: {
-    name: "Agrivell",
+  maxigrowTrace: {
+    name: "MAXIGROW Trace",
+    fullName: "MAXIGROW Trace – Trace Elements Line",
     description:
-      "Advanced granular fertilizers engineered for sustained plant growth and soil enhancement.",
+      "Essential micronutrient solutions providing critical trace elements for optimal plant health and development.",
+    products: [],
+  },
+  maxigrowEssentials: {
+    name: "MAXIGROW Essentials",
+    fullName: "MAXIGROW Essentials – Essential Minerals Liquid Fertilizer Line",
+    description:
+      "Liquid fertilizers enriched with essential minerals for comprehensive plant nutrition and soil health.",
+    products: [],
+  },
+  maxigrowSpecialty: {
+    name: "MAXIGROW Specialty",
+    fullName: "MAXIGROW Specialty – Specialty Liquid Line",
+    description:
+      "Premium specialty liquids formulated for specific crop needs and growth stages requiring targeted nutrition.",
+    products: [],
+  },
+  maxigrowTerra: {
+    name: "MAXIGROW Terra",
+    fullName: "MAXIGROW Terra – Soil Conditioner Line",
+    description:
+      "Advanced soil conditioners designed to improve soil structure, enhance nutrient availability, and promote healthy root systems.",
     products: [],
   },
 };
@@ -76,10 +101,10 @@ const descriptionTemplates = [
   "Professional fertilizer solution engineered for maximum effectiveness. Delivers balanced nutrition to support healthy plant development and high yields.",
 ];
 
-// Generate random product data
+// Generate random product data (8 products per category)
 function generateProducts() {
   Object.keys(productData).forEach((category) => {
-    for (let i = 1; i <= 16; i++) {
+    for (let i = 1; i <= 8; i++) {
       const product = {
         id: `${category}-${i}`,
         name: `${productData[category].name} ${i.toString().padStart(2, "0")}`,
