@@ -77,6 +77,12 @@ function renderCategoriesGrid() {
   });
 
   console.log(`Rendered ${categoryKeys.length} category cards`);
+
+  // Trigger fade-in animations for newly created cards
+  setTimeout(() => {
+    const cards = gridContainer.querySelectorAll('.fade-in');
+    cards.forEach((card) => card.classList.add('active'));
+  }, 50);
 }
 
 // Initialize product data when DOM is loaded
