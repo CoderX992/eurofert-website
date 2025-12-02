@@ -341,11 +341,23 @@ function initFormValidation() {
   }
 }
 
-// Render homepage product categories
+// Render homepage product categories teaser
+// TODO: This teaser must always use the same category list and slugs as
+// product-categories.html and products.html (maxigrowNPK, maxigrowFoliar, etc.)
 function renderHomeProductCategories() {
   const gridContainer = document.getElementById("homeProductsGrid");
-  if (!gridContainer || !window.productData) return;
+  if (!gridContainer) {
+    console.warn("homeProductsGrid container not found");
+    return;
+  }
 
+  if (!window.productData) {
+    console.warn("productData not available yet, retrying...");
+    setTimeout(renderHomeProductCategories, 100);
+    return;
+  }
+
+  // Display first 4 MAXIGROW lines as teaser
   const categoryKeys = Object.keys(window.productData).slice(0, 4);
   const productImages = [
     "public/product1-placeholder.png",
@@ -353,6 +365,8 @@ function renderHomeProductCategories() {
     "public/product3-placeholder.png",
     "public/product4-placeholder.png",
   ];
+
+  gridContainer.innerHTML = "";
 
   categoryKeys.forEach((categoryKey, index) => {
     const category = window.productData[categoryKey];
@@ -385,6 +399,8 @@ function renderHomeProductCategories() {
     col.appendChild(card);
     gridContainer.appendChild(col);
   });
+
+  console.log(`Rendered ${categoryKeys.length} category cards on homepage`);
 }
 
 // Testimonial carousel custom navigation

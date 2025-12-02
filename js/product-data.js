@@ -160,7 +160,6 @@ window.generateProductImage = generateProductImage;
 window.getRandomFormula = getRandomFormula;
 window.getRandomDescription = getRandomDescription;
 
-// Initialize product data on load
-document.addEventListener("DOMContentLoaded", function () {
-  generateProducts();
-});
+// Initialize product data immediately (not waiting for DOM)
+generateProducts();
+console.log("Product data initialized with", Object.keys(productData).length, "categories");

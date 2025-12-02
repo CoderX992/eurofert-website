@@ -1,4 +1,9 @@
 // Product Categories JavaScript for Eurofert Website
+// TODO: Category slugs (maxigrowNPK, maxigrowFoliar, etc.) must match:
+// - productData keys in product-data.js
+// - index.html teaser section
+// - products.html URL parameters
+// - header navigation mega-menu
 
 // Show category products in grid
 function showCategoryProducts(category) {
@@ -12,10 +17,19 @@ function showProductDetail(product) {
   window.location.href = "product-details.html";
 }
 
-// Render categories grid dynamically
+// Render categories grid dynamically (all 7 MAXIGROW lines)
 function renderCategoriesGrid() {
   const gridContainer = document.getElementById("categoriesGrid");
-  if (!gridContainer) return;
+  if (!gridContainer) {
+    console.warn("categoriesGrid container not found");
+    return;
+  }
+
+  if (!window.productData) {
+    console.warn("productData not available yet, retrying...");
+    setTimeout(renderCategoriesGrid, 100);
+    return;
+  }
 
   const categoryKeys = Object.keys(window.productData);
   const productImages = [
@@ -24,6 +38,8 @@ function renderCategoriesGrid() {
     "public/product3-placeholder.png",
     "public/product4-placeholder.png",
   ];
+
+  gridContainer.innerHTML = "";
 
   categoryKeys.forEach((categoryKey, index) => {
     const category = window.productData[categoryKey];
@@ -59,6 +75,8 @@ function renderCategoriesGrid() {
     col.appendChild(card);
     gridContainer.appendChild(col);
   });
+
+  console.log(`Rendered ${categoryKeys.length} category cards`);
 }
 
 // Initialize product data when DOM is loaded
