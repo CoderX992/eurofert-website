@@ -433,17 +433,33 @@ section:first-of-type {
   position: relative;
   display: inline-block;
   font-family: var(--font-primary);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
 }
 
 .section-title::after {
   content: "";
   position: absolute;
-  bottom: -10px;
+  bottom: -18px;
   left: 50%;
   width: 60px;
   height: 3px;
   background-color: var(--primary);
   transform: translateX(-50%);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Desktop hover effect for section title */
+@media (min-width: 992px) {
+  .section-title:hover {
+    transform: scale(1.02);
+  }
+
+  .section-title:hover::after {
+    width: 100%;
+    left: 0;
+    transform: translateX(0);
+  }
 }
 
 .intro-section .section-title {
