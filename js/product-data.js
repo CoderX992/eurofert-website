@@ -4,49 +4,49 @@ const productData = {
     name: "MAXIGROW NPK",
     fullName: "MAXIGROW NPK – Water-Soluble Fertilizer Line",
     description:
-      "Complete water-soluble NPK fertilizers designed for precise nutrient delivery through irrigation systems and foliar application.",
+      "Complete water-soluble NPK fertilizers designed for precise nutrient delivery through irrigation systems and foliar application. Perfect for modern farming.",
     products: [],
   },
   maxigrowFoliar: {
     name: "MAXIGROW Foliar",
     fullName: "MAXIGROW Foliar – Foliar Water Soluble Fertilizers",
     description:
-      "Specialized foliar fertilizers formulated for rapid nutrient absorption through plant leaves for immediate growth response.",
+      "Specialized foliar fertilizers formulated for rapid nutrient absorption through plant leaves. Delivers immediate growth response and enhanced crop vitality.",
     products: [],
   },
   maxigrowPower: {
     name: "MAXIGROW Power",
     fullName: "MAXIGROW Power – Paste Line",
     description:
-      "High-concentration paste fertilizers offering maximum nutrient density for efficient application and storage.",
+      "High-concentration paste fertilizers offering maximum nutrient density for efficient application and storage. Ideal for professional growers seeking powerful results.",
     products: [],
   },
   maxigrowTrace: {
     name: "MAXIGROW Trace",
     fullName: "MAXIGROW Trace – Trace Elements Line",
     description:
-      "Essential micronutrient solutions providing critical trace elements for optimal plant health and development.",
+      "Essential micronutrient solutions providing critical trace elements for optimal plant health and development. Prevents deficiencies and promotes balanced growth.",
     products: [],
   },
   maxigrowEssentials: {
     name: "MAXIGROW Essentials",
     fullName: "MAXIGROW Essentials – Essential Minerals Liquid Fertilizer Line",
     description:
-      "Liquid fertilizers enriched with essential minerals for comprehensive plant nutrition and soil health.",
+      "Liquid fertilizers enriched with essential minerals for comprehensive plant nutrition and soil health. Easy to apply with proven effectiveness across all crops.",
     products: [],
   },
   maxigrowSpecialty: {
     name: "MAXIGROW Specialty",
     fullName: "MAXIGROW Specialty – Specialty Liquid Line",
     description:
-      "Premium specialty liquids formulated for specific crop needs and growth stages requiring targeted nutrition.",
+      "Premium specialty liquids formulated for specific crop needs and growth stages requiring targeted nutrition. Customized solutions for maximum yield potential.",
     products: [],
   },
   maxigrowTerra: {
     name: "MAXIGROW Terra",
     fullName: "MAXIGROW Terra – Soil Conditioner Line",
     description:
-      "Advanced soil conditioners designed to improve soil structure, enhance nutrient availability, and promote healthy root systems.",
+      "Advanced soil conditioners designed to improve soil structure, enhance nutrient availability, and promote healthy root systems. Long-lasting benefits for sustainable agriculture.",
     products: [],
   },
 };

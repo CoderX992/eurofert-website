@@ -3213,10 +3213,13 @@ body.drawer-open {
 /* Compact description */
 .category-card .card-text {
   font-size: 0.875rem !important;
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: 0.5rem !important;
   color: var(--gray-700);
   flex: 0;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Category stats */
