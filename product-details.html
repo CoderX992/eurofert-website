@@ -103,37 +103,143 @@
       </div>
     </header>
 
-    <section id="overview" class="product-detail">
+    <section class="product-detail">
       <div class="product-detail__inner">
-        <div class="container">
-          <!-- Grid-->
-          <div class="product-detail-flex">
-            <!-- first section of the parent flexbox-->
-            <div class="product-info-section">
-              <h2 class="field-title" id="productCategory___title">Category</h2>
-              <h3 class="product-title" id="productTitle">Product Name</h3>
-              <p class="product-formula" id="productFormula">
-                N 20% – P₂O₅ 20% – K₂O 20%
-              </p>
-            </div>
-          </div>
-        </div>
-
         <div class="product-image-band">
           <div class="product-image-main">
             <img id="productImage" src="" alt="Product image" />
           </div>
         </div>
-      </div>
-    </section>
 
-    <div class="section-divider" aria-hidden="true"></div>
-
-    <section id="description-section">
-      <div class="product-detail__inner">
         <div class="container">
-          <div class="section-title" id="descriptionTitle"></div>
+          <div class="product-info-section">
+            <h2 class="field-title" id="productCategory___title">Category</h2>
+            <h3 class="product-title" id="productTitle">Product Name</h3>
+            <p class="product-formula" id="productFormula">
+              N 20% – P₂O₅ 20% – K₂O 20%
+            </p>
+          </div>
+
+          <div class="content-section" id="overview">
+            <h2 class="section-heading">Product Overview</h2>
+            <div class="section-content">
+              <p id="productDescription">Product description will be loaded here...</p>
+            </div>
+          </div>
+
+          <div class="content-section" id="key-benefits">
+            <h2 class="section-heading">Key Benefits</h2>
+            <div class="section-content">
+              <ul id="productBenefits">
+                <li>Enhanced nutrient absorption for optimal plant growth</li>
+                <li>Improved soil structure and microbial activity</li>
+                <li>Increased crop yield and quality</li>
+                <li>Suitable for all growth stages</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="content-section" id="guaranteed-analysis">
+            <h2 class="section-heading">Guaranteed Analysis</h2>
+            <div class="section-content">
+              <table class="analysis-table" id="productAnalysis">
+                <tbody>
+                  <tr>
+                    <td>Total Nitrogen (N)</td>
+                    <td id="nitrogenValue">-</td>
+                  </tr>
+                  <tr>
+                    <td>Available Phosphate (P₂O₅)</td>
+                    <td id="phosphateValue">-</td>
+                  </tr>
+                  <tr>
+                    <td>Soluble Potash (K₂O)</td>
+                    <td id="potashValue">-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="content-section" id="crops-usage">
+            <h2 class="section-heading">Crops and Usage</h2>
+            <div class="section-content">
+              <p id="productCrops">Suitable for vegetables, fruits, field crops, ornamentals, and greenhouse production.</p>
+            </div>
+          </div>
+
+          <div class="content-section" id="application-recommendations">
+            <h2 class="section-heading">Application Recommendations</h2>
+            <div class="section-content">
+              <div id="productApplicationRates">
+                <p><strong>Foliar Application:</strong> 2-3 kg per 1000 liters of water</p>
+                <p><strong>Fertigation:</strong> 5-10 kg per hectare per application</p>
+                <p><strong>Frequency:</strong> Apply every 7-14 days during active growth periods</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-section" id="application-notes">
+            <h2 class="section-heading">Application Notes</h2>
+            <div class="section-content">
+              <p id="productApplicationNotes">
+                Always conduct a jar test before mixing with other products. Apply during cooler parts of the day to minimize leaf burn risk. Ensure adequate water volume for uniform coverage.
+              </p>
+            </div>
+          </div>
+
+          <div class="content-section" id="compatibility">
+            <h2 class="section-heading">Compatibility and Mixing</h2>
+            <div class="section-content">
+              <p id="productCompatibility">
+                Compatible with most pesticides and fertilizers. Avoid mixing with highly alkaline products or those containing calcium. Always perform a jar test before tank mixing.
+              </p>
+            </div>
+          </div>
+
+          <div class="content-section" id="packaging-formats">
+            <h2 class="section-heading">Packaging and Formats</h2>
+            <div class="section-content">
+              <div id="productPackagingContent" class="badge-container"></div>
+            </div>
+          </div>
+
+          <div class="content-section" id="storage-safety">
+            <h2 class="section-heading">Storage and Safety</h2>
+            <div class="section-content">
+              <p id="productStorage">
+                Store in a cool, dry place away from direct sunlight. Keep container tightly closed when not in use. Keep out of reach of children and animals. Refer to Safety Data Sheet for complete handling information.
+              </p>
+            </div>
+          </div>
+
+          <div class="content-section" id="documents">
+            <h2 class="section-heading">Documents and Downloads</h2>
+            <div class="section-content">
+              <ul id="productDocuments" class="documents-list">
+                <li><a href="#" class="document-link"><i class="fas fa-file-pdf"></i> Product Data Sheet (PDF)</a></li>
+                <li><a href="#" class="document-link"><i class="fas fa-file-pdf"></i> Safety Data Sheet (PDF)</a></li>
+                <li><a href="#" class="document-link"><i class="fas fa-file-pdf"></i> Application Guide (PDF)</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
+
+        <nav class="product-navigation-panel">
+          <h3 class="nav-panel-title">Quick Navigation</h3>
+          <ul class="nav-panel-list">
+            <li><a href="#overview" class="nav-panel-link active" data-section="overview">Product Overview</a></li>
+            <li><a href="#key-benefits" class="nav-panel-link" data-section="key-benefits">Key Benefits</a></li>
+            <li><a href="#guaranteed-analysis" class="nav-panel-link" data-section="guaranteed-analysis">Guaranteed Analysis</a></li>
+            <li><a href="#crops-usage" class="nav-panel-link" data-section="crops-usage">Crops and Usage</a></li>
+            <li><a href="#application-recommendations" class="nav-panel-link" data-section="application-recommendations">Application Recommendations</a></li>
+            <li><a href="#application-notes" class="nav-panel-link" data-section="application-notes">Application Notes</a></li>
+            <li><a href="#compatibility" class="nav-panel-link" data-section="compatibility">Compatibility and Mixing</a></li>
+            <li><a href="#packaging-formats" class="nav-panel-link" data-section="packaging-formats">Packaging and Formats</a></li>
+            <li><a href="#storage-safety" class="nav-panel-link" data-section="storage-safety">Storage and Safety</a></li>
+            <li><a href="#documents" class="nav-panel-link" data-section="documents">Documents and Downloads</a></li>
+          </ul>
+        </nav>
       </div>
     </section>
 

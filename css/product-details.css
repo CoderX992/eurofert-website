@@ -101,6 +101,219 @@
   ); /* ← soft agro green, not shouting */
 }
 
+.content-section {
+  padding: 2rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.content-section:last-of-type {
+  border-bottom: none;
+}
+
+.section-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.section-content {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #374151;
+}
+
+.section-content ul {
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.section-content ul li {
+  margin-bottom: 0.75rem;
+}
+
+.analysis-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.analysis-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.analysis-table td:first-child {
+  font-weight: 600;
+  color: #374151;
+}
+
+.analysis-table td:last-child {
+  text-align: right;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.documents-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.documents-list li {
+  margin-bottom: 0.75rem;
+}
+
+.document-link {
+  color: var(--primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.document-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+.product-navigation-panel {
+  display: none;
+}
+
+/*
+==========================================================================================
+Desktop Layout - 3 Column Structure
+==============================================================================================
+*/
+@media (min-width: 768px) {
+  .product-detail__inner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 0 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .product-image-band {
+    flex: 0 0 280px;
+    order: 1;
+    width: auto;
+    padding: 1.5rem 1rem;
+    margin-top: 0;
+  }
+
+  .product-image-main {
+    max-width: 280px;
+  }
+
+  .product-image-main img {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .product-detail__inner > .container {
+    flex: 1 1 auto;
+    order: 2;
+    margin: 0;
+    max-width: none;
+    padding: 0;
+  }
+
+  .product-navigation-panel {
+    display: block;
+    flex: 0 0 240px;
+    order: 3;
+    position: sticky;
+    top: 100px;
+    align-self: flex-start;
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+
+  .nav-panel-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--primary);
+  }
+
+  .nav-panel-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-panel-list li {
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-panel-link {
+    display: block;
+    padding: 0.625rem 0.75rem;
+    color: #4b5563;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+  }
+
+  .nav-panel-link:hover {
+    background: #ffffff;
+    color: var(--primary);
+    border-left-color: var(--primary);
+  }
+
+  .nav-panel-link.active {
+    background: #ffffff;
+    color: var(--primary);
+    border-left-color: var(--primary);
+    font-weight: 600;
+  }
+
+  .content-section {
+    padding: 2.5rem 0;
+  }
+
+  .section-heading {
+    font-size: 1.75rem;
+  }
+
+  .product-info-section {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 0;
+  }
+}
+
 /*
 ==========================================================================================
 Mobile Drawer :  Menu Drawer Mobile code
@@ -111,7 +324,7 @@ Mobile Drawer :  Menu Drawer Mobile code
     position: fixed;
     top: 0;
     right: 0;
-    width: min(80vw, 360px); /* <-- controlled responsive */
+    width: min(80vw, 360px);
     height: 100vh;
     background: white;
     box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
@@ -127,11 +340,11 @@ Mobile Drawer :  Menu Drawer Mobile code
     border-radius: 0;
     z-index: 9999;
   }
-  /* Slide in when active */
+
   .navbar-collapse.show {
     transform: translateX(0);
   }
-  /* Overlay Background - Fixed to not block clicks */
+
   .navbar-collapse::before {
     content: "";
     position: fixed;
@@ -155,7 +368,6 @@ Mobile Drawer :  Menu Drawer Mobile code
   }
 
   body.menu-open .navbar-toggler {
-    /* Push the button clearly off-screen to the left of the 280px drawer + margin */
     right: calc(min(80vw, 360px) + 0.4rem);
     background: var(--primary);
     border-color: var(--primary);

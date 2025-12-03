@@ -3,6 +3,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   loadProductDetail();
   initProductDrawer();
+  initNavigationPanel();
+  initScrollSpy();
 });
 
 function loadProductDetail() {
@@ -23,48 +25,6 @@ function loadProductDetail() {
 }
 
 function updateProductInfo(product) {
-  // Update product image
-  const productImage = document.getElementById("productImage");
-  productImage.src = generateLargeProductImage(product);
-  productImage.alt = product.name;
-
-  // Update product title
-  document.getElementById("productTitle").textContent = product.name;
-  document.title = `${product.name} - Eurofert`;
-
-  // Update formula
-  document.getElementById("productFormula").textContent = product.formula;
-
-  // Update description
-  document.getElementById("productDescription").textContent =
-    product.description;
-
-  // Update brands
-  const brandsContainer = document.getElementById("productBrandsContent");
-  brandsContainer.innerHTML = "";
-  product.brands.forEach((brand) => {
-    const badge = document.createElement("span");
-    badge.className = "badge";
-    badge.style.backgroundColor = "var(--primary)";
-    badge.style.color = "white";
-    badge.textContent = brand;
-    brandsContainer.appendChild(badge);
-  });
-
-  // Update packaging
-  const packagingContainer = document.getElementById("productPackagingContent");
-  packagingContainer.innerHTML = "";
-  product.packaging.forEach((pack) => {
-    const badge = document.createElement("span");
-    badge.className = "badge bg-outline-primary";
-    badge.style.border = "1px solid var(--primary)";
-    badge.style.color = "var(--primary)";
-    badge.textContent = pack;
-    packagingContainer.appendChild(badge);
-  });
-}
-
-function updateBreadcrumb(product) {
   const categoryNames = {
     maxigrow: "MaxiGrow Power Paste",
     colfert: "Colfert Liquid",
@@ -72,9 +32,65 @@ function updateBreadcrumb(product) {
     agrivell: "Agrivell",
   };
 
-  document.getElementById("breadcrumbCategory").textContent =
-    categoryNames[product.category];
-  document.getElementById("breadcrumbProduct").textContent = product.name;
+  const productImage = document.getElementById("productImage");
+  productImage.src = generateLargeProductImage(product);
+  productImage.alt = product.name;
+
+  document.getElementById("productTitle").textContent = product.name;
+  document.getElementById("productCategory___title").textContent =
+    categoryNames[product.category] || "Product Category";
+  document.title = `${product.name} - Eurofert`;
+
+  document.getElementById("productFormula").textContent = product.formula;
+
+  document.getElementById("productDescription").textContent =
+    product.description;
+
+  parseAndPopulateAnalysis(product.formula);
+
+  const packagingContainer = document.getElementById("productPackagingContent");
+  packagingContainer.innerHTML = "";
+  product.packaging.forEach((pack) => {
+    const badge = document.createElement("span");
+    badge.className = "badge";
+    badge.style.border = "1px solid var(--primary)";
+    badge.style.color = "var(--primary)";
+    badge.textContent = pack;
+    packagingContainer.appendChild(badge);
+  });
+}
+
+function parseAndPopulateAnalysis(formula) {
+  const nitrogenMatch = formula.match(/N\s*(\d+)/);
+  const phosphateMatch = formula.match(/P₂O₅\s*(\d+)/);
+  const potashMatch = formula.match(/K₂O\s*(\d+)/);
+
+  if (nitrogenMatch) {
+    document.getElementById("nitrogenValue").textContent = nitrogenMatch[1] + "%";
+  }
+  if (phosphateMatch) {
+    document.getElementById("phosphateValue").textContent = phosphateMatch[1] + "%";
+  }
+  if (potashMatch) {
+    document.getElementById("potashValue").textContent = potashMatch[1] + "%";
+  }
+}
+
+function updateBreadcrumb(product) {
+  const breadcrumbCategory = document.getElementById("breadcrumbCategory");
+  const breadcrumbProduct = document.getElementById("breadcrumbProduct");
+
+  if (breadcrumbCategory && breadcrumbProduct) {
+    const categoryNames = {
+      maxigrow: "MaxiGrow Power Paste",
+      colfert: "Colfert Liquid",
+      seagull: "Seagull Liquid",
+      agrivell: "Agrivell",
+    };
+
+    breadcrumbCategory.textContent = categoryNames[product.category];
+    breadcrumbProduct.textContent = product.name;
+  }
 }
 
 function generateLargeProductImage(product) {
@@ -205,7 +221,69 @@ function getCurrentCategory() {
   return urlParams.get("category") || "maxigrow"; // Default to maxigrow if nothing found
 }
 
-// Export functions for global access
+function initNavigationPanel() {
+  const navLinks = document.querySelectorAll(".nav-panel-link");
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute("href");
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        const header = document.querySelector("header");
+        const headerHeight = header ? header.offsetHeight : 0;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition =
+          elementPosition + window.pageYOffset - headerHeight - 20;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+
+        navLinks.forEach((l) => l.classList.remove("active"));
+        this.classList.add("active");
+      }
+    });
+  });
+}
+
+function initScrollSpy() {
+  const sections = document.querySelectorAll(".content-section, .product-info-section");
+  const navLinks = document.querySelectorAll(".nav-panel-link");
+
+  if (sections.length === 0 || navLinks.length === 0) return;
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "-100px 0px -60% 0px",
+    threshold: 0,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const sectionId = entry.target.id;
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${sectionId}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach((section) => {
+    if (section.id) {
+      observer.observe(section);
+    }
+  });
+}
+
 window.showCategories = showCategories;
 window.showCategoryProducts = showCategoryProducts;
 window.getCurrentCategory = getCurrentCategory;
