@@ -54,12 +54,18 @@ Hero Section (Image + Key Facts Only)
 }
 
 .hero-content {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-areas:
+    "category"
+    "name"
+    "formula"
+    "teaser"
+    "benefits";
   gap: 0.75rem;
 }
 
 .product-category {
+  grid-area: category;
   font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -69,6 +75,7 @@ Hero Section (Image + Key Facts Only)
 }
 
 .product-name {
+  grid-area: name;
   font-size: 2rem;
   line-height: 1.2;
   font-weight: 700;
@@ -78,6 +85,7 @@ Hero Section (Image + Key Facts Only)
 }
 
 .product-teaser {
+  grid-area: teaser;
   font-size: 1rem;
   line-height: 1.5;
   color: #6b7280;
@@ -86,6 +94,7 @@ Hero Section (Image + Key Facts Only)
 }
 
 .product-formula {
+  grid-area: formula;
   display: inline-block;
   background: rgba(253, 255, 253, 0.9);
   border-left: 4px solid var(--primary, #2b7a2b);
@@ -99,6 +108,7 @@ Hero Section (Image + Key Facts Only)
 }
 
 .key-benefits {
+  grid-area: benefits;
   margin-top: 0.5rem;
 }
 
@@ -371,13 +381,13 @@ Desktop Layout - Three Column Structure
   }
 
   /* Hero spans first two columns, navigation panel on right */
-  .hero-section {
+  .product-detail .hero-section {
     grid-column: 1 / 3;
     grid-row: 1;
     display: flex;
     flex-direction: row;
     gap: 2.5rem;
-    align-items: flex-start;
+    align-items: stretch;
     margin-bottom: 0;
     padding: 0;
   }
@@ -386,15 +396,16 @@ Desktop Layout - Three Column Structure
     flex: 0 0 320px;
     max-width: 320px;
     padding: 2rem 1.5rem;
-    min-height: 400px;
+    min-height: 420px;
     display: flex;
-    align-items: center;
+    align-items: stretch;
   }
 
   .hero-image img {
     max-width: 100%;
     width: 100%;
     min-height: 320px;
+    height: 100%;
     object-fit: contain;
   }
 
@@ -402,6 +413,15 @@ Desktop Layout - Three Column Structure
     flex: 1;
     padding-top: 1rem;
     gap: 1rem;
+    display: grid;
+    grid-template-areas:
+      "category"
+      "name"
+      "formula"
+      "teaser"
+      "benefits";
+    align-content: start;
+    height: 100%;
   }
 
   .product-name {
