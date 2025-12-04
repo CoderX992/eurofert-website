@@ -1,3 +1,5 @@
+/** Product details – desktop layout sections (hero, description, nutrient declaration, etc.) */
+
 .product-detail *,
 .product-detail *::before,
 .product-detail *::after {
@@ -7,168 +9,288 @@
 .product-detail {
   margin: 0;
   padding: 1rem 0;
-  margin-bottom: 12%;
+  margin-bottom: 8%;
   margin-top: 5%;
 }
 
-.product-info-section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem; /* <— control all vertical spacing here */
-  text-align: left;
-}
-.product-info-section h2,
-.product-info-section h3 {
-  margin: 0;
-}
+/*
+==========================================================================================
+Hero Section (Image + Key Facts Only)
+==========================================================================================
+*/
 
-.field-title {
-  font-size: 1.1em;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--text-muted, #6c757d);
-  text-transform: uppercase;
-  margin: 0;
-}
-
-/* 2) mobile-first: stack the two columns */
-.product-detail-flex {
+.hero-section {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  row-gap: 0;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
 }
 
-.product-title {
-  margin: 0;
-  font-size: 1.4rem;
-  line-height: 1.5;
-  letter-spacing: 0.06em;
-  color: var(--primary);
-  text-wrap: nowrap;
-}
-
-.product-formula,
-.product-detail p {
-  display: inline-block;
-  background: rgba(253, 255, 253, 0.692);
-  border-left: 5px solid var(--primary, #2b7a2b);
-  padding: 0.1em 0.7em;
-  /* border-radius: 1px; */
-  font-weight: 900;
-  font-size: 1em;
-  /* color: #000000; */
-  color: var(--primary-dark); /* emphasize with brand color */
-  margin-bottom: 0.35rem;
-  margin-top: 0;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.product-image-band {
-  display: flex;
-  flex: 1;
+.hero-image {
   width: 100%;
-  background: var(--product-background); /* ← soft agro green, not shouting */
-  padding: 1.2rem 0; /* vertical space around img */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
-  margin-top: 0.5rem; /* space from text above */
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.03),
-    /* top edge */ 0 4px 18px rgba(0, 0, 0, 0.04); /* bottom edge */
+  background: var(--product-background);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-/* actual image holder */
-.product-image-main {
-  max-width: 200px; /* ← THIS is what keeps it from being too wide on mobile */
-  width: 70vw; /* still responsive */
-  margin: 0 auto;
-}
-
-/* actual transparent PNG */
-.product-image-main img {
+.hero-image img {
   display: block;
+  width: 100%;
+  max-width: 250px;
   height: auto;
   object-fit: contain;
-  width: min(200px, 50vw); /* responsive max */
-  margin: 0 auto;
-  object-fit: cover;
-  border-radius: 8px;
+}
 
-  background-color: var(
-    --product-background
-  ); /* ← soft agro green, not shouting */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.product-category {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted, #6c757d);
+  margin: 0;
+}
+
+.product-name {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.product-teaser {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #6b7280;
+  margin: 0;
+  font-weight: 400;
+}
+
+.product-formula {
+  display: inline-block;
+  background: rgba(253, 255, 253, 0.9);
+  border-left: 4px solid var(--primary, #2b7a2b);
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--primary-dark);
+  margin: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+}
+
+.key-benefits {
+  margin-top: 0.5rem;
+}
+
+.key-benefits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.key-benefits ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.key-benefits ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/*
+==========================================================================================
+Content Wrapper and Sections
+==========================================================================================
+*/
+
+.content-wrapper {
+  padding: 0 1rem;
+}
+
+.section-divider {
+  width: 100vw;
+  height: 1px;
+  background: #e5e7eb;
+  margin-left: -1rem;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 
 .content-section {
-  padding: 2rem 0;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.content-section:last-of-type {
-  border-bottom: none;
+  margin-bottom: 0;
 }
 
 .section-heading {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   letter-spacing: 0.02em;
+}
+
+.description-section .section-heading {
+  margin-left: 1rem;
 }
 
 .section-content {
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.7;
   color: #374151;
 }
 
-.section-content ul {
-  padding-left: 1.5rem;
-  margin: 0;
+.section-content p {
+  margin-bottom: 1.25rem;
 }
 
-.section-content ul li {
-  margin-bottom: 0.75rem;
+.section-content p:last-child {
+  margin-bottom: 0;
 }
 
-.analysis-table {
+/*
+==========================================================================================
+Nutrient Declaration Table
+==========================================================================================
+*/
+
+.nutrient-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
 }
 
-.analysis-table td {
-  padding: 0.75rem;
+.nutrient-table td {
+  padding: 0.875rem;
   border-bottom: 1px solid #e5e7eb;
+  font-size: 0.95rem;
 }
 
-.analysis-table td:first-child {
+.nutrient-table td:first-child {
   font-weight: 600;
   color: #374151;
 }
 
-.analysis-table td:last-child {
+.nutrient-table td:last-child {
   text-align: right;
   color: var(--primary);
   font-weight: 700;
 }
 
+.nutrient-table tr:last-child td {
+  border-bottom: none;
+}
+
+/*
+==========================================================================================
+Application Recommendations Table
+==========================================================================================
+*/
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.recommendations-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.recommendations-table thead {
+  background-color: #8b1a1a;
+  color: white;
+}
+
+.recommendations-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid #6b1313;
+}
+
+.recommendations-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.recommendations-table tbody tr:nth-child(even) {
+  background-color: #f3f4f6;
+}
+
+.recommendations-table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.recommendations-table td {
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #1f2937;
+  vertical-align: top;
+  border-right: 1px solid #e5e7eb;
+}
+
+.recommendations-table td:last-child {
+  border-right: none;
+}
+
+/*
+==========================================================================================
+Packaging Section
+==========================================================================================
+*/
+
 .badge-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.75rem;
   margin-top: 1rem;
 }
 
 .badge {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
   font-weight: 600;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  background: #f9fafb;
+  transition: all 0.2s ease;
 }
+
+.badge:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/*
+==========================================================================================
+Documents Section
+==========================================================================================
+*/
 
 .documents-list {
   list-style: none;
@@ -177,7 +299,7 @@
 }
 
 .documents-list li {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.875rem;
 }
 
 .document-link {
@@ -185,8 +307,9 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.625rem;
   font-weight: 500;
+  font-size: 0.95rem;
   transition: color 0.2s ease;
 }
 
@@ -195,55 +318,157 @@
   text-decoration: underline;
 }
 
+.document-link i {
+  font-size: 1.125rem;
+}
+
+/*
+==========================================================================================
+Navigation Panel (Hidden on Mobile)
+==========================================================================================
+*/
+
 .product-navigation-panel {
   display: none;
 }
 
 /*
 ==========================================================================================
-Desktop Layout - 3 Column Structure
-==============================================================================================
+Desktop Layout - Three Column Structure
+==========================================================================================
 */
+
 @media (min-width: 768px) {
+  .product-detail {
+    margin-bottom: 5%;
+  }
+
   .product-detail__inner {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 2rem;
-    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 320px 1fr 260px;
+    grid-template-rows: auto auto;
+    gap: 0 2.5rem;
     max-width: 1400px;
     margin: 0 auto;
+    padding: 0 2rem;
   }
 
-  .product-image-band {
-    flex: 0 0 280px;
-    order: 1;
-    width: auto;
-    padding: 1.5rem 1rem;
-    margin-top: 0;
-  }
-
-  .product-image-main {
-    max-width: 280px;
-  }
-
-  .product-image-main img {
-    width: 100%;
-    max-width: 280px;
-  }
-
-  .product-detail__inner > .container {
-    flex: 1 1 auto;
-    order: 2;
-    margin: 0;
-    max-width: none;
+  /* Hero spans first two columns, navigation panel on right */
+  .hero-section {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    align-items: flex-start;
+    margin-bottom: 0;
     padding: 0;
   }
 
+  .hero-image {
+    flex: 0 0 320px;
+    max-width: 320px;
+    padding: 2rem 1.5rem;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .hero-content {
+    flex: 1;
+    padding-top: 1rem;
+    gap: 1rem;
+  }
+
+  .product-name {
+    font-size: 2.5rem;
+  }
+
+  .product-teaser {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  .key-benefits ul li {
+    font-size: 1rem;
+    margin-bottom: 0.625rem;
+  }
+
+  /* Content wrapper spans all three columns below hero */
+  .content-wrapper {
+    grid-column: 1 / 4;
+    grid-row: 2;
+    padding: 0;
+    margin-left: 320px;
+    max-width: calc(100% - 320px - 2.5rem - 260px);
+  }
+
+  /* Full-width dividers break out of content-wrapper constraints */
+  .section-divider {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  /* First divider has less top margin */
+  .content-wrapper > .section-divider:first-child {
+    margin-top: 2.5rem;
+  }
+
+  .content-section {
+    padding: 0;
+  }
+
+  .section-heading {
+    font-size: 1.875rem;
+    margin-bottom: 2rem;
+  }
+
+  .description-section .section-heading {
+    margin-left: 1.5rem;
+  }
+
+  .section-content {
+    padding: 0 2.5rem;
+    max-width: 900px;
+  }
+
+  .section-content p {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Table containers take full width with padding */
+  .table-container {
+    padding: 0 2rem;
+  }
+
+  .recommendations-table {
+    min-width: 100%;
+  }
+
+  .recommendations-table th,
+  .recommendations-table td {
+    padding: 1.125rem 1.25rem;
+    font-size: 0.975rem;
+  }
+
+  .nutrient-table td {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+  }
+
+  /* Navigation Panel - Fixed on Right */
   .product-navigation-panel {
     display: block;
-    flex: 0 0 240px;
-    order: 3;
+    grid-column: 3;
+    grid-row: 1 / 3;
     position: sticky;
     top: 100px;
     align-self: flex-start;
@@ -276,7 +501,7 @@ Desktop Layout - 3 Column Structure
 
   .nav-panel-link {
     display: block;
-    padding: 0.625rem 0.75rem;
+    padding: 0.625rem 0.875rem;
     color: #4b5563;
     text-decoration: none;
     font-size: 0.9375rem;
@@ -298,27 +523,54 @@ Desktop Layout - 3 Column Structure
     border-left-color: var(--primary);
     font-weight: 600;
   }
+}
 
-  .content-section {
-    padding: 2.5rem 0;
+/*
+==========================================================================================
+Large Desktop Optimization
+==========================================================================================
+*/
+
+@media (min-width: 1200px) {
+  .product-detail__inner {
+    grid-template-columns: 360px 1fr 280px;
+    gap: 0 3rem;
   }
 
-  .section-heading {
-    font-size: 1.75rem;
+  .hero-section {
+    gap: 3rem;
   }
 
-  .product-info-section {
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #e5e7eb;
-    margin-bottom: 0;
+  .hero-image {
+    flex: 0 0 360px;
+    max-width: 360px;
+    padding: 2.5rem 2rem;
+  }
+
+  .content-wrapper {
+    margin-left: 360px;
+    max-width: calc(100% - 360px - 3rem - 280px);
+  }
+
+  .product-name {
+    font-size: 3rem;
+  }
+
+  .section-content {
+    padding: 0 3rem;
+  }
+
+  .nutrient-table td {
+    padding: 1.125rem 3rem;
   }
 }
 
 /*
 ==========================================================================================
-Mobile Drawer :  Menu Drawer Mobile code
-==============================================================================================
+Mobile Drawer: Menu Drawer Mobile code
+==========================================================================================
 */
+
 @media (max-width: 767.98px) {
   .navbar-collapse {
     position: fixed;

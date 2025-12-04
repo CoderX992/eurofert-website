@@ -8,18 +8,14 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function loadProductDetail() {
-  // Get product data from sessionStorage
   const productData = sessionStorage.getItem("currentProduct");
 
   if (!productData) {
-    // If no product data, redirect to products page
     window.location.href = "product-categories.html";
     return;
   }
 
   const product = JSON.parse(productData);
-
-  // Update page elements
   updateProductInfo(product);
   updateBreadcrumb(product);
 }
@@ -43,21 +39,25 @@ function updateProductInfo(product) {
 
   document.getElementById("productFormula").textContent = product.formula;
 
-  document.getElementById("productDescription").textContent =
-    product.description;
+  const descriptionElement = document.getElementById("productDescription");
+  if (descriptionElement && product.description) {
+    descriptionElement.textContent = product.description;
+  }
 
   parseAndPopulateAnalysis(product.formula);
 
   const packagingContainer = document.getElementById("productPackagingContent");
-  packagingContainer.innerHTML = "";
-  product.packaging.forEach((pack) => {
-    const badge = document.createElement("span");
-    badge.className = "badge";
-    badge.style.border = "1px solid var(--primary)";
-    badge.style.color = "var(--primary)";
-    badge.textContent = pack;
-    packagingContainer.appendChild(badge);
-  });
+  if (packagingContainer && product.packaging) {
+    packagingContainer.innerHTML = "";
+    product.packaging.forEach((pack) => {
+      const badge = document.createElement("span");
+      badge.className = "badge";
+      badge.style.border = "2px solid var(--primary)";
+      badge.style.color = "var(--primary)";
+      badge.textContent = pack;
+      packagingContainer.appendChild(badge);
+    });
+  }
 }
 
 function parseAndPopulateAnalysis(formula) {
@@ -65,14 +65,18 @@ function parseAndPopulateAnalysis(formula) {
   const phosphateMatch = formula.match(/P₂O₅\s*(\d+)/);
   const potashMatch = formula.match(/K₂O\s*(\d+)/);
 
-  if (nitrogenMatch) {
-    document.getElementById("nitrogenValue").textContent = nitrogenMatch[1] + "%";
+  const nitrogenEl = document.getElementById("nitrogenValue");
+  const phosphateEl = document.getElementById("phosphateValue");
+  const potashEl = document.getElementById("potashValue");
+
+  if (nitrogenEl && nitrogenMatch) {
+    nitrogenEl.textContent = nitrogenMatch[1] + "%";
   }
-  if (phosphateMatch) {
-    document.getElementById("phosphateValue").textContent = phosphateMatch[1] + "%";
+  if (phosphateEl && phosphateMatch) {
+    phosphateEl.textContent = phosphateMatch[1] + "%";
   }
-  if (potashMatch) {
-    document.getElementById("potashValue").textContent = potashMatch[1] + "%";
+  if (potashEl && potashMatch) {
+    potashEl.textContent = potashMatch[1] + "%";
   }
 }
 
@@ -94,7 +98,6 @@ function updateBreadcrumb(product) {
 }
 
 function generateLargeProductImage(product) {
-  // Using provided product images for detail view
   const productImages = [
     "public/product1-placeholder.png",
     "public/product2-placeholder.png",
@@ -172,24 +175,26 @@ function initProductDrawer() {
   let touchStartY = 0;
   let touchEndY = 0;
 
-  drawer.addEventListener(
-    "touchstart",
-    function (e) {
-      touchStartX = e.changedTouches[0].screenX;
-      touchStartY = e.changedTouches[0].screenY;
-    },
-    false
-  );
+  if (drawer) {
+    drawer.addEventListener(
+      "touchstart",
+      function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+      },
+      false
+    );
 
-  drawer.addEventListener(
-    "touchend",
-    function (e) {
-      touchEndX = e.changedTouches[0].screenX;
-      touchEndY = e.changedTouches[0].screenY;
-      handleSwipe();
-    },
-    false
-  );
+    drawer.addEventListener(
+      "touchend",
+      function (e) {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+      },
+      false
+    );
+  }
 
   function handleSwipe() {
     const swipeDistanceX = touchEndX - touchStartX;
@@ -201,7 +206,6 @@ function initProductDrawer() {
   }
 }
 
-// Navigation functions
 function showCategories() {
   window.location.href = "product-categories.html";
 }
@@ -216,9 +220,8 @@ function getCurrentCategory() {
     const product = JSON.parse(productData);
     return product.category;
   }
-  // Fallback if currentProduct is not set, maybe from URL or default
   const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get("category") || "maxigrow"; // Default to maxigrow if nothing found
+  return urlParams.get("category") || "maxigrow";
 }
 
 function initNavigationPanel() {
@@ -251,7 +254,7 @@ function initNavigationPanel() {
 }
 
 function initScrollSpy() {
-  const sections = document.querySelectorAll(".content-section, .product-info-section");
+  const sections = document.querySelectorAll("#hero, .content-section");
   const navLinks = document.querySelectorAll(".nav-panel-link");
 
   if (sections.length === 0 || navLinks.length === 0) return;
