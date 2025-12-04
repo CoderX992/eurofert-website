@@ -32,10 +32,9 @@ Hero Section (Image + Key Facts Only)
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--product-background);
+  background: #f9fafb;
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .hero-image img {
@@ -93,6 +92,14 @@ Hero Section (Image + Key Facts Only)
 
 .key-benefits {
   margin-top: 0.5rem;
+}
+
+.benefits-heading {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 0.75rem 0;
+  letter-spacing: 0.02em;
 }
 
 .key-benefits ul {
@@ -183,6 +190,7 @@ Nutrient Declaration Table
 .nutrient-table td {
   padding: 0.875rem;
   border-bottom: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
   font-size: 0.95rem;
 }
 
@@ -195,6 +203,7 @@ Nutrient Declaration Table
   text-align: right;
   color: var(--primary);
   font-weight: 700;
+  border-right: none;
 }
 
 .nutrient-table tr:last-child td {
@@ -369,11 +378,16 @@ Desktop Layout - Three Column Structure
     flex: 0 0 320px;
     max-width: 320px;
     padding: 2rem 1.5rem;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
   }
 
   .hero-image img {
     max-width: 100%;
     width: 100%;
+    min-height: 320px;
+    object-fit: contain;
   }
 
   .hero-content {
@@ -401,8 +415,8 @@ Desktop Layout - Three Column Structure
     grid-column: 1 / 4;
     grid-row: 2;
     padding: 0;
-    margin-left: 320px;
-    max-width: calc(100% - 320px - 2.5rem - 260px);
+    padding-left: 0;
+    max-width: 100%;
   }
 
   /* Full-width dividers break out of content-wrapper constraints */
@@ -437,7 +451,7 @@ Desktop Layout - Three Column Structure
 
   .section-content {
     padding: 0 2.5rem;
-    max-width: 900px;
+    max-width: calc(100% - 260px - 2.5rem);
   }
 
   .section-content p {
@@ -457,6 +471,11 @@ Desktop Layout - Three Column Structure
   .recommendations-table td {
     padding: 1.125rem 1.25rem;
     font-size: 0.975rem;
+  }
+
+  .benefits-heading {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
   }
 
   .nutrient-table td {
@@ -545,11 +564,12 @@ Large Desktop Optimization
     flex: 0 0 360px;
     max-width: 360px;
     padding: 2.5rem 2rem;
+    min-height: 450px;
   }
 
   .content-wrapper {
-    margin-left: 360px;
-    max-width: calc(100% - 360px - 3rem - 280px);
+    padding-left: 0;
+    max-width: 100%;
   }
 
   .product-name {
