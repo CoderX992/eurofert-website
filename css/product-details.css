@@ -31,8 +31,7 @@ Hero Section (Image + Key Facts Only)
   gap: 1.5rem;
   margin-bottom: 2rem;
   padding: 0 1rem;
-  background: #f2f7f7 !important;
-  background-image: none !important;
+  background: none;
   min-height: auto !important;
 }
 
@@ -654,3 +653,4 @@ Mobile Drawer: Menu Drawer Mobile code
     border-color: var(--primary);
   }
 }
+
