@@ -1,5 +1,10 @@
 /** Product details – desktop layout sections (hero, description, nutrient declaration, etc.) */
 
+/* Override body background for product details page */
+body.has-fixed-header {
+  background: #f2f7f7;
+}
+
 .product-detail *,
 .product-detail *::before,
 .product-detail *::after {
@@ -26,6 +31,9 @@ Hero Section (Image + Key Facts Only)
   gap: 1.5rem;
   margin-bottom: 2rem;
   padding: 0 1rem;
+  background: #f2f7f7 !important;
+  background-image: none !important;
+  min-height: auto !important;
 }
 
 .hero-image {
