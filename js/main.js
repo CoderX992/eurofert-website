@@ -12,7 +12,34 @@ const CATEGORY_SLUGS = [
   'maxigrowTerra'
 ];
 
+// Validate that CATEGORY_SLUGS match productData keys
+function validateCategorySlugs() {
+  if (!window.productData) {
+    console.warn("productData not available for validation");
+    return;
+  }
+  
+  const productDataKeys = Object.keys(window.productData);
+  const missingInProductData = CATEGORY_SLUGS.filter(slug => !productDataKeys.includes(slug));
+  const missingInCategorySlugs = productDataKeys.filter(key => !CATEGORY_SLUGS.includes(key));
+  
+  if (missingInProductData.length > 0) {
+    console.error(`CATEGORY_SLUGS contains slugs not found in productData: ${missingInProductData.join(', ')}`);
+  }
+  
+  if (missingInCategorySlugs.length > 0) {
+    console.warn(`productData contains keys not in CATEGORY_SLUGS: ${missingInCategorySlugs.join(', ')}`);
+  }
+  
+  if (missingInProductData.length === 0 && missingInCategorySlugs.length === 0) {
+    console.log(`✓ Category slugs validated: ${CATEGORY_SLUGS.length} categories match productData`);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
+  // Validate category slugs match productData
+  validateCategorySlugs();
+  
   // Initialize animations
   initAnimations();
 
@@ -381,6 +408,13 @@ function renderHomeProductCategories() {
 
   categoryKeys.forEach((categoryKey, index) => {
     const category = window.productData[categoryKey];
+    
+    // Validate category exists in productData
+    if (!category) {
+      console.warn(`Category '${categoryKey}' not found in productData. Skipping.`);
+      return;
+    }
+    
     const delay = index * 200;
 
     const col = document.createElement("div");
