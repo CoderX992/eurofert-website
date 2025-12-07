@@ -380,15 +380,19 @@ function renderHomeProductCategories() {
     card.setAttribute("data-delay", delay);
 
     card.innerHTML = `
-      <img
-        src="${productImages[index]}"
-        class="card-img-top"
-        alt="${category.name}"
-        loading="lazy"
-      />
+      <div class="card-media">
+        <img
+          src="${productImages[index]}"
+          class="card-img-top"
+          alt="${category.name}"
+          loading="lazy"
+        />
+        <span class="category-chip">Line ${index + 1} of 7</span>
+      </div>
       <div class="card-body text-center">
         <h3 class="card-title h5 mb-3">${category.name}</h3>
         <p class="card-text small">${category.description}</p>
+        <div class="teaser-meta">${category.products.length}+ tailored formulas</div>
         <a
           href="products.html?category=${categoryKey}"
           class="btn btn-outline-primary btn-sm"
@@ -406,13 +410,17 @@ function renderHomeProductCategories() {
 // Testimonial carousel custom navigation
 document.addEventListener("DOMContentLoaded", function () {
   const testimonialCarousel = document.getElementById("testimonialCarousel");
-  if (testimonialCarousel) {
+  const hasBootstrap = typeof bootstrap !== "undefined" && bootstrap?.Carousel;
+
+  if (testimonialCarousel && hasBootstrap) {
     const carousel = new bootstrap.Carousel(testimonialCarousel, {
       interval: 5000,
       wrap: true,
     });
+  } else if (testimonialCarousel && !hasBootstrap) {
+    console.warn("Bootstrap carousel unavailable - skipping testimonial carousel init");
   }
 
-  // Render homepage categories
+  // Render homepage categories even if Bootstrap JS is missing
   renderHomeProductCategories();
 });
