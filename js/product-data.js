@@ -1,3 +1,19 @@
+// Canonical order of all 7 MAXIGROW product lines
+// This order is used consistently across:
+// - Homepage teaser (first 4 lines)
+// - Product categories page (all 7 lines)
+// - Navigation menu
+// - Products page URL parameters
+const CATEGORY_ORDER = [
+  'maxigrowNPK',
+  'maxigrowFoliar',
+  'maxigrowPower',
+  'maxigrowTrace',
+  'maxigrowEssentials',
+  'maxigrowSpecialty',
+  'maxigrowTerra',
+];
+
 // Product data structure - MAXIGROW Product Lines
 const productData = {
   maxigrowNPK: {
@@ -103,7 +119,7 @@ const descriptionTemplates = [
 
 // Generate random product data (8 products per category)
 function generateProducts() {
-  Object.keys(productData).forEach((category) => {
+  CATEGORY_ORDER.forEach((category) => {
     for (let i = 1; i <= 8; i++) {
       const product = {
         id: `${category}-${i}`,
@@ -152,7 +168,8 @@ function getRandomDescription() {
   ];
 }
 
-// Export functions for global access
+// Export functions and constants for global access
+window.CATEGORY_ORDER = CATEGORY_ORDER;
 window.productData = productData;
 window.generateProducts = generateProducts;
 window.getRandomBrands = getRandomBrands;
@@ -162,4 +179,4 @@ window.getRandomDescription = getRandomDescription;
 
 // Initialize product data immediately (not waiting for DOM)
 generateProducts();
-console.log("Product data initialized with", Object.keys(productData).length, "categories");
+console.log("Product data initialized with", CATEGORY_ORDER.length, "categories");

@@ -1,5 +1,5 @@
 // Product Categories JavaScript for Eurofert Website
-// TODO: Category slugs (maxigrowNPK, maxigrowFoliar, etc.) must match:
+// Category slugs are defined in CATEGORY_ORDER (product-data.js) and used consistently across:
 // - productData keys in product-data.js
 // - index.html teaser section
 // - products.html URL parameters
@@ -25,13 +25,13 @@ function renderCategoriesGrid() {
     return;
   }
 
-  if (!window.productData) {
-    console.warn("productData not available yet, retrying...");
+  if (!window.productData || !window.CATEGORY_ORDER) {
+    console.warn("productData or CATEGORY_ORDER not available yet, retrying...");
     setTimeout(renderCategoriesGrid, 100);
     return;
   }
 
-  const categoryKeys = Object.keys(window.productData);
+  const categoryKeys = window.CATEGORY_ORDER;
   const productImages = [
     "public/product1-placeholder.png",
     "public/product2-placeholder.png",

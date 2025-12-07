@@ -342,8 +342,7 @@ function initFormValidation() {
 }
 
 // Render homepage product categories teaser
-// TODO: This teaser must always use the same category list and slugs as
-// product-categories.html and products.html (maxigrowNPK, maxigrowFoliar, etc.)
+// This teaser uses the same category list and slugs defined in CATEGORY_ORDER
 function renderHomeProductCategories() {
   const gridContainer = document.getElementById("homeProductsGrid");
   if (!gridContainer) {
@@ -351,14 +350,14 @@ function renderHomeProductCategories() {
     return;
   }
 
-  if (!window.productData) {
-    console.warn("productData not available yet, retrying...");
+  if (!window.productData || !window.CATEGORY_ORDER) {
+    console.warn("productData or CATEGORY_ORDER not available yet, retrying...");
     setTimeout(renderHomeProductCategories, 100);
     return;
   }
 
-  // Display first 4 MAXIGROW lines as teaser
-  const categoryKeys = Object.keys(window.productData).slice(0, 4);
+  // Display first 4 MAXIGROW lines as teaser using canonical order
+  const categoryKeys = window.CATEGORY_ORDER.slice(0, 4);
   const productImages = [
     "public/product1-placeholder.png",
     "public/product2-placeholder.png",
