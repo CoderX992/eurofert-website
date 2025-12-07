@@ -1,5 +1,17 @@
 // Main JavaScript for Eurofert Website
 
+// Category slugs must match product-data.js keys, navigation menu, and footer links
+// Order: maxigrowNPK, maxigrowFoliar, maxigrowPower, maxigrowTrace, maxigrowEssentials, maxigrowSpecialty, maxigrowTerra
+const CATEGORY_SLUGS = [
+  'maxigrowNPK',
+  'maxigrowFoliar',
+  'maxigrowPower',
+  'maxigrowTrace',
+  'maxigrowEssentials',
+  'maxigrowSpecialty',
+  'maxigrowTerra'
+];
+
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize animations
   initAnimations();
@@ -342,8 +354,7 @@ function initFormValidation() {
 }
 
 // Render homepage product categories teaser
-// TODO: This teaser must always use the same category list and slugs as
-// product-categories.html and products.html (maxigrowNPK, maxigrowFoliar, etc.)
+// Uses explicit CATEGORY_SLUGS to ensure consistency with navigation and product pages
 function renderHomeProductCategories() {
   const gridContainer = document.getElementById("homeProductsGrid");
   if (!gridContainer) {
@@ -357,8 +368,8 @@ function renderHomeProductCategories() {
     return;
   }
 
-  // Display first 4 MAXIGROW lines as teaser
-  const categoryKeys = Object.keys(window.productData).slice(0, 4);
+  // Display first 4 MAXIGROW lines as teaser (using explicit category slugs)
+  const categoryKeys = CATEGORY_SLUGS.slice(0, 4);
   const productImages = [
     "public/product1-placeholder.png",
     "public/product2-placeholder.png",
