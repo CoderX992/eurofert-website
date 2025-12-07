@@ -12,8 +12,14 @@ const CATEGORY_SLUGS = [
   'maxigrowTerra'
 ];
 
-// Validate that CATEGORY_SLUGS match productData keys
+// Validate that CATEGORY_SLUGS match productData keys (runs once when productData is available)
+let categorySlugsValidated = false;
+
 function validateCategorySlugs() {
+  if (categorySlugsValidated) {
+    return; // Already validated
+  }
+  
   if (!window.productData) {
     console.warn("productData not available for validation");
     return;
@@ -28,16 +34,18 @@ function validateCategorySlugs() {
   }
   
   if (missingInCategorySlugs.length > 0) {
-    console.warn(`productData contains keys not in CATEGORY_SLUGS: ${missingInCategorySlugs.join(', ')}`);
+    console.error(`productData contains keys not in CATEGORY_SLUGS: ${missingInCategorySlugs.join(', ')}`);
   }
   
   if (missingInProductData.length === 0 && missingInCategorySlugs.length === 0) {
     console.log(`✓ Category slugs validated: ${CATEGORY_SLUGS.length} categories match productData`);
   }
+  
+  categorySlugsValidated = true;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Validate category slugs match productData
+  // Validate category slugs match productData (runs once)
   validateCategorySlugs();
   
   // Initialize animations
