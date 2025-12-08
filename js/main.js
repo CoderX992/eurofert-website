@@ -341,9 +341,46 @@ function initFormValidation() {
   }
 }
 
+const homeProductTeaserDefaults = {
+  maxigrowNPK: {
+    name: "MAXIGROW NPK",
+    description:
+      "Complete water-soluble NPK fertilizers designed for precise nutrient delivery through irrigation systems and foliar application.",
+    products: new Array(8).fill({}),
+  },
+  maxigrowFoliar: {
+    name: "MAXIGROW Foliar",
+    description:
+      "Specialized foliar fertilizers formulated for rapid nutrient absorption and immediate growth response.",
+    products: new Array(8).fill({}),
+  },
+  maxigrowPower: {
+    name: "MAXIGROW Power",
+    description:
+      "High-concentration paste fertilizers offering maximum nutrient density for professional growers.",
+    products: new Array(8).fill({}),
+  },
+  maxigrowTrace: {
+    name: "MAXIGROW Trace",
+    description:
+      "Essential micronutrient solutions that prevent deficiencies and promote balanced plant health.",
+    products: new Array(8).fill({}),
+  },
+};
+
 // Render homepage product categories teaser
 // TODO: This teaser must always use the same category list and slugs as
 // product-categories.html and products.html (maxigrowNPK, maxigrowFoliar, etc.)
+function getHomeProductSource() {
+  // Prefer generated product data; fall back to baked-in teaser content if
+  // product-data.js is missing or fails to initialize.
+  if (window.productData && Object.keys(window.productData).length > 0) {
+    return window.productData;
+  }
+
+  return homeProductTeaserDefaults;
+}
+
 function renderHomeProductCategories() {
   const gridContainer = document.getElementById("homeProductsGrid");
   if (!gridContainer) {
@@ -351,14 +388,10 @@ function renderHomeProductCategories() {
     return;
   }
 
-  if (!window.productData) {
-    console.warn("productData not available yet, retrying...");
-    setTimeout(renderHomeProductCategories, 100);
-    return;
-  }
+  const productSource = getHomeProductSource();
 
   // Display first 4 MAXIGROW lines as teaser
-  const categoryKeys = Object.keys(window.productData).slice(0, 4);
+  const categoryKeys = Object.keys(productSource).slice(0, 4);
   const productImages = [
     "public/product1-placeholder.png",
     "public/product2-placeholder.png",
@@ -369,15 +402,17 @@ function renderHomeProductCategories() {
   gridContainer.innerHTML = "";
 
   categoryKeys.forEach((categoryKey, index) => {
-    const category = window.productData[categoryKey];
+    const category = productSource[categoryKey];
     const delay = index * 200;
 
     const col = document.createElement("div");
     col.className = "col-12 col-md-6 col-lg-3";
 
     const card = document.createElement("div");
-    card.className = "product-category-card card h-100 border-0 shadow-sm slide-up";
+    card.className = "product-category-card card h-100 border-0 shadow-sm";
     card.setAttribute("data-delay", delay);
+
+    const productCount = category?.products?.length || 0;
 
     card.innerHTML = `
       <div class="card-media">
@@ -392,7 +427,7 @@ function renderHomeProductCategories() {
       <div class="card-body text-center">
         <h3 class="card-title h5 mb-3">${category.name}</h3>
         <p class="card-text small">${category.description}</p>
-        <div class="teaser-meta">${category.products.length}+ tailored formulas</div>
+        <div class="teaser-meta">${productCount}+ tailored formulas</div>
         <a
           href="products.html?category=${categoryKey}"
           class="btn btn-outline-primary btn-sm"
@@ -407,7 +442,30 @@ function renderHomeProductCategories() {
   console.log(`Rendered ${categoryKeys.length} category cards on homepage`);
 }
 
-// Testimonial carousel custom navigation
+// Guarantee the teaser renders even if DOMContentLoaded listeners are skipped
+function ensureHomeTeaserMount() {
+  let attempts = 0;
+  const maxAttempts = 10;
+
+  const tryRender = () => {
+    attempts += 1;
+    const gridContainer = document.getElementById("homeProductsGrid");
+
+    if (gridContainer) {
+      renderHomeProductCategories();
+      return;
+    }
+
+    if (attempts < maxAttempts) {
+      requestAnimationFrame(tryRender);
+    } else {
+      console.warn("homeProductsGrid container not found after retries");
+    }
+  };
+
+  tryRender();
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const testimonialCarousel = document.getElementById("testimonialCarousel");
   const hasBootstrap = typeof bootstrap !== "undefined" && bootstrap?.Carousel;
@@ -424,3 +482,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // Render homepage categories even if Bootstrap JS is missing
   renderHomeProductCategories();
 });
+
+// Render homepage teaser as soon as product data is confirmed ready
+window.addEventListener("productDataReady", () => {
+  renderHomeProductCategories();
+});
+
+// Run an immediate mount attempt so the teaser appears even if DOMContentLoaded
+// is skipped or another script error short-circuits earlier listeners.
+ensureHomeTeaserMount();
+
+// Also mount on full window load as a backstop for extremely slow DOM hydration
+// scenarios where the grid container renders late.
+window.addEventListener("load", ensureHomeTeaserMount);
