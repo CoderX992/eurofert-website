@@ -1773,54 +1773,93 @@ Main Container */
   margin-top: var(--space-md); /* Consistent spacing above buttons */
 }
 
-/* Footer */
+/* Footer - CSS Grid Layout */
 .footer {
   background-color: var(--dark);
   color: white;
   border-top: 2px solid var(--gray-800);
 }
-  /*main parent flexbox for footer
-   footer-flexbox*/
 
-.footer .top-footer.row {
-  gap: 2rem; /* Proper spacing between footer sections */
-       justify-content: space-between;
-    align-items:stretch;
-  }
+.footer-grid-container {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto auto auto;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem;
+  row-gap: 1.5rem;
+}
 
-  .footer .container-fluid {
+.footer-brand-col {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  max-width: 280px;
+}
+
+.footer-center-col {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  text-align: left;
+}
+
+.footer-links-col {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  text-align: left;
+}
+
+.footer-separator {
+  grid-column: 1 / -1;
+  grid-row: 2;
   width: 100%;
-  padding:1.5rem 1.5rem; /* symmetric left/right gutters + bottom space */
+  border: 0;
+  border-top: 1px solid var(--gray-700);
+  margin: 0;
+}
 
-  margin: 0; /* important: no extra outer margins here */
-} 
+.footer-copyright-col {
+  grid-column: 1;
+  grid-row: 3;
+  justify-self: start;
+  align-self: center;
+  padding-left: 0.5rem;
+}
 
-  
+.footer-legal-col {
+  grid-column: 2;
+  grid-row: 3;
+  justify-self: center;
+  align-self: center;
+}
+
+.footer-social-col {
+  grid-column: 3;
+  grid-row: 3;
+  justify-self: end;
+  align-self: center;
+  display: flex;
+  gap: 0.75rem;
+}
+
 .footer-subtitle {
   font-family: var(--font-primary);
   font-size: clamp(0.8125rem, 1vw + 0.4rem, 0.9375rem);
   line-height: 1.6;
   color: var(--gray-400);
+  margin-top: 1rem;
 }
 
- .footer .quick-links-container {
-    flex: 0 0 auto; 
-    flex-direction: column;
-    align-items: center;
-    justify-content:flex-start;
-    }
-
-  /* footer logo */
-  .logo-footer {
-    display: block;
-    height: auto;
-    width: auto;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
-    image-rendering: -webkit-optimize-contrast; /* sharper in WebKit */
-  }
-
-
+.logo-footer {
+  display: block;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  image-rendering: -webkit-optimize-contrast;
+}
 
 .footer-heading {
   margin: 0;
@@ -1830,12 +1869,11 @@ Main Container */
 }
 
 .heading-text {
-   position: relative; /* This makes the ::after position relative to the text width */
-  display: inline-block; /* Ensure span respects block properties for positioning */
-  padding-bottom:0.4rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.4rem;
   word-spacing: 1px;
-    letter-spacing: 0.1rem;
-  
+  letter-spacing: 0.1rem;
 }
 
 .heading-text::after {
@@ -1843,29 +1881,17 @@ Main Container */
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 100%; 
+  width: 100%;
   height: 2px;
   background-color: var(--primary);
 }
 
-
- /* force column layout - column orientation*/
-.footer .row > [class*="col-"] {
-  display: flex;
-  flex-direction: column;
-
-
+.footer-links {
+  margin-top: 1.1rem;
 }
 
 .footer-links li {
-  margin-bottom: var(--space-sm); /* Consistent list item spacing */
-}
-
-
- /** footer list**/
-.footer-column > .footer-links {
-  margin: 1.1rem;
-
+  margin-bottom: var(--space-sm);
 }
 
 .footer-links a {
@@ -1884,8 +1910,7 @@ Main Container */
 
 .footer-links span {
   white-space: normal;
-  overflow-wrap: anywhere;       /* allow hard wrap almost anywhere if necessary */
-   
+  overflow-wrap: anywhere;
 }
 
 .footer-links a:hover {
@@ -1902,100 +1927,97 @@ Main Container */
   font-weight: 600;
 }
 
+.footer-legal-list {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  column-gap: clamp(0.75rem, 1.5vw, 1.5rem);
+}
+
+.footer-legal-list li {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.footer-legal-link {
+  font-size: clamp(0.75rem, 0.8vw + 0.4rem, 0.875rem);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.footer-legal-link:hover {
+  color: #ffffff;
+}
+
 /* =========================
-   Footer bottom – DESKTOP -  Desktop Footer 
+   Footer – TABLET RESPONSIVE
    ========================= */
-   @media (min-width: 768px) { 
-
-
-   .footer-bottom-left {
-    /* ensure text is left aligned on desktop */
-    text-align: left;
-    margin-bottom: 0; /* override mb-3 if it adds extra gap */
- 
+@media (max-width: 991.98px) {
+  .footer-grid-container {
+    padding: 1.25rem 1rem;
+    column-gap: 1.5rem;
   }
 
-   .footer .footer-bottom-row {
-    align-items: center; /* cross-axis centering for all columns */
+  .footer-brand-col {
+    max-width: 220px;
   }
-
-  /* Middle column under "Featured Products" */
-  .footer-bottom-legal {
-    justify-content: center;      /* center the block in that column */
-  }
-
-   .footer  .footer-bottom-row.row {
-    justify-content: space-between;
-  }
-
-
-  .footer-bottom-center
-  { 
-    display:inline-flex;
-    align-items: center;
-    width: 100%;
-  }
-
-
-  .footer-legal-list {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-    text-align: left;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    column-gap: clamp(0.75rem, 1.5vw, 1.5rem);
-  }
-
-  .footer-legal-list li {
-    margin: 0;
-    flex-shrink: 0;
-  }
-
-  .footer-legal-link {
-    font-size: clamp(0.75rem, 0.8vw + 0.4rem, 0.875rem);
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-    .footer-bottom-left {
-    justify-content: flex-start;  /* because the col itself is a flex container */
-    text-align: left;
-  }
-
-      .footer-bottom-social-link  {
-    display: flex;            /* required */
-    align-items: center;      /* center icons vertically in the wrapper */
-    justify-content: flex-start;/* keep them to the right inside their column */
-    gap: 0.75rem;             /* spacing between icons */
-    margin-left: 1rem;
-  }
-
-    .footer-legal-link:hover {
-    color: #ffffff;
-  }
-
-    /* target the Featured Products column only */
-  .footer .top-footer .quick-links-container.col-md-3 {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-   }
+}
 
 /* =========================
    Footer – MOBILE RESPONSIVE
    ========================= */
 @media (max-width: 767.98px) {
-  .footer .container-fluid {
+  .footer-grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
     padding: 1.25rem 1rem;
   }
 
-  .footer .top-footer.row {
-    gap: 1.5rem;
-    flex-direction: column;
+  .footer-brand-col,
+  .footer-center-col,
+  .footer-links-col {
+    justify-self: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .footer-brand-col {
+    order: 1;
+  }
+
+  .footer-center-col {
+    order: 2;
+  }
+
+  .footer-links-col {
+    order: 3;
+  }
+
+  .footer-separator {
+    order: 4;
+    width: 100%;
+  }
+
+  .footer-legal-col {
+    order: 5;
+  }
+
+  .footer-copyright-col {
+    order: 6;
+    padding-left: 0;
+  }
+
+  .footer-social-col {
+    order: 7;
+    justify-content: center;
   }
 
   .footer-heading {
@@ -2012,49 +2034,17 @@ Main Container */
     margin-bottom: 0.75rem;
   }
 
-  .footer-column > .footer-links {
-    margin: 0.75rem 0;
-  }
-
-  .footer-bottom-row {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    text-align: center;
-  }
-
-  .footer-bottom-left {
-    order: 2;
-    text-align: center;
-  }
-
-  .footer-bottom-legal {
-    order: 1;
+  .footer-links {
+    margin-top: 0.75rem;
   }
 
   .footer-legal-list {
-    display: flex;
-    flex-wrap: nowrap;
     justify-content: center;
     gap: clamp(0.5rem, 2vw, 1rem);
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  .footer-legal-list li {
-    margin: 0;
   }
 
   .footer-legal-link {
     font-size: clamp(0.6875rem, 0.8vw + 0.35rem, 0.8125rem);
-    white-space: nowrap;
-  }
-
-  .footer-bottom-social-link {
-    order: 3;
-    justify-content: center;
-    margin-left: 0;
   }
 }
 
