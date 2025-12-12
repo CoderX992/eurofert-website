@@ -1780,68 +1780,86 @@ Main Container */
   border-top: 2px solid var(--gray-800);
 }
 
+/* Base mobile-first footer container */
 .footer-grid-container {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  grid-template-rows: auto auto auto;
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 1.5rem 1.5rem;
-  row-gap: 1.5rem;
-}
-
-.footer-brand-col {
-  grid-column: 1;
-  grid-row: 1;
-  justify-self: start;
-  max-width: 280px;
-}
-
-.footer-center-col {
-  grid-column: 2;
-  grid-row: 1;
-  justify-self: center;
-  text-align: left;
-}
-
-.footer-links-col {
-  grid-column: 3;
-  grid-row: 1;
-  justify-self: end;
-  text-align: left;
-}
-
-.footer-separator {
-  grid-column: 1 / -1;
-  grid-row: 2;
-  width: 100%;
-  border: 0;
-  border-top: 1px solid var(--gray-700);
-  margin: 0;
-}
-
-.footer-copyright-col {
-  grid-column: 1;
-  grid-row: 3;
-  justify-self: start;
-  align-self: center;
-  padding-left: 0.5rem;
-}
-
-.footer-legal-col {
-  grid-column: 2;
-  grid-row: 3;
-  justify-self: center;
-  align-self: center;
-}
-
-.footer-social-col {
-  grid-column: 3;
-  grid-row: 3;
-  justify-self: end;
-  align-self: center;
   display: flex;
-  gap: 0.75rem;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1rem;
+  margin: 0 auto;
+}
+
+/* Desktop Media Query - Apply grid layout only on desktop */
+@media (min-width: 768px) {
+  .footer-grid-container {
+    display: grid;
+    grid-template-columns: minmax(260px, 1.2fr) minmax(320px, 1.4fr) minmax(220px, 0.9fr);
+    grid-template-rows: auto auto auto;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: clamp(1rem, 3vw, 2.5rem);
+    padding-right: clamp(1rem, 3vw, 2.5rem);
+    padding-top: clamp(2rem, 4vw, 3.5rem);
+    padding-bottom: clamp(2rem, 4vw, 3.5rem);
+    gap: clamp(1.5rem, 3vw, 3rem);
+  }
+
+  .footer-brand-col {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+  }
+
+  .footer-center-col {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    text-align: center;
+  }
+
+  .footer-links-col {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    text-align: left;
+  }
+
+  .footer-separator {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    border: 0;
+    border-top: 1px solid var(--gray-700);
+    margin: 0;
+  }
+
+  .footer-copyright-col {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: start;
+    align-self: center;
+    padding-left: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .footer-legal-col {
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+  }
+
+  .footer-social-col {
+    grid-column: 3;
+    grid-row: 3;
+    justify-self: end;
+    align-self: center;
+    display: flex;
+    gap: 0.75rem;
+  }
 }
 
 .footer-subtitle {
@@ -1861,11 +1879,27 @@ Main Container */
   image-rendering: -webkit-optimize-contrast;
 }
 
+/* Desktop logo sizing */
+@media (min-width: 768px) {
+  .logo-footer {
+    max-width: 260px;
+    width: 100%;
+    height: auto;
+  }
+}
+
 .footer-heading {
   margin: 0;
   font-family: var(--font-primary);
   font-weight: 600;
   font-size: clamp(0.9375rem, 1.5vw + 0.5rem, 1.125rem);
+}
+
+/* Desktop footer heading size */
+@media (min-width: 768px) {
+  .footer-heading {
+    font-size: clamp(1.125rem, 1.5vw + 0.5rem, 1.375rem);
+  }
 }
 
 .heading-text {
@@ -1908,6 +1942,13 @@ Main Container */
   display: inline;
 }
 
+/* Desktop footer links size */
+@media (min-width: 768px) {
+  .footer-links a {
+    font-size: clamp(0.95rem, 1vw + 0.75rem, 1.125rem);
+  }
+}
+
 .footer-links span {
   white-space: normal;
   overflow-wrap: anywhere;
@@ -1921,6 +1962,13 @@ Main Container */
   font-size: clamp(0.75rem, 0.8vw + 0.4rem, 0.875rem);
   white-space: nowrap;
   margin: 0;
+}
+
+/* Desktop footer meta size */
+@media (min-width: 768px) {
+  .footer-meta {
+    font-size: clamp(0.85rem, 0.8vw + 0.45rem, 1rem);
+  }
 }
 
 .footer-meta strong {
@@ -1938,6 +1986,13 @@ Main Container */
   column-gap: clamp(0.75rem, 1.5vw, 1.5rem);
 }
 
+/* Desktop footer legal list gap */
+@media (min-width: 768px) {
+  .footer-legal-list {
+    gap: clamp(0.75rem, 2vw, 1rem);
+  }
+}
+
 .footer-legal-list li {
   margin: 0;
   flex-shrink: 0;
@@ -1950,6 +2005,13 @@ Main Container */
   transition: color 0.2s ease;
 }
 
+/* Desktop footer legal link size */
+@media (min-width: 768px) {
+  .footer-legal-link {
+    font-size: clamp(0.78rem, 0.8vw + 0.4rem, 0.875rem);
+  }
+}
+
 .footer-legal-link:hover {
   color: #ffffff;
 }
@@ -1957,14 +2019,9 @@ Main Container */
 /* =========================
    Footer – TABLET RESPONSIVE
    ========================= */
-@media (max-width: 991.98px) {
+@media (min-width: 768px) and (max-width: 991.98px) {
   .footer-grid-container {
-    padding: 1.25rem 1rem;
-    column-gap: 1.5rem;
-  }
-
-  .footer-brand-col {
-    max-width: 220px;
+    gap: clamp(1.2rem, 2.5vw, 2rem);
   }
 }
 
