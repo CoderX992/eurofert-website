@@ -1795,15 +1795,12 @@ Main Container */
 @media (min-width: 768px) {
   .footer-grid-container {
     display: grid;
-    grid-template-columns: minmax(260px, 1.2fr) minmax(320px, 1.4fr) minmax(220px, 0.9fr);
+    grid-template-columns: 1fr 1.8fr 1fr;
     grid-template-rows: auto auto auto;
-    max-width: 1400px;
+    max-width: 1800px;
     margin: 0 auto;
-    padding-left: clamp(1rem, 3vw, 2.5rem);
-    padding-right: clamp(1rem, 3vw, 2.5rem);
-    padding-top: clamp(2rem, 4vw, 3.5rem);
-    padding-bottom: clamp(2rem, 4vw, 3.5rem);
-    gap: clamp(1.5rem, 3vw, 3rem);
+    padding: 2.5rem 3rem;
+    gap: 2rem;
   }
 
   .footer-brand-col {
@@ -1882,8 +1879,7 @@ Main Container */
 /* Desktop logo sizing */
 @media (min-width: 768px) {
   .logo-footer {
-    max-width: 260px;
-    width: 100%;
+    max-width: 320px;
     height: auto;
   }
 }
@@ -1898,7 +1894,7 @@ Main Container */
 /* Desktop footer heading size */
 @media (min-width: 768px) {
   .footer-heading {
-    font-size: clamp(1.125rem, 1.5vw + 0.5rem, 1.375rem);
+    font-size: 1.25rem;
   }
 }
 
@@ -1945,7 +1941,7 @@ Main Container */
 /* Desktop footer links size */
 @media (min-width: 768px) {
   .footer-links a {
-    font-size: clamp(0.95rem, 1vw + 0.75rem, 1.125rem);
+    font-size: 1.05rem;
   }
 }
 
