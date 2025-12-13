@@ -1823,8 +1823,12 @@ Desktop footer - Footer Desktop Layout */
   } 
 
   .footer-center-col.footer-top {
-    grid-area:product-links;
-    justify-self:center;
+    grid-area: product-links;
+    /* Let element stretch to fill column width (default behavior) */
+    /* Center content within full column width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
    .footer-copyright-col .copyright-text 
@@ -1885,9 +1889,11 @@ Desktop footer - Footer Desktop Layout */
 
 
    .footer-legal-bottom {
-    grid-area:legal;
-    display:flex;
-    justify-self:center;
+    grid-area: legal;
+    /* Let element stretch to fill column width (default behavior) */
+    /* Center the legal list within full column width */
+    display: flex;
+    justify-content: center;
   } 
 
 
