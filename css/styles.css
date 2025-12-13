@@ -1887,6 +1887,21 @@ Desktop footer - Footer Desktop Layout */
   display: block;
 }
 
+.footer-center-col.footer-top .footer-links {
+  max-width: 200px;
+  width: 100%;
+}
+
+.footer-center-col.footer-top .footer-links li {
+  list-style-position: outside;
+  padding-left: 0;
+  margin-bottom: var(--space-sm);
+}
+
+.footer-links .product-formula {
+  display: block;
+  padding-left: 0;
+}
 
    .footer-legal-bottom {
     grid-area: legal;
