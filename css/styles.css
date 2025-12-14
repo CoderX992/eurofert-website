@@ -1909,18 +1909,14 @@ Main Container */
   font-size: 0.7rem;
 }
 
-/* Link styling with flexbox for text wrapping */
+/* Link styling */
 .footer .col-lg-4.text-center .footer-links a {
   color: var(--gray-400);
   transition: color 0.25s ease;
   font-family: var(--font-primary);
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
   line-height: 1.5;
-  width: 100%;
 }
 
 /* Product name styling */
@@ -1929,17 +1925,15 @@ Main Container */
   color: var(--gray-400);
 }
 
-/* Product formula styling with indent */
+/* Product formula styling - same as normal text */
 .footer .col-lg-4.text-center .footer-links .product-formula {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--gray-400);
-  padding-left: 0.75rem;
   font-weight: 400;
 }
 
 /* Hover effect for entire link */
-.footer .col-lg-4.text-center .footer-links a:hover .product-name,
-.footer .col-lg-4.text-center .footer-links a:hover .product-formula {
+.footer .col-lg-4.text-center .footer-links a:hover {
   color: #ffffff;
 }
 
@@ -1978,12 +1972,11 @@ Main Container */
   }
 
   .footer .col-lg-4.text-center .footer-links a {
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 
   .footer .col-lg-4.text-center .footer-links .product-formula {
-    font-size: 0.875rem;
-    padding-left: 0.5rem;
+    font-size: 1rem;
   }
 }
 
