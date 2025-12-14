@@ -1914,7 +1914,7 @@ Main Container */
   color: var(--gray-400);
   transition: color 0.25s ease;
   font-family: var(--font-primary);
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-decoration: none;
   line-height: 1.5;
 }
@@ -1927,7 +1927,7 @@ Main Container */
 
 /* Product formula styling - same as normal text */
 .footer .col-lg-4.text-center .footer-links .product-formula {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--gray-400);
   font-weight: 400;
 }
