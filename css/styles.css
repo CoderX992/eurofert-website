@@ -1905,7 +1905,7 @@ Main Container */
   position: absolute;
   left: 0;
   top: 0.2rem;
-  color: var(--primary);
+  color: white;
   font-size: 0.7rem;
 }
 
@@ -1914,7 +1914,7 @@ Main Container */
   color: var(--gray-400);
   transition: color 0.25s ease;
   font-family: var(--font-primary);
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   text-decoration: none;
   display: flex;
   flex-direction: column;
@@ -1925,14 +1925,14 @@ Main Container */
 
 /* Product name styling */
 .footer .col-lg-4.text-center .footer-links .product-name {
-  font-weight: 500;
+  font-weight: 400;
   color: var(--gray-400);
 }
 
 /* Product formula styling with indent */
 .footer .col-lg-4.text-center .footer-links .product-formula {
-  font-size: 0.8125rem;
-  color: var(--gray-500);
+  font-size: 0.9rem;
+  color: var(--gray-400);
   padding-left: 0.75rem;
   font-weight: 400;
 }
@@ -1978,11 +1978,11 @@ Main Container */
   }
 
   .footer .col-lg-4.text-center .footer-links a {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
   }
 
   .footer .col-lg-4.text-center .footer-links .product-formula {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     padding-left: 0.5rem;
   }
 }
