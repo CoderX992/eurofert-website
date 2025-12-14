@@ -2397,12 +2397,11 @@ Desktop footer - Footer Desktop Layout */
 
   .footer-copyright-col {
     order: 3;
-    flex: 0 1 auto;
-    flex-basis: auto;
-    width: auto;
+    flex-basis: 100%;
+    width: 100%;
     padding: 0;
     text-align: center;
-    min-width: 0;
+    margin-top: 0.75rem;
   }
 
   .footer-copyright-col .copyright-text {
@@ -2411,11 +2410,10 @@ Desktop footer - Footer Desktop Layout */
   }
 
   .footer-legal-bottom {
-    order: 3;
-    flex: 1 1 auto;
-    flex-basis: auto;
-    width: auto;
-    min-width: 0;
+    order: 4;
+    flex-basis: 100%;
+    width: 100%;
+    margin-top: 0.5rem;
   }
 
   .footer-legal-list {
@@ -2430,13 +2428,13 @@ Desktop footer - Footer Desktop Layout */
   }
 
   .footer-social-col {
-    order: 3;
-    flex: 0 1 auto;
-    flex-basis: auto;
-    width: auto;
+    order: 5;
+    display: flex;
+    flex-basis: 100%;
+    width: 100%;
     justify-content: center;
     gap: 0.5rem;
-    min-width: 0;
+    margin-top: 0.75rem;
   }
 
   .social-link {
