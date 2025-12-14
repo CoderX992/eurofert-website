@@ -2294,7 +2294,7 @@ Desktop footer - Footer Desktop Layout */
     justify-content: space-between;
     text-align: center;
     gap: 1rem;
-    padding: 1.25rem 1rem;
+    padding: 1.5rem 1rem 0.5rem 1rem;
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
@@ -2395,46 +2395,52 @@ Desktop footer - Footer Desktop Layout */
     display: none;
   }
 
-  .footer-copyright-col {
+  /* Social media links - TOP of bottom section */
+  .footer-social-col {
     order: 3;
+    display: flex;
     flex-basis: 100%;
     width: 100%;
-    padding: 0;
-    text-align: center;
-    margin-top: 0.75rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    padding: 0 1rem;
   }
 
-  .footer-copyright-col .copyright-text {
-    font-size: clamp(0.6875rem, 2vw + 0.2rem, 0.8125rem);
-    margin: 0;
-  }
-
+  /* Legal links - MIDDLE */
   .footer-legal-bottom {
     order: 4;
     flex-basis: 100%;
     width: 100%;
-    margin-top: 0.5rem;
+    margin-top: 1.25rem;
+    padding: 0 1rem;
   }
 
   .footer-legal-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.25rem 0.5rem;
+    gap: 0.5rem 0.75rem;
   }
 
   .footer-legal-link {
-    font-size: clamp(0.6875rem, 2vw + 0.15rem, 0.8125rem);
+    font-size: clamp(0.75rem, 2vw + 0.2rem, 0.875rem);
   }
 
-  .footer-social-col {
+  /* Copyright text - BOTTOM */
+  .footer-copyright-col {
     order: 5;
-    display: flex;
     flex-basis: 100%;
     width: 100%;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 0.75rem;
+    padding: 0 1rem 1.5rem 1rem;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  .footer-copyright-col .copyright-text {
+    font-size: clamp(0.75rem, 2vw + 0.25rem, 0.875rem);
+    margin: 0;
   }
 
   .social-link {
@@ -2445,7 +2451,7 @@ Desktop footer - Footer Desktop Layout */
 
 @media (max-width: 479px) {
   .footer-container {
-    padding: 1.25rem 0.75rem;
+    padding: 1.25rem 1rem;
     gap: 1rem;
   }
 
@@ -2461,16 +2467,34 @@ Desktop footer - Footer Desktop Layout */
     font-size: clamp(0.6rem, 2.2vw + 0.1rem, 0.75rem);
   }
 
+  /* Social media links spacing for very small devices */
+  .footer-social-col {
+    gap: 0.65rem;
+    margin-top: 1.25rem;
+  }
+
+  .social-link {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Legal links spacing for very small devices */
   .footer-legal-list {
-    gap: 0.25rem 0.4rem;
+    gap: 0.4rem 0.65rem;
   }
 
   .footer-legal-link {
-    font-size: clamp(0.625rem, 2vw + 0.1rem, 0.75rem);
+    font-size: clamp(0.6875rem, 2vw + 0.15rem, 0.8125rem);
+  }
+
+  /* Copyright text for very small devices */
+  .footer-copyright-col {
+    padding: 0 0.75rem 1.25rem 0.75rem;
+    margin-top: 1.25rem;
   }
 
   .footer-copyright-col .copyright-text {
-    font-size: clamp(0.625rem, 2vw + 0.15rem, 0.75rem);
+    font-size: clamp(0.6875rem, 2vw + 0.2rem, 0.8125rem);
   }
 }
 
