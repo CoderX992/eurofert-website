@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+// Main JavaScript for Eurofert Website
 
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize animations
@@ -12,29 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Form validation
   initFormValidation();
-
-  // Format footer product links
-  formatFooterProductLinks();
 });
-
-function formatFooterProductLinks() {
-  const links = document.querySelectorAll('.footer-center-col.footer-top .footer-links li a');
-  const THRESHOLD = 22;
-  const formulaPattern = /^(.+?:)\s*([0-9\-+%.a-zA-Z\s]+)$/;
-
-  links.forEach(link => {
-    const text = link.textContent.trim();
-
-    if (text.length > THRESHOLD && formulaPattern.test(text)) {
-      const match = text.match(formulaPattern);
-      if (match) {
-        const productName = match[1];
-        const formula = match[2].trim();
-        link.innerHTML = `<span class="footer-product-title">${productName}</span><span class="footer-product-info">${formula}</span>`;
-      }
-    }
-  });
-}
 
 // Animation initialization
 function initAnimations() {
