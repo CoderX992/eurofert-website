@@ -1978,14 +1978,12 @@ Desktop footer - Footer Desktop Layout */
       "separator separator separator"
       "copyright  legal    social";
     padding: 1.5rem;
-    align-items: start;
 
   }
     /* 1st column */
    .footer-top-left-col {
     grid-area:img-brand;
     padding-left: 1rem;
-    align-self: end;
    }
      
  .footer-top-left-col .logo-footer {
@@ -1999,29 +1997,36 @@ Desktop footer - Footer Desktop Layout */
   .footer-copyright-col {
     grid-area:copyright;
     justify-self: start;
-    padding-left: 1.2rem;
+    padding-left: 1rem;
     white-space: nowrap;
   } 
 
   .footer-center-col.footer-top {
     grid-area: product-links;
     /* Let element stretch to fill column width (default behavior) */
-    /* Align content to start for horizontal heading alignment */
+    /* Center align content horizontally */
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
   }
 
   .footer-top-end-col {
     grid-area: quick-links;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
   }
 
   .footer-top-end-col .footer-links {
     list-style-type: disc;
     padding-left: 1.25rem;
+  }
+
+  .footer-social-col {
+    grid-area: social;
+    justify-self: end;
+    display: flex;
+    gap: 0.75rem;
   }
 
    .footer-copyright-col .copyright-text 
@@ -2118,35 +2123,18 @@ Desktop footer - Footer Desktop Layout */
 
    .footer-legal-bottom {
     grid-area: legal;
-    /* Let element stretch to fill column width (default behavior) */
-    /* Center the legal list within full column width */
     display: flex;
     justify-content: center;
-  } 
+    align-items: center;
+  }
 
 
  .footer-legal-list {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr; /* left slot, center slot, right slot */
+    display: flex;
     align-items: center;
-    column-gap: 1rem;
-    list-style:none;
-  }
-
-  /* left link aligned to the right edge of left slot */
-  .footer-legal-list li:first-child {
-    justify-self: end;
-  }
-
-  
-  /* middle link forced to dead-center */
-  .footer-legal-list li:nth-child(2) {
-    justify-self: center;
-  }
-
-  /* right link aligned to the left edge of right slot */
-  .footer-legal-list li:last-child {
-    justify-self: start;
+    gap: 1.5rem;
+    list-style: none;
+    justify-content: center;
   }
 
 
