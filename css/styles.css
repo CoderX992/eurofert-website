@@ -1797,7 +1797,7 @@ Main Container */
   align-items: center;
   text-align: center;
   gap: 1.25rem;
-  padding: 1.5rem 1rem;
+  padding: 1.5rem;
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
@@ -1962,23 +1962,22 @@ Main Container */
 
 
 
-/* Desktop Media Query - Apply grid layout desktop grid footer - 
+/* Desktop Media Query - Apply grid layout desktop grid footer -
 Desktop footer - Footer Desktop Layout */
 @media (min-width: 768px) {
   .footer-container {
     display: grid;
-    width:100%;
+    width: 100%;
     margin: 0;
     grid-template-columns:
     minmax(100px, 480px) minmax(260px, 1fr) minmax(200px, 0.8fr);
     grid-auto-rows: auto auto;
-    grid-gap:1rem;
+    grid-gap: 1rem;
     grid-template-areas:
       "img-brand product-links quick-links"
       "separator separator separator"
       "copyright  legal    social";
-
-      padding-top:1.5rem;
+    padding: 1.5rem;
     
   }
     /* 1st column */
@@ -2009,6 +2008,18 @@ Desktop footer - Footer Desktop Layout */
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .footer-top-end-col {
+    grid-area: quick-links;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-top-end-col .footer-links {
+    list-style-type: disc;
+    padding-left: 1.25rem;
   }
 
    .footer-copyright-col .copyright-text 
@@ -2070,12 +2081,16 @@ Desktop footer - Footer Desktop Layout */
 .footer-center-col.footer-top .footer-links {
   max-width: 200px;
   width: 100%;
+  list-style-type: disc;
+  padding-left: 1.25rem;
 }
 
 .footer-center-col.footer-top .footer-links li {
+  list-style-type: disc;
   list-style-position: outside;
   padding-left: 0;
   margin-bottom: var(--space-sm);
+  text-align: left;
 }
 
 .footer-links .product-formula {
@@ -2090,7 +2105,10 @@ Desktop footer - Footer Desktop Layout */
 }
 
 .footer-top-end-col .footer-links li {
+  list-style-type: disc;
+  list-style-position: outside;
   margin-bottom: var(--space-sm);
+  text-align: left;
 }
 
    .footer-legal-bottom {
@@ -2270,11 +2288,13 @@ Desktop footer - Footer Desktop Layout */
 
   .footer-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
     text-align: center;
     gap: 1.25rem;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem;
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
@@ -2283,6 +2303,7 @@ Desktop footer - Footer Desktop Layout */
   .footer-top-left-col {
     order: 1;
     width: 100%;
+    flex-basis: 100%;
     max-width: 100%;
     padding: 0;
   }
@@ -2306,12 +2327,16 @@ Desktop footer - Footer Desktop Layout */
 
   .footer-center-col.footer-top {
     order: 2;
-    width: 100%;
-    max-width: 100%;
+    flex: 0 0 48%;
+    width: 48%;
+    max-width: 48%;
   }
 
   .footer-top-end-col {
-    display: none;
+    order: 3;
+    flex: 0 0 48%;
+    width: 48%;
+    max-width: 48%;
   }
 
   .footer-heading {
@@ -2358,14 +2383,45 @@ Desktop footer - Footer Desktop Layout */
     display: inline;
   }
 
+  .footer-top-end-col .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+    max-width: 100%;
+  }
+
+  .footer-top-end-col .footer-links li {
+    list-style: none;
+    margin: 0;
+    flex: 0 1 auto;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  .footer-top-end-col .footer-links li::before {
+    display: none;
+  }
+
+  .footer-top-end-col .footer-links a {
+    font-size: clamp(0.75rem, 2.5vw + 0.2rem, 0.875rem);
+    white-space: nowrap;
+    display: inline-block;
+  }
+
   .footer-separator {
-    order: 3;
+    order: 4;
+    flex-basis: 100%;
     width: 100%;
     margin: 0.25rem 0;
   }
 
   .footer-copyright-col {
-    order: 4;
+    order: 5;
+    flex-basis: 100%;
     width: 100%;
     padding: 0;
     text-align: center;
@@ -2376,7 +2432,8 @@ Desktop footer - Footer Desktop Layout */
   }
 
   .footer-legal-bottom {
-    order: 5;
+    order: 6;
+    flex-basis: 100%;
     width: 100%;
   }
 
@@ -2392,7 +2449,8 @@ Desktop footer - Footer Desktop Layout */
   }
 
   .footer-social-col {
-    order: 6;
+    order: 7;
+    flex-basis: 100%;
     justify-content: center;
     gap: 0.5rem;
   }
