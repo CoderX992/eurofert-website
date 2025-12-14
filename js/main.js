@@ -1,4 +1,4 @@
-// Main JavaScript for Eurofert Website
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize animations
