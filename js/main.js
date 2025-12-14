@@ -30,7 +30,7 @@ function formatFooterProductLinks() {
       if (match) {
         const productName = match[1];
         const formula = match[2].trim();
-        link.innerHTML = `${productName}<span class="product-formula">${formula}</span>`;
+        link.innerHTML = `<span class="footer-product-title">${productName}</span><span class="footer-product-info">${formula}</span>`;
       }
     }
   });

@@ -1920,19 +1920,9 @@ Main Container */
   white-space: normal;
 }
 
-/* Remove bullet points */
-.footer .col-lg-4.text-center .footer-links {
-  list-style: none;
-  padding-left: 0;
-}
-
-.footer .col-lg-4.text-center .footer-links li {
-  list-style: none;
-  margin-bottom: 0.75rem;
-}
 
 /* Footer product title styling */
-.footer-product-title {
+.footer .footer-product-title {
   display: block;
   font-size: 0.9rem;
   font-weight: 500;
@@ -1942,7 +1932,7 @@ Main Container */
 }
 
 /* Footer product info/formula styling */
-.footer-product-info {
+.footer .footer-product-info {
   display: block;
   font-size: 0.85rem;
   font-weight: 300;
@@ -2000,7 +1990,7 @@ Main Container */
     font-size: 1rem;
   }
 
-  .footer .col-lg-4.text-center .footer-links .product-formula {
+  .footer .col-lg-4.text-center .footer-links .footer-product-info {
     font-size: 1rem;
   }
 }
