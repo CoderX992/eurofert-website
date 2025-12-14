@@ -1978,12 +1978,14 @@ Desktop footer - Footer Desktop Layout */
       "separator separator separator"
       "copyright  legal    social";
     padding: 1.5rem;
-    
+    align-items: start;
+
   }
     /* 1st column */
    .footer-top-left-col {
     grid-area:img-brand;
     padding-left: 1rem;
+    align-self: end;
    }
      
  .footer-top-left-col .logo-footer {
@@ -2004,17 +2006,17 @@ Desktop footer - Footer Desktop Layout */
   .footer-center-col.footer-top {
     grid-area: product-links;
     /* Let element stretch to fill column width (default behavior) */
-    /* Center content within full column width */
+    /* Align content to start for horizontal heading alignment */
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
   }
 
   .footer-top-end-col {
     grid-area: quick-links;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: start;
   }
 
   .footer-top-end-col .footer-links {
@@ -2037,6 +2039,7 @@ Desktop footer - Footer Desktop Layout */
 
   .footer-heading {
       margin: 0;
+      padding-top: 0;
       font-family: var(--font-primary);
       font-weight: 600;
      font-size: 1.5rem;
@@ -2091,6 +2094,7 @@ Desktop footer - Footer Desktop Layout */
   padding-left: 0;
   margin-bottom: var(--space-sm);
   text-align: left;
+  line-height: 1.6;
 }
 
 .footer-links .product-formula {
@@ -2109,6 +2113,7 @@ Desktop footer - Footer Desktop Layout */
   list-style-position: outside;
   margin-bottom: var(--space-sm);
   text-align: left;
+  line-height: 1.6;
 }
 
    .footer-legal-bottom {
