@@ -1916,25 +1916,50 @@ Main Container */
   font-family: var(--font-primary);
   font-size: 0.9rem;
   text-decoration: none;
-  line-height: 1.5;
+  line-height: 1.6;
+  white-space: normal;
 }
 
-/* Product name styling */
-.footer .col-lg-4.text-center .footer-links .product-name {
-  font-weight: 400;
-  color: var(--gray-400);
+/* Remove bullet points */
+.footer .col-lg-4.text-center .footer-links {
+  list-style: none;
+  padding-left: 0;
 }
 
-/* Product formula styling - same as normal text */
-.footer .col-lg-4.text-center .footer-links .product-formula {
+.footer .col-lg-4.text-center .footer-links li {
+  list-style: none;
+  margin-bottom: 0.75rem;
+}
+
+/* Footer product title styling */
+.footer-product-title {
+  display: block;
   font-size: 0.9rem;
+  font-weight: 500;
   color: var(--gray-400);
-  font-weight: 400;
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
+}
+
+/* Footer product info/formula styling */
+.footer-product-info {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--gray-400);
+  opacity: 0.9;
+  line-height: 1.4;
 }
 
 /* Hover effect for entire link */
 .footer .col-lg-4.text-center .footer-links a:hover {
   color: #ffffff;
+}
+
+.footer .col-lg-4.text-center .footer-links a:hover .footer-product-title,
+.footer .col-lg-4.text-center .footer-links a:hover .footer-product-info {
+  color: #ffffff;
+  opacity: 1;
 }
 
 /* Ensure heading stays centered */
