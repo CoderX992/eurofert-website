@@ -1869,6 +1869,124 @@ Main Container */
   text-decoration: none;
 }
 
+/* ===================================================================
+   FEATURED PRODUCTS - Enhanced Styling with Arrows and Text Wrapping
+   =================================================================== */
+
+/* Featured Products Column - Center Column Specific Styling */
+.footer .col-lg-4.text-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer .col-lg-4.text-center .footer-links {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  text-align: left;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.footer .col-lg-4.text-center .footer-links li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.875rem;
+  line-height: 1.5;
+  display: block;
+  width: 100%;
+}
+
+/* Arrow bullets using ::before pseudo-element */
+.footer .col-lg-4.text-center .footer-links li::before {
+  content: '►';
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  color: var(--primary);
+  font-size: 0.7rem;
+}
+
+/* Link styling with flexbox for text wrapping */
+.footer .col-lg-4.text-center .footer-links a {
+  color: var(--gray-400);
+  transition: color 0.25s ease;
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  line-height: 1.5;
+  width: 100%;
+}
+
+/* Product name styling */
+.footer .col-lg-4.text-center .footer-links .product-name {
+  font-weight: 500;
+  color: var(--gray-400);
+}
+
+/* Product formula styling with indent */
+.footer .col-lg-4.text-center .footer-links .product-formula {
+  font-size: 0.8125rem;
+  color: var(--gray-500);
+  padding-left: 0.75rem;
+  font-weight: 400;
+}
+
+/* Hover effect for entire link */
+.footer .col-lg-4.text-center .footer-links a:hover .product-name,
+.footer .col-lg-4.text-center .footer-links a:hover .product-formula {
+  color: #ffffff;
+}
+
+/* Ensure heading stays centered */
+.footer .col-lg-4.text-center .footer-heading {
+  text-align: center;
+  width: 100%;
+}
+
+/* Mobile and Tablet Responsive Adjustments */
+@media (max-width: 991.98px) {
+  .footer .col-lg-4.text-center {
+    text-align: center !important;
+  }
+
+  .footer .col-lg-4.text-center .footer-links {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .footer .col-lg-4.text-center .footer-links li {
+    text-align: left;
+  }
+}
+
+/* Mobile: Adjust spacing and sizing */
+@media (max-width: 767.98px) {
+  .footer .col-lg-4.text-center .footer-links {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .footer .col-lg-4.text-center .footer-links li {
+    padding-left: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer .col-lg-4.text-center .footer-links a {
+    font-size: 0.8125rem;
+  }
+
+  .footer .col-lg-4.text-center .footer-links .product-formula {
+    font-size: 0.75rem;
+    padding-left: 0.5rem;
+  }
+}
+
 .footer-separator {
   width: 100%;
   border: 0;
