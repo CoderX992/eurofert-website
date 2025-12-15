@@ -1819,7 +1819,7 @@ Main Container */
 
 .footer-end-col {
   order: 3;
-  display: none;
+  display: block;
 }
 
 .footer-separator {
@@ -1908,7 +1908,7 @@ Main Container */
 }
 
 .footer-center-col .footer-links li {
-  flex: 1 1 45%;
+  flex: 1 1 48%;
   text-align: left;
 }
 
@@ -2200,8 +2200,12 @@ Desktop footer - Footer Desktop Layout */
     gap: 1.25rem;
   }
 
+  .footer-end-col {
+    display: none;
+  }
+
   .footer-center-col .footer-links li {
-    flex-basis: 48%;
+    flex: 1 1 48%;
   }
 
   .footer-legal-list {
