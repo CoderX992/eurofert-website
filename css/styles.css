@@ -304,7 +304,7 @@ img {
   display: flex;
   min-height: clamp(420px, 60vh, 540px);
   width: 100%;
-  background-image: url("https://images.pexels.com/photos/440731/pexels-photo-440731.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-image: url("https://images.pexels.com/photos/440731/pexels-photo-440731.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"), url("/image.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
