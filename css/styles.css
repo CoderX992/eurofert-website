@@ -1788,7 +1788,8 @@ Main Container */
   font-size: clamp(0.875rem, 2vw, 1rem);
 }
 
-.footer-container {
+.footer-container,
+.footer-grid-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1924,7 +1925,7 @@ Main Container */
 }
 
 .footer-links a:hover {
-  color: #ffffff;
+  color: white;
 }
 
 .footer-legal-list {
@@ -1947,7 +1948,7 @@ Main Container */
 }
 
 .footer-legal-link:hover {
-  color: #ffffff;
+  color: white;
 }
 
 /* Desktop Media Query - Apply grid layout desktop grid footer - 
@@ -2195,7 +2196,8 @@ Desktop footer - Footer Desktop Layout */
    - Footer Mobile Responive - Mobile layout Footer - Footer layout Mobile 
    ========================= */
 @media (max-width: 767.98px) {
-  .footer-container {
+  .footer-container,
+  .footer-grid-container {
     padding: 1.25rem 1rem;
     gap: 1.25rem;
   }
