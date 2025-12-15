@@ -620,10 +620,22 @@ Mobile Drawer: Menu Drawer Mobile code
     align-items: stretch;
     border-radius: 0;
     z-index: 9999;
+    /* Fix scrolling issue: hide drawer when collapsed */
+    display: none;
+    pointer-events: none;
   }
 
   .navbar-collapse.show {
     transform: translateX(0);
+    /* Show drawer when open */
+    display: block;
+    pointer-events: auto;
+  }
+  
+  .navbar-collapse.collapsing {
+    /* Show during animation */
+    display: block;
+    pointer-events: none;
   }
 
   .navbar-collapse::before {

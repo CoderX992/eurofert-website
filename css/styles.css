@@ -1787,6 +1787,13 @@ Main Container */
   border-top: 2px solid var(--gray-800);
 }
 
+/* Mobile footer padding to ensure full visibility */
+@media (max-width: 767.98px) {
+  .footer {
+    padding-bottom: 20px;
+  }
+}
+
 /* Desktop Media Query - Apply grid layout desktop grid footer - 
 Desktop footer - Footer Desktop Layout */
 @media (min-width: 768px) {
