@@ -1,6 +1,8 @@
 /* Styles.css changes updated on Nov 29 2025
 
-Google Fonts Import */
+Google Fonts Import 
+
+Updated Footer 15 December */
 
 /* Breakpoints:
    - Mobile drawer: up to 767.98px
@@ -124,8 +126,8 @@ p {
 }
 
 ul {
-  padding: 0; 
-  text-decoration:none;
+  padding: 0;
+  text-decoration: none;
 }
 
 /* Optimal Line Length for Readability */
@@ -447,7 +449,8 @@ section:first-of-type {
   height: 3px;
   background-color: var(--primary);
   transform: translateX(-50%);
-  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Desktop hover effect for section title */
@@ -474,11 +477,11 @@ section:first-of-type {
 Main Container */
 
 .container {
- width: 100%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding-left: var(--space-md, 0.75rem);
-  padding-right:var(--space-md, 0.75rem);
+  padding-right: var(--space-md, 0.75rem);
 }
 
 .hero-overlay {
@@ -662,7 +665,11 @@ Main Container */
 
 .product-category-card .card-media {
   position: relative;
-  background: linear-gradient(135deg, rgba(46, 125, 50, 0.12), rgba(0, 167, 111, 0.12));
+  background: linear-gradient(
+    135deg,
+    rgba(46, 125, 50, 0.12),
+    rgba(0, 167, 111, 0.12)
+  );
 }
 
 .product-card .card-body,
@@ -1780,147 +1787,167 @@ Main Container */
   border-top: 2px solid var(--gray-800);
 }
 
-
-
 /* Desktop Media Query - Apply grid layout desktop grid footer - 
 Desktop footer - Footer Desktop Layout */
 @media (min-width: 768px) {
   .footer-container {
     display: grid;
-    width:100%;
+    width: 100%;
     margin: 0;
-    grid-template-columns: 
-    minmax(100px, 550px) minmax(260px, 1fr) minmax(200px, 0.8fr);
+    grid-template-columns: 1fr 2fr 1fr;
     grid-auto-rows: auto auto;
-    grid-gap:1rem;
+    grid-gap: 2rem;
     grid-template-areas:
       "img-brand product-links quick-links"
       "separator separator separator"
       "copyright  legal    social";
 
-      padding-top:1.5rem;
-    
+    padding-top: 1.5rem;
+    justify-items: center;
+    align-items: start;
+    padding-bottom: 1rem;
   }
-    /* 1st column */
-   .footer-top-left-col {
-    grid-area:img-brand;
+  /* 1st column */
+  .footer-top-left-col {
+    grid-area: img-brand;
     padding-left: 1rem;
-   }
-     
- .footer-top-left-col .logo-footer {
-   display: block;
-  object-fit: contain;
-   filter: brightness(0) invert(1);
-   image-rendering: -webkit-optimize-contrast; /* sharper in WebKit */
+  }
 
+  /* 2nd column*/
+  .footer-center-col {
+    grid-area: product-links;
+    text-align: center; /* This centers the <h4> and prepares to center the <ul> */
+  }
+
+  .footer-bottom {
+    grid-area: legal;
+    text-align: center;
+  }
+
+  /*3rd column */
+  .footer-end-col {
+    grid-area: quick-links;
+  }
+
+  /** Content lists **/
+  /* ul Featured Products List */
+  .footer-center-col .footer-links {
+    display: block;
+
+    max-width: 200px; /* Forces the dynamic wrapping */
+    width: fit-content; /* Shrinks the element to the content width */
+    margin: 0 auto; /* **CRUCIAL**: Centers the UL list block horizontally */
+
+    /* Resetting list alignment */
+    list-style: disc;
+    text-align: left; /* Puts the list items back on the left edge of the UL box */
+    padding-left: 1.5rem; /* Adds space for the bullet points */
+    margin-bottom: 0;
+  }
+
+  /* ul Quick List */
+  .footer-end-col .footer-links {
+    display: block;
+    margin-bottom: var(--space-sm);
+    padding: 0 0 0 2.5rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: left; /* Keeps the list text readable */
+    list-style: disc;
+  }
+
+  .footer-end-col .footer-links li {
+    padding: 0.8rem 0; /* Increase from 0.3rem to 0.8rem for more space between items */
+    margin: 0;
+  }
+
+  .footer-center-col .footer-heading,
+  .footer-end-col .footer-heading {
+    margin: 0 0 0.5rem 0; /* Top: 0, Right/Left: 0, Bottom: 0.5rem */
+    text-align: left;
+  }
+
+  .footer-links a {
+    text-decoration: none;
+    display: block; /* Ensures the link takes the full width and wraps */
+    word-break: break-word; /* Prevents long words from sticking out */
+  }
+
+  .footer-links li {
+    padding: 0.3rem 0; /* Matches the vertical spacing of the Products list */
+    margin: 0;
+    list-style: inherit;
+  }
+
+  .footer-top-left-col .logo-footer {
+    display: block;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    image-rendering: -webkit-optimize-contrast; /* sharper in WebKit */
   }
 
   .footer-copyright-col {
-    grid-area:copyright;
+    grid-area: copyright;
     justify-self: start;
     padding-left: 1.2rem;
     white-space: nowrap;
-  } 
-
-  .footer-center-col.footer-top {
-    grid-area:product-links;
-    justify-self:center;
   }
 
-   .footer-copyright-col .copyright-text 
-   { 
-    display: inline-block; 
-    margin:0;  } 
+  .footer-copyright-col .copyright-text {
+    display: inline-block;
+    margin: 0;
+  }
+
+  .footer-heading {
+    margin: 0;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .heading-text /* the title inside the the heading */ {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.4rem;
+    word-spacing: 1px;
+    letter-spacing: 0.1rem;
+  }
+
+  .heading-text::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary);
+  }
+
+  .footer-product-links a span {
+    display: block;
+  }
 
   .footer-separator {
-    grid-area:separator;
+    grid-area: separator;
     width: 100%;
     border: 0;
     border-top: 1px solid var(--gray-700);
     margin: 0;
   }
 
-  .footer-heading {
-      margin: 0;
-      font-family: var(--font-primary);
-      font-weight: 600;
-     font-size: 1.5rem;
-     text-align:left;
-  }
-
-
-  .heading-text /* the title inside the the heading */
-     {
-        position: relative;
-        display: inline-block;
-        padding-bottom: 0.4rem;
-        word-spacing: 1px;
-        letter-spacing: 0.1rem;
-     }
-  
-.heading-text::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background-color: var(--primary);
-}
-  /* ul list of products */
-  .footer-product-links {
-   display:block;
-    margin-bottom: var(--space-sm); /* Consistent list item spacing */
-     max-width: 42ch;          /* optional: keeps list visually compact */
-  }
-
-  .footer-product-links li {
-  margin-bottom: var(--space-sm); /* Consistent list item spacing */
-    }
-
-  
-.footer-product-links a span {
-  display: block;
-}
-
-
-   .footer-legal-bottom {
-    grid-area:legal;
-    display:flex;
-    justify-self:center;
-  } 
-
-
- .footer-legal-list {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr; /* left slot, center slot, right slot */
+  .footer-legal-list {
+    display: flex; /* Use Flexbox for a simple row */
+    justify-content: center; /* Centers the links horizontally */
     align-items: center;
-    column-gap: 1rem;
-    list-style:none;
+    gap: 1.5rem; /* Space between links */
+    list-style: none;
+    padding: 0;
+    margin: 0 auto; /* Centers the list block itself */
   }
+}
 
-  /* left link aligned to the right edge of left slot */
-  .footer-legal-list li:first-child {
-    justify-self: end;
-  }
-
-  
-  /* middle link forced to dead-center */
-  .footer-legal-list li:nth-child(2) {
-    justify-self: center;
-  }
-
-  /* right link aligned to the left edge of right slot */
-  .footer-legal-list li:last-child {
-    justify-self: start;
-  }
-
-
-  .footer-links a {
-    text-decoration:none;
-  }
-
-  /*.footer-legal-col {
+/*.footer-legal-col {
     grid-column: 2;
     grid-row: 3;
     justify-self: center;
@@ -1993,13 +2020,10 @@ Desktop footer - Footer Desktop Layout */
   color: #ffffff;
 } */
 
-}
-
 /* =========================
    Footer – TABLET RESPONSIVE
    ========================= */
 @media (min-width: 768px) and (max-width: 991.98px) {
-
 }
 
 /* =========================
@@ -2058,6 +2082,22 @@ Desktop footer - Footer Desktop Layout */
   .footer-heading {
     font-size: clamp(0.875rem, 1.2vw + 0.5rem, 1rem);
     margin-bottom: 0.5rem;
+    margin: 0;
+  }
+
+  .footer-center-col .footer-heading {
+    /* Retain original properties for styling */
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-align: center;
+
+    /* Apply the Flex micro-alignment */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the text horizontally inside the heading */
+    justify-content: flex-start;
+    height: 100%;
   }
 
   .heading-text {
@@ -2134,12 +2174,10 @@ Desktop footer - Footer Desktop Layout */
   transition: opacity 0.2s ease, transform 0.2s ease;
 
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    opacity: 0;
+  opacity: 0;
   visibility: hidden;
   pointer-events: none;
-
 }
-
 
 .back-to-top.active {
   opacity: 1;
