@@ -1,17 +1,15 @@
 {
   "name": "Customized Codespace for eurofert-website",
-  "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:18", // Provides Node.js environment; suitable for frontend projects
+  "image": "mcr.microsoft.com/devcontainers/base:debian-11",
   "settings": {
-    "editor.formatOnSave": true, // Automatically formats on save
-    "editor.tabSize": 2, // Use 2 spaces for indentation
-    "editor.theme": "Default Dark+" // Sets the default dark theme
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.theme": "Default Dark+"
   },
   "extensions": [
-    "vscode.css-language-features", // CSS IntelliSense
-    "formulahendry.auto-close-tag", // Auto Tag Completion
-    "esbenp.prettier-vscode", // Prettier for auto formatting
-    "ritwickdey.liveserver" // Live Server extension for running HTML
-  ],
-  "postCreateCommand": "npm install", // Automatically installs packages if `package.json` exists
-  "remoteUser": "codespace" // Ensures the sandbox environment is consistent
+    "vscode.css-language-features",
+    "formulahendry.auto-close-tag",
+    "esbenp.prettier-vscode",
+    "ritwickdey.liveserver"
+  ]
 }
