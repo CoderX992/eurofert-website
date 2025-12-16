@@ -1050,9 +1050,10 @@ Main Container */
 ==================================================================================================
   SPECIFIC FIX: Galaxy S8+ (360x740) and iPhone SE (375x667) Hero Section
   Ensures hero content fits without clipping on these specific devices
+  Range: 360px-400px covers Galaxy S8+ (360px) and iPhone SE (375px) without conflicting
 ==================================================================================================
 */
-@media (min-width: 360px) and (max-width: 420px) {
+@media (min-width: 360px) and (max-width: 400px) {
   .hero-section {
     min-height: 72vh;
   }
@@ -1192,6 +1193,7 @@ Main Container */
   }
 
   /* Hero section button container needs extra bottom margin for wave clearance */
+  /* Note: This is overridden for 360-400px range to 1.75rem for specific devices */
   .hero-content .d-flex.gap-3 {
     margin-bottom: 1.5rem;
   }
