@@ -1172,10 +1172,10 @@ Main Container */
 
   /* Hero Section - Mobile with centered text and side padding */
   .hero-section {
-    min-height: 65vh; /* Increased from 60vh to provide more vertical space */
+    min-height: 75vh; /* Increased to provide adequate vertical space */
     text-align: center;
-    margin-top: -60px;
-    padding: 90px 1rem 80px; /* Increased bottom padding from 40px to 80px to clear wave */
+    margin-top: 0; /* Removed negative margin to prevent overlap */
+    padding: 80px 1rem 40px; /* Adjusted top padding since no negative margin */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1193,18 +1193,19 @@ Main Container */
   }
 
   .hero-content {
-    padding: 0 0 60px 0; /* Added bottom padding to ensure clearance above wave */
+    padding: 0; /* Removed excessive bottom padding */
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 100%;
+    margin-bottom: 70px; /* Space above wave divider */
   }
 
   .hero-content h1 {
     font-size: 1.7rem;
     line-height: 1.4;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem; /* Increased spacing below title */
     text-align: center;
     max-width: 95%;
     padding: 0 0.5rem;
@@ -1213,7 +1214,7 @@ Main Container */
   .hero-content .lead {
     font-size: 0.95rem;
     line-height: 1.6;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem; /* Increased spacing below subtitle */
     text-align: center;
     max-width: 95%;
     padding: 0 0.5rem;
