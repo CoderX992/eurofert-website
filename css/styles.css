@@ -402,7 +402,7 @@ Mobile-first responsive hero header and subtitle typography */
 /* Wave Divider */
 .wave-divider {
   position: absolute;
-  bottom: -20px;
+  bottom: 0px; /* Changed from -20px to 0px to prevent overlap */
   left: 0;
   width: 100%;
   width: 100vw;
@@ -907,10 +907,11 @@ Main Container */
   .hero-section {
     min-height: 70vh;
     padding-top: 110px;
+    padding-bottom: 80px; /* Added to ensure space for wave divider */
   }
 
   .wave-divider {
-    bottom: -10px;
+    bottom: 0px; /* Changed from -10px to 0px for consistency */
     height: 80px;
   }
   .wave-divider svg {
@@ -1171,10 +1172,10 @@ Main Container */
 
   /* Hero Section - Mobile with centered text and side padding */
   .hero-section {
-    min-height: 60vh;
+    min-height: 65vh; /* Increased from 60vh to provide more vertical space */
     text-align: center;
     margin-top: -60px;
-    padding: 90px 1rem 40px;
+    padding: 90px 1rem 80px; /* Increased bottom padding from 40px to 80px to clear wave */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1192,7 +1193,7 @@ Main Container */
   }
 
   .hero-content {
-    padding: 0;
+    padding: 0 0 60px 0; /* Added bottom padding to ensure clearance above wave */
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -1220,6 +1221,7 @@ Main Container */
 
   .wave-divider {
     height: 50px;
+    bottom: 0px; /* Changed from varying values to consistent 0px */
   }
 
   .wave-divider svg {
