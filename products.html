@@ -7,6 +7,8 @@
     <!-- Custom Styles (NO Bootstrap - Pure Custom CSS) -->
 
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/product-details.css" />
     <link rel="stylesheet" href="css/animations.css" />
     <link
       rel="stylesheet"
@@ -14,56 +16,113 @@
     />
   </head>
   <body>
-    <!-- Header -->
     <header class="header" id="header">
       <div class="container">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-              <img
-                src="public/eurofert-logo.png"
-                alt="Eurofert Logo"
-                class="logo"
-              />
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="index.html"><span>Home</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="services.html"
-                    ><span>Services</span></a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about.html"
-                    ><span>About Us</span></a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="product-categories.html"
-                    ><span>Product Categories</span></a
-                  >
-                </li>
-              </ul>
+        <nav class="site-nav">
+          <a class="brand-logo" href="index.html">
+            <img
+              src="public/eurofert-logo.png"
+              alt="Eurofert Logo"
+              class="logo"
+              loading="eager"
+              width="185"
+              height="auto"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="menu-header">
+              <h5 class="menu-title">Menu Navigation</h5>
             </div>
+            <ul class="nav-menu">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html"
+                  ><span>Home</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="services.html"
+                  ><span>Services</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html"><span>About Us</span></a>
+              </li>
+
+              <!-- Dropdown list Product Categories-->
+              <li class="nav-item has-dropdown" data-toggle="dropdown">
+                <a class="nav-link parent-link" href="">
+                  <span class="link-title">Product Categories</span>
+                     <!-- dropdown list Opener-->
+                </a>
+                 <span class="nav-opener" aria-label="Open submenu">
+                  <i class="fas fa-chevron-up arrow-icon"></i
+                ></span>
+                <!-- arrow icon-->
+                   
+                <ul class="dropdown-menu submenu-items">
+                  <!-- Column content: order controls the 2-column layout on desktop -->
+                    <li class="submenu-item submenu-title">
+                    <a class="submenu__link" href="product-categories.html">Product Categories Overview</a>
+                     </li>
+
+                <div>
+                    <li class="submenu-item">
+                     <a href="#" class="submenu__link" > MaxiGrow Essentials</a>
+                     </li>
+                   
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Micronutrient
+                    </a>
+                  </li>
+
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow NPK
+                    </a>
+                  </li>
+
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Power
+                    </a>
+                  </li>
+
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Speciality
+                    </a>
+                  </li>
+
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Terra
+                    </a>
+                  </li>
+                  
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Foliar
+                    </a>
+                  </li>
+                  </div>
+                </ul>
           </div>
         </nav>
       </div>
     </header>
-
     <!-- Page Header -->
     <section class="page-header bg-primary text-white">
       <div class="container">
@@ -111,50 +170,86 @@
       </div>
     </section>
 
-    <!-- Footer -->
+  <!-- Footer -->
     <footer class="footer">
-      <div class="footer-grid-container">
-        <div class="footer-brand-col">
-          <img src="public/eurofert-logo.png" alt="Eurofert Logo" class="logo-footer"/>
+      <div class="footer-container">
+        <!-- Column1  Top Footer left -->
+        <div class="footer-top-left-col">
+          <!-- top area footer left aligned -->
+          <img
+            src="public/eurofert-logo.png"
+            alt="Eurofert Logo"
+            class="logo-footer"
+          />
           <p class="footer-subtitle">
-            Sustainable agricultural solutions for modern farming needs.
-            Trusted by farmers worldwide since 1985.
+            Sustainable agricultural solutions for modern farming needs. Trusted
+            by farmers worldwide since 1985.
           </p>
         </div>
-
+        <!-- Column 2 Top Middle footer-->
         <div class="footer-center-col">
-          <h4 class="footer-heading"><span class="heading-text">Featured Products</span></h4>
+          <h4 class="footer-heading">
+            <span class="heading-text">Featured Products</span>
+          </h4>
           <ul class="footer-links list-unstyled">
-            <li><a href="#">MaxiGrow Essential KTS: <span>0-0-36+25% Sulfur</span></a></li>
-            <li><a href="#">MaxiGrow Power: <span>20-50-10 + TE</span></a></li>
-            <li><a href="#">MaxiGrow Special: <span>A-Z Plus</span></a></li>
-            <li><a href="#">MAXIGROW Trace: <span>16</span></a></li>
+            <li>
+              <a href="#">
+                <span>MaxiGrow Essential KTS 0-0-36+25% Sulfur</span></a
+              >
+            </li>
+            <li>
+              <a href="#">MaxiGrow Power <span>20-50-10 + TE</span></a>
+            </li>
+            <li>
+              <a href="#">MaxiGrow Special <span>A-Z Plus</span></a>
+            </li>
+            <li>
+              <a href="#">MAXIGROW Trace <span>16</span></a>
+            </li>
           </ul>
         </div>
-
-        <div class="footer-links-col">
-          <h4 class="footer-heading"><span class="heading-text">Quick Links</span></h4>
+        <!-- Column3 Top end footer-->
+        <div class="footer-end-col">
+          <h4 class="footer-heading">
+            <span class="heading-text">Quick Links</span>
+          </h4>
           <ul class="footer-links list-unstyled">
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="product-categories.html">Product Categories</a></li>
+            <li>
+              <a href="product-categories.html"
+                >Product Categories<br />Overview</a
+              >
+            </li>
           </ul>
         </div>
 
-        <hr class="footer-separator"/>
+        <!-- Row 2: Separator -->
+        <hr class="footer-separator" />
 
+        <!-- Row 3: Bottom Footer -->
         <div class="footer-copyright-col">
-          <p class="footer-meta text-muted">
+          <p class="copyright-text text-muted">
             <strong>&copy; 2025 Eurofert. All rights reserved.</strong>
           </p>
         </div>
 
-        <div class="footer-legal-col">
+        <div class="footer-center-col footer-bottom">
           <ul class="footer-legal-list">
-            <li><a href="#" class="footer-legal-link text-muted">Privacy Policy</a></li>
-            <li><a href="#" class="footer-legal-link text-muted">Terms of Service</a></li>
-            <li><a href="#" class="footer-legal-link text-muted">Cookie Policy</a></li>
+            <li>
+              <a href="#" class="footer-legal-link text-muted"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a href="#" class="footer-legal-link text-muted"
+                >Terms of Service</a
+              >
+            </li>
+            <li>
+              <a href="#" class="footer-legal-link text-muted">Cookie Policy</a>
+            </li>
           </ul>
         </div>
 
@@ -174,8 +269,8 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/product-data.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/product-data.js"></script>
     <script src="js/products-grid.js"></script>
   </body>
 </html>
