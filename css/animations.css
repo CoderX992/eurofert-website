@@ -272,12 +272,54 @@
     transform: translateY(0);
   }
 
-  .site-nav .nav-link {
-    transition: transform 0.3s ease;
-  }
-
+  /* Bring back the hover lift for ALL nav links */
   .site-nav .nav-link:hover {
     transform: translateY(-2px);
+    color: var(--primary);
+  }
+  /* Dropdown hover: lift BOTH the text link and the ARROW BUTTON (not the icon) */
+  .site-nav .nav-item.has-dropdown:hover > .nav-link,
+  .site-nav .nav-item.has-dropdown:hover > .nav-opener {
+    transform: translateY(-2px);
+    color: var(--primary-light);
+  }
+
+  /* Make sure icon inherits the same hover color */
+  .site-nav .nav-item.has-dropdown:hover > .nav-opener .arrow-icon {
+    color: inherit;
+  }
+
+  .nav-item.has-dropdown > .dropdown-menu {
+    pointer-events: none;
+  }
+  .nav-item.has-dropdown.open > .dropdown-menu {
+    pointer-events: auto;
+  }
+  /* Arrow button should have its own transition for the translate */
+  .site-nav .nav-item.has-dropdown > .nav-opener {
+    transition: transform 0.22s ease, color 0.22s ease;
+    will-change: transform;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Arrow icon rotation should be smooth and independent */
+  .site-nav .nav-item.has-dropdown .arrow-icon {
+    transition: transform 0.18s ease;
+    will-change: transform;
+  }
+  /* Keep the dropdown trigger lifted while the menu is OPEN */
+  .site-nav .nav-item.has-dropdown.open > .nav-link,
+  .site-nav .nav-item.has-dropdown.open > .nav-opener {
+    transform: translateY(-2px);
+    color: var(--primary-light);
+  }
+
+  /* Ensure the icon follows the same open-state color */
+  .site-nav .nav-item.has-dropdown.open > .nav-opener .arrow-icon {
+    color: inherit;
   }
 }
 
