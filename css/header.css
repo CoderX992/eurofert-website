@@ -165,17 +165,18 @@
   border-radius: 0;
   white-space: nowrap;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
-/* Style for the active link (e.g., HOME PAGE in screenshot) */
+/* Style for the active link */
 .nav-link.active {
   color: var(--primary) !important; /* Brand green text */
-  border-left: 5px solid var(--primary);
-  padding-left: calc(1.125rem - 5px); /* Compensate for the new 5px border */
+  border-left: 4px solid var(--primary);
+  padding-left: calc(1.125rem - 2px); /* Compensate for the new 5px border */
   background-color: var(
     --gray-100
   ); /* Subtle light background for active link */
+  height: 100%;
 }
 
 /* Hover effect: ensure borders don't disappear */
@@ -446,7 +447,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+    cursor: pointer;
     /* Force 50×50 square */
     width: 50px;
     height: 50px;
@@ -853,8 +854,6 @@
   /* Desktop Menu link styling */
   .collapse.navbar-collapse .nav-menu > .nav-item > .nav-link {
     min-height: auto;
-    padding: 6px 0.75rem;
-    font-size: 0.9rem; /* ~14.4px on a 16px base */
     background: transparent;
   }
 
@@ -863,8 +862,15 @@
     white-space: nowrap;
   }
 
-  /* Dropdown for Desktop Submenu , Desktop Sub-menu*/
+  /*Target dropdown for arrow spacing*/
+  .collapse.navbar-collapse
+    .nav-menu
+    > .nav-item.nav-item.has-dropdown
+    > .nav-link {
+    padding-right: 0;
+  }
 
+  /* Dropdown for Desktop Submenu , Desktop Sub-menu Desktop dropdown*/
   .nav-item.has-dropdown.open .dropdown-menu.submenu-items {
     display: flex;
     font-family: var(--font-primary);
@@ -984,12 +990,54 @@
     background-color: var(--gray-100);
     border-bottom: 0;
   }
-
+  /*  Categories link - 
+      Product link - Desktop product link 
+       Desktop Dropdown link */
   .collapse.navbar-collapse .nav-menu > .nav-item.has-dropdown {
     position: relative;
     display: flex;
+    align-items: stretch;
+  }
+
+  /* Desktop arrow dropdown arrow*/
+  .nav-opener {
+    background: transparent;
+    border: none;
+    display: inline-flex;
     align-items: center;
-    gap: 2px;
+    line-height: 1; /* important */
+    justify-content: center;
+    cursor: pointer;
+    padding: 0.75rem 0.75em;
+    margin-right: 0.5em;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    border: 0;
+    height: auto;
+    transform: translate(-1.5px, 1px);
+  }
+
+  .nav-opener .arrow-icon::before {
+    display: block;
+    line-height: 1;
+  }
+
+  /* B) Normalize the nav text line box (prevents baseline weirdness) */
+  .nav-item.has-dropdown > .nav-link.parent-link .link-title {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1; /* key: same vertical rhythm as icon */
+  }
+
+  /* Keep the arrow visible on both mobile and desktop */
+  .nav-opener .arrow-icon {
+    display: block;
+    font-size: 0.8em;
+
+    line-height: 1;
+    margin: 0;
+    padding: 0;
   }
 
   .nav-item.has-dropdown > .nav-link {
@@ -1001,43 +1049,17 @@
     border: 0;
   }
 
-  .nav-menu > .nav-item.has-dropdown > .nav-link.parent-link {
-    display: inline-flex;
-    align-items: center;
-  }
-
-  /* Hide the real nav-opener on desktop (keep it for mobile only) */
-  .nav-menu > .nav-item.has-dropdown > .nav-link.parent-link .nav-opener {
-    display: none;
-  }
-  .fa-chevron-right:before {
-    display: none;
-  }
-  /* Pseudo arrow on the link itself (Font Awesome chevron-right) */
+  /* Pseudo arrow on the link itself (Font Awesome chevron-right)
   .nav-menu > .nav-item.has-dropdown > .nav-link.parent-link::after {
-    content: "\f054"; /* Font Awesome chevron-right */
-    font-family: "Font Awesome 6 Free"; /* FA6 solid font */
+    content: "\f054"; /* Font Awesome chevron-right 
+    font-family: "Font Awesome 6 Free"; /* FA6 solid font
     font-weight: 900;
     display: inline-block;
-    font-size: 0.75em; /* smaller than text */
+    font-size: 0.75em; /* smaller than text
     margin-left: 0.25rem;
-    transform: translateY(1px); /* tiny vertical nudge */
+    transform: translateY(1px); /* tiny vertical nudge
     transition: transform 0.2s ease, color 0.2s ease;
-  }
-
-  /* Rotate + color on open (when JS adds .open to the <li>) */
-  .nav-menu > .nav-item.has-dropdown.open > .nav-link.parent-link::after {
-    transform: rotate(90deg) translateY(1px);
-    color: var(--primary);
-  }
-
-  /* OPTIONAL: remove old desktop arrow-icon behaviour if it exists */
-  .nav-item.open .arrow-icon {
-    /* desktop will no longer use this <i>, so neutralize it */
-    transform: none;
-    color: inherit;
-    font-size: inherit;
-  }
+   }*/
 
   /* ============================================
      3. BIGGER LOGO FOR DESKTOP
@@ -1056,6 +1078,57 @@
     max-height: 64px; /* control vertical size */
     object-fit: contain;
   }
+
+  /* === Instant “flip” with ZERO jitter: overlay up + down and crossfade === */
+
+  /* Hide the FA <i> glyph on desktop (we render icons via pseudo elements) */
+  .nav-item.has-dropdown > .nav-opener > .arrow-icon {
+    display: none;
+  }
+
+  /* Two icons in same exact spot */
+  .nav-item.has-dropdown > .nav-opener::before,
+  .nav-item.has-dropdown > .nav-opener::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 0.9rem;
+    line-height: 1;
+    color: currentColor;
+    transition: opacity 60ms linear;
+    pointer-events: none;
+  }
+
+  /* Desktop: flip chevron with overlay pseudo-elements (no rotation / no jitter) */
+  .nav-item.has-dropdown > .nav-opener::before {
+    content: "\f077"; /* chevron-up */
+    opacity: 1;
+  }
+
+  /* Closed: DOWN hidden */
+  .nav-item.has-dropdown > .nav-opener::after {
+    content: "\f078"; /* chevron-down */
+    opacity: 0;
+  }
+
+  /* Open: swap opacity (no rotation) */
+  .nav-item.has-dropdown.open > .nav-opener::before {
+    opacity: 0;
+  }
+  .nav-item.has-dropdown.open > .nav-opener::after {
+    opacity: 1;
+  }
+
+  /* Size of the replacement arrows */
+  .nav-item.has-dropdown > .nav-opener::before,
+  .nav-item.has-dropdown > .nav-opener::after {
+    font-size: 0.8em; /* fixed size */
+  }
 }
 
 /* ===================================================================
@@ -1070,10 +1143,7 @@
     max-height: clamp(60px, 6vh, 72px); /* control vertical size */
     width: clamp(260px, 22vw, 400px);
   }
-  .nav-menu > .nav-item > .nav-link {
-    padding: 0.75rem 1.25rem;
-    font-size: 1.05rem;
-  }
+
   .header.header--scrolled .logo {
     max-height: 65px;
   }
