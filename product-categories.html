@@ -17,48 +17,107 @@
     <!-- Header -->
     <header class="header" id="header">
       <div class="container">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-              <img
-                src="public/eurofert-logo.png"
-                alt="Eurofert Logo"
-                class="logo"
-              />
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="index.html"><span>Home</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="services.html"
-                    ><span>Services</span></a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about.html"
-                    ><span>About Us</span></a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="product-categories.html"
-                    ><span>Product Categories</span></a
-                  >
-                </li>
-              </ul>
+        <nav class="site-nav">
+          <a class="brand-logo" href="index.html">
+            <img
+              src="public/eurofert-logo.png"
+              alt="Eurofert Logo"
+              class="logo"
+              loading="eager"
+              width="185"
+              height="auto"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="menu-header">
+              <h5 class="menu-title">Menu Navigation</h5>
             </div>
+            <ul class="nav-menu">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html"
+                  ><span>Home</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="services.html"
+                  ><span>Services</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html"><span>About Us</span></a>
+              </li>
+
+              <!-- Dropdown list Product Categories-->
+              <li class="nav-item has-dropdown" data-toggle="dropdown">
+                <a class="nav-link parent-link" href="">
+                  <span class="link-title">Product Categories</span>
+                     <!-- dropdown list Opener-->
+                </a>
+                 <span class="nav-opener" aria-label="Open submenu">
+                  <i class="fas fa-chevron-up arrow-icon"></i
+                ></span>
+                <!-- arrow icon-->
+                   
+                <ul class="dropdown-menu submenu-items">
+                  <!-- Column content: order controls the 2-column layout on desktop -->
+                    <li class="submenu-item submenu-title">
+                    <a class="submenu__link" href="product-categories.html">Product Categories Overview</a>
+                     </li>
+
+                <div>
+                    <li class="submenu-item">
+                     <a href="#" class="submenu__link" > MaxiGrow Essentials</a>
+                     </li>
+                   
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Micronutrient
+                    </a>
+                  </li>
+
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow NPK
+                    </a>
+                  </li>
+
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Power
+                    </a>
+                  </li>
+
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Speciality
+                    </a>
+                  </li>
+
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Terra
+                    </a>
+                  </li>
+                  
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Foliar
+                    </a>
+                  </li>
+                  </div>
+                </ul>
           </div>
         </nav>
       </div>
@@ -160,3 +219,4 @@
     <script src="js/product-categories.js"></script>
   </body>
 </html>
+
