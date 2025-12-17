@@ -17,8 +17,7 @@
     />
   </head>
   <body class="has-fixed-header">
-    <!-- Header -->
-    <header class="header" id="header">
+   <header class="header" id="header">
       <div class="container">
         <nav class="site-nav">
           <a class="brand-logo" href="index.html">
@@ -64,40 +63,63 @@
 
               <!-- Dropdown list Product Categories-->
               <li class="nav-item has-dropdown" data-toggle="dropdown">
-                <a class="nav-link parent-link" href="product-categories.html">
+                <a class="nav-link parent-link" href="">
                   <span class="link-title">Product Categories</span>
+                     <!-- dropdown list Opener-->
                 </a>
-                <!-- drowpdown list Opener-->
-                <span class="nav-opener" aria-label="Open submenu">
-                  <i class="fas fa-chevron-right arrow-icon"></i
+                 <span class="nav-opener" aria-label="Open submenu">
+                  <i class="fas fa-chevron-up arrow-icon"></i
                 ></span>
                 <!-- arrow icon-->
+                   
+                <ul class="dropdown-menu submenu-items">
+                  <!-- Column content: order controls the 2-column layout on desktop -->
+                    <li class="submenu-item submenu-title">
+                    <a class="submenu__link" href="product-categories.html">Product Categories Overview</a>
+                     </li>
 
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      href="products.html?category=maxigrow"
-                      class="sub-menu___link"
-                      ><span>MaxiGrow Power Paste</span></a
-                    >
+                <div>
+                    <li class="submenu-item">
+                     <a href="#" class="submenu__link" > MaxiGrow Essentials</a>
+                     </li>
+                   
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Micronutrient
+                    </a>
                   </li>
-                  <li>
-                    <a
-                      href="products.html?category=colfert"
-                      class="sub-menu___link"
-                      ><span>Colfert Liquid</span></a
-                    >
+
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow NPK
+                    </a>
                   </li>
-                  <li>
-                    <a
-                      href="products.html?category=seagull"
-                      class="sub-menu___link"
-                      ><span>Seagull Liquid</span></a
-                    >
+
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Power
+                    </a>
                   </li>
+
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Speciality
+                    </a>
+                  </li>
+
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Terra
+                    </a>
+                  </li>
+                  
+                  <li class="submenu-item">
+                    <a href="#" class="submenu__link">
+                      MaxiGrow Foliar
+                    </a>
+                  </li>
+                  </div>
                 </ul>
-              </li>
-            </ul>
           </div>
         </nav>
       </div>
@@ -111,10 +133,17 @@
             <img id="productImage" src="" alt="Product image" />
           </div>
           <div class="hero-content">
-            <p class="product-category" id="productCategory___title">Category</p>
+            <p class="product-category" id="productCategory___title">
+              Category
+            </p>
             <h1 class="product-name" id="productTitle">Product Name</h1>
-            <p class="product-formula" id="productFormula">N 20% – P₂O₅ 20% – K₂O 20%</p>
-            <p class="product-teaser" id="productTeaser">Premium agricultural solution for enhanced crop performance and sustainable growth</p>
+            <p class="product-formula" id="productFormula">
+              N 20% – P₂O₅ 20% – K₂O 20%
+            </p>
+            <p class="product-teaser" id="productTeaser">
+              Premium agricultural solution for enhanced crop performance and
+              sustainable growth
+            </p>
             <div class="key-benefits">
               <h3 class="benefits-heading">Key Benefits</h3>
               <ul id="productBenefits">
@@ -134,15 +163,36 @@
           <div class="content-section description-section" id="description">
             <h2 class="section-heading">Description</h2>
             <div class="section-content">
-              <p id="productDescription">This advanced formulation combines essential macro and micronutrients in a highly soluble and readily available form, ensuring rapid uptake and utilization by plants. The carefully balanced composition supports vigorous growth throughout all developmental stages.</p>
-              <p>Developed through extensive research and field testing, this product delivers consistent results across a wide range of soil types and climatic conditions. The unique formulation enhances nutrient efficiency while promoting sustainable agricultural practices.</p>
-              <p>Suitable for integration into modern precision agriculture systems, this product offers flexibility in application methods and timing. Whether applied through fertigation, foliar spray, or soil incorporation, it provides reliable nutrition to meet the demanding needs of high-value crops.</p>
+              <p id="productDescription">
+                This advanced formulation combines essential macro and
+                micronutrients in a highly soluble and readily available form,
+                ensuring rapid uptake and utilization by plants. The carefully
+                balanced composition supports vigorous growth throughout all
+                developmental stages.
+              </p>
+              <p>
+                Developed through extensive research and field testing, this
+                product delivers consistent results across a wide range of soil
+                types and climatic conditions. The unique formulation enhances
+                nutrient efficiency while promoting sustainable agricultural
+                practices.
+              </p>
+              <p>
+                Suitable for integration into modern precision agriculture
+                systems, this product offers flexibility in application methods
+                and timing. Whether applied through fertigation, foliar spray,
+                or soil incorporation, it provides reliable nutrition to meet
+                the demanding needs of high-value crops.
+              </p>
             </div>
           </div>
 
           <!-- Nutrient Declaration Section -->
           <div class="section-divider"></div>
-          <div class="content-section nutrient-declaration-section" id="nutrient-declaration">
+          <div
+            class="content-section nutrient-declaration-section"
+            id="nutrient-declaration"
+          >
             <h2 class="section-heading">Nutrient Declaration</h2>
             <div class="section-content">
               <table class="nutrient-table" id="productNutrientTable">
@@ -186,18 +236,42 @@
 
           <!-- Application Notes Section -->
           <div class="section-divider"></div>
-          <div class="content-section application-notes-section" id="application-notes">
+          <div
+            class="content-section application-notes-section"
+            id="application-notes"
+          >
             <h2 class="section-heading">Application Notes</h2>
             <div class="section-content">
-              <p>For optimal results, apply during the early morning or late evening hours to minimize evaporation and maximize nutrient uptake. Ensure adequate soil moisture before and after application to facilitate nutrient movement into the root zone.</p>
-              <p><strong>Important Guidelines:</strong> Always conduct a jar test before mixing with other products to check compatibility. Do not mix with products containing high levels of calcium or those with extreme pH values. When used in fertigation systems, ensure proper injection rates and system calibration.</p>
-              <p><strong>Safety and Handling:</strong> Store in original container in a cool, dry location away from direct sunlight. Use appropriate personal protective equipment during handling and application. In case of contact with skin or eyes, rinse immediately with plenty of water. Keep out of reach of children and pets.</p>
+              <p>
+                For optimal results, apply during the early morning or late
+                evening hours to minimize evaporation and maximize nutrient
+                uptake. Ensure adequate soil moisture before and after
+                application to facilitate nutrient movement into the root zone.
+              </p>
+              <p>
+                <strong>Important Guidelines:</strong> Always conduct a jar test
+                before mixing with other products to check compatibility. Do not
+                mix with products containing high levels of calcium or those
+                with extreme pH values. When used in fertigation systems, ensure
+                proper injection rates and system calibration.
+              </p>
+              <p>
+                <strong>Safety and Handling:</strong> Store in original
+                container in a cool, dry location away from direct sunlight. Use
+                appropriate personal protective equipment during handling and
+                application. In case of contact with skin or eyes, rinse
+                immediately with plenty of water. Keep out of reach of children
+                and pets.
+              </p>
             </div>
           </div>
 
           <!-- Application Recommendations Section -->
           <div class="section-divider"></div>
-          <div class="content-section application-recommendations-section" id="application-recommendations">
+          <div
+            class="content-section application-recommendations-section"
+            id="application-recommendations"
+          >
             <h2 class="section-heading">Application Recommendations</h2>
             <div class="section-content">
               <div class="table-container">
@@ -205,14 +279,14 @@
                   <thead>
                     <tr>
                       <th>Crop</th>
-                      <th>Application Rate<br>Fertigation</th>
+                      <th>Application Rate<br />Fertigation</th>
                       <th>Time of Application</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Vegetables<br>Greenhouses<br>Open Field</td>
-                      <td>2–4 kg / 500 m²<br><br>12-15 kg/ha</td>
+                      <td>Vegetables<br />Greenhouses<br />Open Field</td>
+                      <td>2–4 kg / 500 m²<br /><br />12-15 kg/ha</td>
                       <td>During root development and flowering stage</td>
                     </tr>
                     <tr>
@@ -273,9 +347,21 @@
             <h2 class="section-heading">Documents & Downloads</h2>
             <div class="section-content">
               <ul id="productDocuments" class="documents-list">
-                <li><a href="#" class="document-link"><i class="fas fa-file-pdf"></i> Product Data Sheet (PDF)</a></li>
-                <li><a href="#" class="document-link"><i class="fas fa-file-pdf"></i> Safety Data Sheet (PDF)</a></li>
-                <li><a href="#" class="document-link"><i class="fas fa-file-pdf"></i> Application Guide (PDF)</a></li>
+                <li>
+                  <a href="#" class="document-link"
+                    ><i class="fas fa-file-pdf"></i> Product Data Sheet (PDF)</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="document-link"
+                    ><i class="fas fa-file-pdf"></i> Safety Data Sheet (PDF)</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="document-link"
+                    ><i class="fas fa-file-pdf"></i> Application Guide (PDF)</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
@@ -285,13 +371,59 @@
         <nav class="product-navigation-panel">
           <h3 class="nav-panel-title">Quick Navigation</h3>
           <ul class="nav-panel-list">
-            <li><a href="#hero" class="nav-panel-link active" data-section="hero">Overview</a></li>
-            <li><a href="#description" class="nav-panel-link" data-section="description">Description</a></li>
-            <li><a href="#nutrient-declaration" class="nav-panel-link" data-section="nutrient-declaration">Nutrient Declaration</a></li>
-            <li><a href="#application-notes" class="nav-panel-link" data-section="application-notes">Application Notes</a></li>
-            <li><a href="#application-recommendations" class="nav-panel-link" data-section="application-recommendations">Application Recommendations</a></li>
-            <li><a href="#packaging" class="nav-panel-link" data-section="packaging">Packaging</a></li>
-            <li><a href="#documents" class="nav-panel-link" data-section="documents">Documents & Downloads</a></li>
+            <li>
+              <a href="#hero" class="nav-panel-link active" data-section="hero"
+                >Overview</a
+              >
+            </li>
+            <li>
+              <a
+                href="#description"
+                class="nav-panel-link"
+                data-section="description"
+                >Description</a
+              >
+            </li>
+            <li>
+              <a
+                href="#nutrient-declaration"
+                class="nav-panel-link"
+                data-section="nutrient-declaration"
+                >Nutrient Declaration</a
+              >
+            </li>
+            <li>
+              <a
+                href="#application-notes"
+                class="nav-panel-link"
+                data-section="application-notes"
+                >Application Notes</a
+              >
+            </li>
+            <li>
+              <a
+                href="#application-recommendations"
+                class="nav-panel-link"
+                data-section="application-recommendations"
+                >Application Recommendations</a
+              >
+            </li>
+            <li>
+              <a
+                href="#packaging"
+                class="nav-panel-link"
+                data-section="packaging"
+                >Packaging</a
+              >
+            </li>
+            <li>
+              <a
+                href="#documents"
+                class="nav-panel-link"
+                data-section="documents"
+                >Documents & Downloads</a
+              >
+            </li>
           </ul>
         </nav>
       </div>
@@ -299,48 +431,84 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="footer-grid-container">
-        <div class="footer-brand-col">
-          <img src="public/eurofert-logo.png" alt="Eurofert Logo" class="logo-footer"/>
+      <div class="footer-container">
+        <!-- Column1  Top Footer left -->
+        <div class="footer-top-left-col">
+          <!-- top area footer left aligned -->
+          <img
+            src="public/eurofert-logo.png"
+            alt="Eurofert Logo"
+            class="logo-footer"
+          />
           <p class="footer-subtitle">
-            Sustainable agricultural solutions for modern farming needs.
-            Trusted by farmers worldwide since 1985.
+            Sustainable agricultural solutions for modern farming needs. Trusted
+            by farmers worldwide since 1985.
           </p>
         </div>
-
+        <!-- Column 2 Top Middle footer-->
         <div class="footer-center-col">
-          <h4 class="footer-heading"><span class="heading-text">Featured Products</span></h4>
+          <h4 class="footer-heading">
+            <span class="heading-text">Featured Products</span>
+          </h4>
           <ul class="footer-links list-unstyled">
-            <li><a href="#">MaxiGrow Essential KTS: <span>0-0-36+25% Sulfur</span></a></li>
-            <li><a href="#">MaxiGrow Power: <span>20-50-10 + TE</span></a></li>
-            <li><a href="#">MaxiGrow Special: <span>A-Z Plus</span></a></li>
-            <li><a href="#">MAXIGROW Trace: <span>16</span></a></li>
+            <li>
+              <a href="#">
+                <span>MaxiGrow Essential KTS 0-0-36+25% Sulfur</span></a
+              >
+            </li>
+            <li>
+              <a href="#">MaxiGrow Power <span>20-50-10 + TE</span></a>
+            </li>
+            <li>
+              <a href="#">MaxiGrow Special <span>A-Z Plus</span></a>
+            </li>
+            <li>
+              <a href="#">MAXIGROW Trace <span>16</span></a>
+            </li>
           </ul>
         </div>
-
-        <div class="footer-links-col">
-          <h4 class="footer-heading"><span class="heading-text">Quick Links</span></h4>
+        <!-- Column3 Top end footer-->
+        <div class="footer-end-col">
+          <h4 class="footer-heading">
+            <span class="heading-text">Quick Links</span>
+          </h4>
           <ul class="footer-links list-unstyled">
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="product-categories.html">Product Categories</a></li>
+            <li>
+              <a href="product-categories.html"
+                >Product Categories<br />Overview</a
+              >
+            </li>
           </ul>
         </div>
 
-        <hr class="footer-separator"/>
+        <!-- Row 2: Separator -->
+        <hr class="footer-separator" />
 
+        <!-- Row 3: Bottom Footer -->
         <div class="footer-copyright-col">
-          <p class="footer-meta text-muted">
+          <p class="copyright-text text-muted">
             <strong>&copy; 2025 Eurofert. All rights reserved.</strong>
           </p>
         </div>
 
-        <div class="footer-legal-col">
+        <div class="footer-center-col footer-bottom">
           <ul class="footer-legal-list">
-            <li><a href="#" class="footer-legal-link text-muted">Privacy Policy</a></li>
-            <li><a href="#" class="footer-legal-link text-muted">Terms of Service</a></li>
-            <li><a href="#" class="footer-legal-link text-muted">Cookie Policy</a></li>
+            <li>
+              <a href="#" class="footer-legal-link text-muted"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a href="#" class="footer-legal-link text-muted"
+                >Terms of Service</a
+              >
+            </li>
+            <li>
+              <a href="#" class="footer-legal-link text-muted">Cookie Policy</a>
+            </li>
           </ul>
         </div>
 
