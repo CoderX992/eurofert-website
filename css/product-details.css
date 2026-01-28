@@ -5,18 +5,9 @@ body.has-fixed-header {
   background: #f2f7f7;
 }
 
-.product-detail *,
-.product-detail *::before,
-.product-detail *::after {
-  box-sizing: border-box;
-}
-
-.product-detail {
-  margin: 0;
-  padding: 1rem 0;
-  margin-bottom: 8%;
-  margin-top: 5%;
+.product-details__wrapper {
   background: #f2f7f7;
+  width: 100%;
 }
 
 /*
@@ -25,14 +16,13 @@ Hero Section (Image + Key Facts Only)
 ==========================================================================================
 */
 
- .hero-section {
+.product__hero-section {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 2rem;
   padding: 0 1rem;
   min-height: auto !important;
-
 }
 
 .hero-image {
@@ -134,53 +124,53 @@ Hero Section (Image + Key Facts Only)
   font-size: 1.1rem;
 }
 
+.content-section {
+  padding-inline: 2rem;
+}
+.product-details__layout {
+  padding-top: 4rem;
+}
 /*
 ==========================================================================================
-Content Wrapper and Sections
+boy wrapper and Sections
 ==========================================================================================
 */
 
-.content-wrapper {
+.product-body-wrap {
   padding: 0 1rem;
 }
 
-.section-divider {
-  width: 100vw;
-  height: 1px;
-  background: #e5e7eb;
-  margin-left: -1rem;
-  margin-bottom: 3rem;
-  margin-top: 3rem;
+@media only screen and (min-width: 1441px) {
+  .paragraph--separator .paragraph-separator__line {
+    margin-bottom: 100px;
+  }
+  .section-divider .separator-line {
+    padding-top: 50px;
+  }
 }
 
-.content-section {
-  margin-bottom: 0;
+.section-divider .separator-line:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .section-heading {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--primary);
-  margin-bottom: 1.5rem;
+
   letter-spacing: 0.02em;
 }
 
-.description-section .section-heading {
-  margin-left: 1rem;
-}
-
-.section-content {
+.inner__content {
   font-size: 1rem;
   line-height: 1.7;
   color: #374151;
-}
-
-.section-content p {
-  margin-bottom: 1.25rem;
-}
-
-.section-content p:last-child {
-  margin-bottom: 0;
 }
 
 /*
@@ -349,40 +339,118 @@ Navigation Panel (Hidden on Mobile)
   display: none;
 }
 
+@media only screen and (min-width: 1441px) {
+}
+
 /*
 ==========================================================================================
-Desktop Layout - Three Column Structure
+Desktop Layout - Product Structure - product hero section - product details wrapper
 ==========================================================================================
 */
-
-@media (min-width: 768px) {
-  .product-detail {
-    margin-bottom: 5%;
+@media (min-width: 1024px) {
+  .product-navigation-panel,
+  .product-navigation-panel * {
+    box-sizing: border-box;
+  }
+  .product-details__wrapper {
+    width: min(1416px, 100%);
   }
 
-  .product-detail__inner {
+  .product-details__layout {
     display: grid;
-    grid-template-columns: 320px 1fr 260px;
-    grid-template-rows: auto auto;
-    gap: 0 2.5rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 2rem;
+
+    grid-template-columns: minmax(0, 1fr) var(--drawer-max-width);
+    align-items: start;
+    padding-inline: clamp(1rem, 3vw, 2rem);
   }
 
-  /* Hero spans first two columns, navigation panel on right */
- .product-detail  .hero-section {
-    grid-column: 1 / 3;
-    grid-row: 1;
-    display: flex;
-    flex-direction: row;
-    gap: 2.5rem;
-    align-items: flex-start;
-    margin-bottom: 0;
-    padding: 0;
+  .product-details__container {
+    width: min(1200px, 100%);
+    padding-inline: clamp(1rem, 3vw, 2rem);
+  }
+
+  .product-details__left {
+    grid-column: 1/2;
+    min-width: 0; /* prevents overflow blowouts */
+  }
+
+  .product__hero-section {
+    display: grid;
+    grid-template-columns: clamp(260px, 35vw, 420px) minmax(0, 1fr);
+    /* flex-direction: row; */
     background: #f2f7f7;
   }
 
+  /* Navigation Panel - Fixed on Right nav Panel 
+  side Drawer - Desktop Drawer */
+  .product-navigation-panel {
+    display: block;
+    position: sticky;
+    top: var(--drawer-sticky-top); /* required for sticky */
+    grid-column: 2/3;
+    width: 100%;
+    background: var(--modern-white);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 5px;
+  }
+
+  /*drawer list - drawer ul*/
+  .nav-panel-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .nav-panel-list > li {
+    margin: 0;
+    padding: 0;
+    max-height: 100%;
+    height: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-panel-list > li:last-child {
+    border-bottom: none;
+  }
+
+  /* links in the drawer */
+  .nav-panel-link {
+    font-family: Heebo, sans-serif; /* or your site font */
+    position: relative; /* needed for your active dash */
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    color: #4b5563;
+    text-decoration: none;
+    line-height: 1.15;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+    padding: 19.5px; /* base padding*/
+  }
+  .nav-link-text {
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* tiny green accent line  */
+  .nav-panel-link.active::after {
+    content: "";
+    right: 18px;
+    top: 50%;
+    width: 18px;
+    height: 2px;
+    background: var(--primary-light);
+    border-radius: 2px;
+    font-weight: 700;
+  }
+}
+
+@media (min-width: 768px) {
   .hero-image {
     flex: 0 0 320px;
     max-width: 320px;
@@ -420,51 +488,25 @@ Desktop Layout - Three Column Structure
   }
 
   /* Content wrapper spans all three columns below hero */
-  .content-wrapper {
-    grid-column: 1 / 4;
+  .product-body-wrap {
+    grid-column: 1/3;
     grid-row: 2;
-    padding: 0;
-    padding-left: 0;
-    max-width: 100%;
-  }
-
-  /* Full-width dividers break out of content-wrapper constraints */
-  .section-divider {
-    position: relative;
-    width: 100vw;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    margin-top: 3.5rem;
-    margin-bottom: 3.5rem;
   }
 
   /* First divider has less top margin */
-  .content-wrapper > .section-divider:first-child {
+  .product-body-wrap > .section-divider:first-child {
     margin-top: 2.5rem;
   }
 
-  .content-section {
-    padding: 0;
+  .inner__content p {
+    margin: 0 0 0.55rem; /* tighter than default */
+    line-height: 1.75;
+    text-wrap: pretty; /* modern browsers */
+    hyphens: auto;
   }
 
-  .section-heading {
-    font-size: 1.875rem;
-    margin-bottom: 2rem;
-  }
-
-  .description-section .section-heading {
-    margin-left: 1.5rem;
-  }
-
-  .section-content {
-    padding: 0 2.5rem;
-    max-width: calc(100% - 260px - 2.5rem);
-  }
-
-  .section-content p {
-    margin-bottom: 1.5rem;
+  .inner__content p:last-child {
+    margin-bottom: 0;
   }
 
   /* Table containers take full width with padding */
@@ -491,81 +533,43 @@ Desktop Layout - Three Column Structure
     padding: 1rem 2.5rem;
     font-size: 1rem;
   }
-
-  /* Navigation Panel - Fixed on Right */
-  .product-navigation-panel {
-    display: block;
-    grid-column: 3;
-    grid-row: 1 / 3;
-    position: sticky;
-    top: 100px;
-    align-self: flex-start;
-    background: #f2f7f7;
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    max-height: calc(100vh - 120px);
-    overflow-y: auto;
-  }
-
-  .nav-panel-title {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--primary);
-  }
-
-  .nav-panel-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .nav-panel-list li {
-    margin-bottom: 0.5rem;
-  }
-
-  .nav-panel-link {
-    display: block;
-    padding: 0.625rem 0.875rem;
-    color: #4b5563;
-    text-decoration: none;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-    border-left: 3px solid transparent;
-  }
-
-  .nav-panel-link:hover {
-    background: #ffffff;
-    color: var(--primary);
-    border-left-color: var(--primary);
-  }
-
-  .nav-panel-link.active {
-    background: #ffffff;
-    color: var(--primary);
-    border-left-color: var(--primary);
-    font-weight: 600;
-  }
 }
-
 /*
 ==========================================================================================
-Large Desktop Optimization
+Large Desktop padding Optimization
 ==========================================================================================
 */
 
-@media (min-width: 1200px) {
-  .product-detail__inner {
-    grid-template-columns: 360px 1fr 280px;
-    gap: 0 3rem;
+@media (min-width: 421px) {
+  .nav-panel-link {
+    font-size: 14px;
+    line-height: 18px;
   }
+}
+@media (min-width: 701px) {
+  .nav-panel-link {
+    font-size: 15px;
+    line-height: 21px;
+  }
+}
+@media (min-width: 1181px) {
+  .nav-panel-link {
+    font-size: 15px;
+    line-height: 22px;
+    padding: 25px;
+  }
+}
 
-  .hero-section {
+@media (min-width: 1441px) {
+  .nav-panel-link {
+    font-size: 16px;
+    line-height: 24px;
+    padding: 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .product__hero-section {
     gap: 3rem;
   }
 
@@ -576,24 +580,41 @@ Large Desktop Optimization
     min-height: 450px;
   }
 
-  .content-wrapper {
-    padding-left: 0;
-    max-width: 100%;
-  }
-
   .product-name {
     font-size: 3rem;
-  }
-
-  .section-content {
-    padding: 0 3rem;
   }
 
   .nutrient-table td {
     padding: 1.125rem 3rem;
   }
 }
+@media (min-width: 421px) {
+  .nav-panel-link {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
 
+@media (min-width: 701px) {
+  .nav-panel-link {
+    font-size: 15px;
+    line-height: 21px;
+  }
+}
+
+@media (min-width: 1181px) {
+  .nav-panel-link {
+    font-size: 15px;
+    line-height: 22px;
+  }
+}
+
+@media (min-width: 1441px) {
+  .nav-panel-link {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
 /*
 ==========================================================================================
 Mobile Drawer: Menu Drawer Mobile code
@@ -631,7 +652,7 @@ Mobile Drawer: Menu Drawer Mobile code
     display: block;
     pointer-events: auto;
   }
-  
+
   .navbar-collapse.collapsing {
     /* Show during animation */
     display: block;
@@ -648,7 +669,9 @@ Mobile Drawer: Menu Drawer Mobile code
     background: rgba(0, 0, 0, 0.5);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
     z-index: 1040;
     pointer-events: none;
   }
@@ -666,7 +689,3 @@ Mobile Drawer: Menu Drawer Mobile code
     border-color: var(--primary);
   }
 }
-
-
-
-
